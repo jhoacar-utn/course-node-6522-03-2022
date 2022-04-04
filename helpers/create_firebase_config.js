@@ -1,5 +1,6 @@
 const fs = require('fs');
 const extract_students = require('./extract_git_students');
+const ROUTE_PROJECT = "pwa_6522"
 
 async function create_firebase_config() {
 
@@ -11,15 +12,19 @@ async function create_firebase_config() {
             public: "utn/welcome/public",
             rewrites: [
                 {
-                    source: "/",
+                    source: `/${ROUTE_PROJECT}`,
                     function: "welcome"
                 },
                 {
-                    source: "/tasks",
+                    source: `/${ROUTE_PROJECT}/`,
+                    function: "welcome"
+                },
+                {
+                    source: `/${ROUTE_PROJECT}/tasks`,
                     function: "tasks"
                 },
                 {
-                    source: "/tasks/**",
+                    source: `/${ROUTE_PROJECT}/tasks/**`,
                     function: "tasks"
                 }
             ]
@@ -29,11 +34,11 @@ async function create_firebase_config() {
 
     students.map(student => {
         firebase_config.hosting.rewrites.push({
-            source: `/${student}`,
+            source: `/${ROUTE_PROJECT}/${student}`,
             function: student
         }); //This is for root student
         firebase_config.hosting.rewrites.push({
-            source: `/${student}/**`,
+            source: `/${ROUTE_PROJECT}/${student}/**`,
             function: student
         });//This is for child folders for student
     });
