@@ -17,7 +17,7 @@ del archivo `id_rsa.pub` agregarlo en la seccion de `SSH Keys` en la configuraci
 ## Paso 2
 
 ### El estudiante debe tener permiso como colaborador a este repositorio, el cual debera clonarlo en su repositorio local, pero no de la forma tradicional sino por conexion por SSH:  
-<h3 align="center" style="color:#f6a700">git clone git@github.com:jhoacar-utn/course.git</h3>
+<h3 align="center" style="color:#f6a700">git clone git@github.com:jhoacar-utn/pwa_6522.git</h3>
 
 ### Ya con el repositorio clonado en local, debera crear una rama con su nombre y apellido separados por el caracter `_`, ejemplo:
 
