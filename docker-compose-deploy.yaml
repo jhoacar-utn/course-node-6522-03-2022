@@ -33,7 +33,7 @@ services:
 
   mysql:
     image: mysql
-    container_name: mysql_utn
+    container_name: mysql_utn_pwa_6522
     restart: always
     command: --default-authentication-plugin=mysql_native_password
     ports:
@@ -48,7 +48,7 @@ services:
       
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin_utn
+    container_name: phpmyadmin_utn_pwa_6522
     restart: always
     expose:
       - 80
@@ -56,15 +56,15 @@ services:
       PMA_HOST: mysql
       PMA_PORT: 3306
       VIRTUAL_PORT: 80
-      VIRTUAL_HOST: mysql.utn.jhoacar.me
-      LETSENCRYPT_HOST: mysql.utn.jhoacar.me
+      VIRTUAL_HOST: mysql.pwa6522.jhoacar.me
+      LETSENCRYPT_HOST: mysql.pwa6522.jhoacar.me
       LETSENCRYPT_EMAIL: jhoacar.utn@gmail.com
     depends_on:
       - mysql
 
   mongo:
     image: mongo:4.4-focal
-    container_name: mongo_utn
+    container_name: mongo_utn_pwa_6522
     restart: always
     ports: 
       - 27017:27017
@@ -78,15 +78,15 @@ services:
 
   mongo-express:
     image: mongo-express:1.0.0-alpha.4
-    container_name: mongo_express_utn
+    container_name: mongo_express_utn_pwa_6522
     restart: always
     expose:
       - 8081
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017/
       VIRTUAL_PORT: 8081
-      VIRTUAL_HOST: mongo.utn.jhoacar.me
-      LETSENCRYPT_HOST: mongo.utn.jhoacar.me
+      VIRTUAL_HOST: mongo.pwa6522.jhoacar.me
+      LETSENCRYPT_HOST: mongo.pwa6522.jhoacar.me
       LETSENCRYPT_EMAIL: jhoacar.utn@gmail.com
     depends_on:
       - mongo
