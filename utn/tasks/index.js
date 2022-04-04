@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const tasks = "/tasks";
+const ROUTE_PROJECT = process.env.ROUTE_PROJECT || "pwa_6522";
+const ROUTE_TASKS = "tasks";
+const FINAL_ROUTE = `/${ROUTE_PROJECT}/${ROUTE_TASKS}`;
 
 const app = express();
 
@@ -11,17 +13,17 @@ router.get("/",(req,res)=>{
 });
 
 router.get("/lesson_1",(req,res)=>{
-    res.redirect(`${tasks}/lesson_1/index.html`);
+    res.redirect(`${FINAL_ROUTE}/lesson_1/index.html`);
 });
 
 router.use("/", express.static(path_tasks));
 
 router.get('*', (req,res)=>{
     res.status(404);
-    res.send({error:`Not found in ${tasks}/**`})
+    res.send({error:`Not found in ${FINAL_ROUTE}/**`})
 });
 
-app.use(`${tasks}`, router) //Production Environment
+app.use(`${FINAL_ROUTE}`, router) //Production Environment
 
 app.use('/', router) //Local Environment
 
