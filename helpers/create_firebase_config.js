@@ -1,6 +1,7 @@
+require('dotenv').config()
 const fs = require('fs');
 const extract_students = require('./extract_git_students');
-const ROUTE_PROJECT = "pwa_6522"
+const ROUTE_PROJECT = process.env.ROUTE_PROJECT || "pwa_6522";
 
 async function create_firebase_config() {
 
@@ -13,19 +14,19 @@ async function create_firebase_config() {
             rewrites: [
                 {
                     source: `/${ROUTE_PROJECT}`,
-                    function: "welcome"
+                    function: `${ROUTE_PROJECT}_welcome`
                 },
                 {
                     source: `/${ROUTE_PROJECT}/`,
-                    function: "welcome"
+                    function: `${ROUTE_PROJECT}_welcome`
                 },
                 {
                     source: `/${ROUTE_PROJECT}/tasks`,
-                    function: "tasks"
+                    function: `${ROUTE_PROJECT}_tasks`
                 },
                 {
                     source: `/${ROUTE_PROJECT}/tasks/**`,
-                    function: "tasks"
+                    function: `${ROUTE_PROJECT}_tasks`
                 }
             ]
         }
@@ -35,11 +36,11 @@ async function create_firebase_config() {
     students.map(student => {
         firebase_config.hosting.rewrites.push({
             source: `/${ROUTE_PROJECT}/${student}`,
-            function: student
+            function: `${ROUTE_PROJECT}_${student}`
         }); //This is for root student
         firebase_config.hosting.rewrites.push({
             source: `/${ROUTE_PROJECT}/${student}/**`,
-            function: student
+            function: `${ROUTE_PROJECT}_${student}`
         });//This is for child folders for student
     });
 

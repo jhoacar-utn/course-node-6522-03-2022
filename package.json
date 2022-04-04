@@ -1,0 +1,7 @@
+{
+    "name": "pwa6522",
+    "description": "UTN Project",
+    "dependencies": {
+        "dotenv": "^16.0.0"
+    }
+}
