@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const student = "jhoan_carrero"
 const HOST = "utn-course.web.app";
+const ROUTE_PROJECT = process.env.ROUTE_PROJECT || "pwa_6522";
 const app = express();
 
 const path_lessons = __dirname;//path.join(__dirname, 'lessons');
@@ -26,7 +27,7 @@ router.get('*', (req,res)=>{
     res.send({error:`Not found in /${student}/**`})
 });
 
-app.use(`/${student}`, router) //Production Environment
+app.use(`/${ROUTE_PROJECT}/${student}`, router) //Production Environment
 
 app.use('/', router) //Local Environment
 
