@@ -63,7 +63,7 @@ find ./utn -type f -exec sed -i "s/$EXISTING/$STUDENT/g" {} \;
 find . -iname "*README*" -exec sed -i "s/$EXISTING/$STUDENT/g" {} \;
 `
 
-## Tiene la opcion de crear un archivo, por ejemplo, script.sh y ejecutarlo atraves de la consola ./script.sh dandole previamente permisos de ejecucion con `chmod +x ./script.sh`
+## Tiene la opcion de ejecutar el archivo `create-branch.sh`, cambiando el nombre del estudiante y previamente con permisos de ejecucion ejecutando: `chmod +x ./create-branch.sh`
 
 <br>
 
@@ -71,7 +71,10 @@ find . -iname "*README*" -exec sed -i "s/$EXISTING/$STUDENT/g" {} \;
 
 <h2 align="center"> Todo el codigo que se realice sera hosteado a través del dominio</h2>
 <br> 
-<h1 align="center"><a href="https://utn-course.web.app">https://utn-course.web.app</a></h1>
+<h1 align="center"><a href="https://utn-course.web.app">https://utn-course.web.app</a>
+<br>
+Bajo la ruta: <a href="https://utn-course.web.app/pwa_6522">https://utn-course.web.app/pwa_6522</a>
+</h1>
 <br>
 
 ### Esta estructura es probable a cambios futuros, se debe cumplir al 100% ya que depende eso como es la forma de trabajo de cada uno y como cumple las normativas del equipo. 
@@ -169,7 +172,7 @@ find . -iname "*README*" -exec sed -i "s/$EXISTING/$STUDENT/g" {} \;
  * Base de Datos Relaciones ( MySQL ) 
     * ) Conexion a Base de Datos Remota
         * ) [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) Visor de base de datos MySQL
-        * ) La base de datos se encontrara bajo el dominio <br><h1><a href="https://mysql.utn.jhoacar.me">mysql.utn.jhoacar.me</a></h1>
+        * ) La base de datos se encontrara bajo el dominio <br><h1><a href="https://mysql.pwa6522.jhoacar.me">mysql.pwa6522.jhoacar.me</a></h1>
         * ) Las credenciales seran el nombre de la rama que se haya creado al igual que la contraseña, ejemplo:<br>`usuario : jhoan_carrero`<br>`contraseña: jhoan_carrero`
         * ) La base de datos sera el mismo nombre de la rama, ejemplo: `jhoan_carrero` 
  * Express y MySQL
@@ -206,9 +209,9 @@ find . -iname "*README*" -exec sed -i "s/$EXISTING/$STUDENT/g" {} \;
  * Base de Datos No Relaciones ( NoSQL ) 
     * ) Conexion a Base de Datos Remota
         * ) [MongoDB Compass](https://www.mongodb.com/try/download/compass) Visor de base de datos MongoDB
-        * ) La base de datos se encontrara bajo el dominio <br><h1><a href="https://mongo.utn.jhoacar.me">mongo.utn.jhoacar.me</a></h1>
+        * ) La base de datos se encontrara bajo el dominio <br><h1><a href="https://mongo.pwa6522.jhoacar.me">mongo.pwa6522.jhoacar.me</a></h1>
         * ) Las credenciales seran el nombre de la rama que se haya creado al igual que la contraseña, ejemplo: <br> `usuario : jhoan_carrero` <br> `contraseña: jhoan_carrero`   
-        * ) La base de datos sera el mismo nombre de la rama, ejemplo: `jhoan_carrero` <br> `MONGO_URI=mongodb://jhoan_carrero:jhoan_carrero@mongo.utn.jhoacar.me:27017/jhoan_carrero` <br>
+        * ) La base de datos sera el mismo nombre de la rama, ejemplo: `jhoan_carrero` <br> `MONGO_URI=mongodb://jhoan_carrero:jhoan_carrero@mongo.pwa6522.jhoacar.me:27017/jhoan_carrero` <br>
  * Colecciones
  * Documentos
  * CRUD (Create, Read, Update, Delete)
