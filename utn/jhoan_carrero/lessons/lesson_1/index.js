@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const student = "jhoan_carrero"
+const STUDENT = "jhoan_carrero"
 const HOST = "utn-course.web.app";
 const ROUTE_PROJECT = process.env.ROUTE_PROJECT || "pwa_6522";
 const app = express();
@@ -12,11 +12,11 @@ router.use('/lessons/lesson_1', express.static(path_lessons));
 router.get("/",(req,res)=>{
     URL = req.headers.host.includes('us-central') ? HOST: req.headers.host; 
     res.send(`
-    <h1 style="text-align:center"> Soy ${student.split("_").join(" ")}</h1> 
+    <h1 style="text-align:center"> Soy ${STUDENT.split("_").join(" ")}</h1> 
     <p>
         Aqui se encuentra mi primer TP
-        <a href="${req.protocol}://${req.headers.host}/${student}/lessons/lesson_1/index.html">
-            https://${req.headers.host}/${student}/lessons/lesson_1/index.html
+        <a href="${req.protocol}://${req.headers.host}/${STUDENT}/lessons/lesson_1/index.html">
+            https://${req.headers.host}/${STUDENT}/lessons/lesson_1/index.html
         </a>
     </p>
     `);
@@ -24,10 +24,10 @@ router.get("/",(req,res)=>{
 
 router.get('*', (req,res)=>{
     res.status(404);
-    res.send({error:`Not found in /${student}/**`})
+    res.send({error:`Not found in /${STUDENT}/**`})
 });
 
-app.use(`/${ROUTE_PROJECT}/${student}`, router) //Production Environment
+app.use(`/${ROUTE_PROJECT}/${STUDENT}`, router) //Production Environment
 
 app.use('/', router) //Local Environment
 
