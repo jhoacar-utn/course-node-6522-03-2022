@@ -1,4 +1,4 @@
-STUDENT=user_test; 
+STUDENT=valentina_brocanelli_novillo; 
 EXISTING=jhoan_carrero; 
 git checkout $EXISTING; 
 git checkout -b $STUDENT; 
