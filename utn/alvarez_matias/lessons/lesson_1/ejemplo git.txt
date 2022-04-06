@@ -19,7 +19,7 @@ git branch -> manipula las ramas
     git branch -a -> lista todas las ramas del repo
 
 git checkout -b nueva_rama -> para moverme entre ramas 
-
+        (El parametro -b es para especificar si no existe la rama que la cree)
         (Los archivos que apareceran si es nueva la rama seran en donde estaba antes)
 
 (Ctrl + L -> se limpia la pantalla de la consola)
