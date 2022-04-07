@@ -7,18 +7,28 @@ const app = express();
 
 // :algo, :id -> Extraer la ruta [req.params] 
 
-const callback1 = (request,response,next)=>{
+const principal = (request,response,next)=>{
 
-    console.log(request.url);
-    
+    const parametros = request.params;
+
+    if(parametros.variable == "limpieza")
+    {
+        const url = request.protocol + "://" + request.host + request.url;
+        console.log(url);
+        const current_url = new URL(url);
+        const params = new URLSearchParams(current_url.search);
+        console.log(params);
+    }
+
     next();
+    
 }
 
-const callback2 = (request,response,next)=>{
+const login = (request,response,next)=>{
     response.sendFile(__dirname+"/login.html");
 };
 
-const callback3 = (request,response,next)=>{
+const dashboard = (request,response,next)=>{
     response.sendFile(__dirname+"/dashboard.html");
 };
 
@@ -30,9 +40,9 @@ const authorization = (request,response,next)=>{
     next();
 };
 
-app.get("/",callback1,callback2);
+app.get("/",principal,login);
 
-app.post("/",authorization,callback3);
+app.post("/",authorization,dashboard);
 
 
 app.listen(4000,()=>{
