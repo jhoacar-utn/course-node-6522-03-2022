@@ -22,12 +22,156 @@
                 "function": "pwa_6522_tasks"
             },
             {
+                "source": "/pwa_6522/Johnatan_Alzate_Ospina",
+                "function": "pwa_6522_Johnatan_Alzate_Ospina"
+            },
+            {
+                "source": "/pwa_6522/Johnatan_Alzate_Ospina/**",
+                "function": "pwa_6522_Johnatan_Alzate_Ospina"
+            },
+            {
+                "source": "/pwa_6522/Omar_Pallero",
+                "function": "pwa_6522_Omar_Pallero"
+            },
+            {
+                "source": "/pwa_6522/Omar_Pallero/**",
+                "function": "pwa_6522_Omar_Pallero"
+            },
+            {
+                "source": "/pwa_6522/Rodrigo_Rojas",
+                "function": "pwa_6522_Rodrigo_Rojas"
+            },
+            {
+                "source": "/pwa_6522/Rodrigo_Rojas/**",
+                "function": "pwa_6522_Rodrigo_Rojas"
+            },
+            {
+                "source": "/pwa_6522/agustin_castanol",
+                "function": "pwa_6522_agustin_castanol"
+            },
+            {
+                "source": "/pwa_6522/agustin_castanol/**",
+                "function": "pwa_6522_agustin_castanol"
+            },
+            {
+                "source": "/pwa_6522/alvarez_matias",
+                "function": "pwa_6522_alvarez_matias"
+            },
+            {
+                "source": "/pwa_6522/alvarez_matias/**",
+                "function": "pwa_6522_alvarez_matias"
+            },
+            {
+                "source": "/pwa_6522/camila_coelho",
+                "function": "pwa_6522_camila_coelho"
+            },
+            {
+                "source": "/pwa_6522/camila_coelho/**",
+                "function": "pwa_6522_camila_coelho"
+            },
+            {
+                "source": "/pwa_6522/claudio_mandujano",
+                "function": "pwa_6522_claudio_mandujano"
+            },
+            {
+                "source": "/pwa_6522/claudio_mandujano/**",
+                "function": "pwa_6522_claudio_mandujano"
+            },
+            {
+                "source": "/pwa_6522/horacio_yeuchuk",
+                "function": "pwa_6522_horacio_yeuchuk"
+            },
+            {
+                "source": "/pwa_6522/horacio_yeuchuk/**",
+                "function": "pwa_6522_horacio_yeuchuk"
+            },
+            {
+                "source": "/pwa_6522/ignacio_martinez",
+                "function": "pwa_6522_ignacio_martinez"
+            },
+            {
+                "source": "/pwa_6522/ignacio_martinez/**",
+                "function": "pwa_6522_ignacio_martinez"
+            },
+            {
                 "source": "/pwa_6522/jhoan_carrero",
                 "function": "pwa_6522_jhoan_carrero"
             },
             {
                 "source": "/pwa_6522/jhoan_carrero/**",
                 "function": "pwa_6522_jhoan_carrero"
+            },
+            {
+                "source": "/pwa_6522/jhonny_berdeja",
+                "function": "pwa_6522_jhonny_berdeja"
+            },
+            {
+                "source": "/pwa_6522/jhonny_berdeja/**",
+                "function": "pwa_6522_jhonny_berdeja"
+            },
+            {
+                "source": "/pwa_6522/julia_ribotto",
+                "function": "pwa_6522_julia_ribotto"
+            },
+            {
+                "source": "/pwa_6522/julia_ribotto/**",
+                "function": "pwa_6522_julia_ribotto"
+            },
+            {
+                "source": "/pwa_6522/luciano_michalik",
+                "function": "pwa_6522_luciano_michalik"
+            },
+            {
+                "source": "/pwa_6522/luciano_michalik/**",
+                "function": "pwa_6522_luciano_michalik"
+            },
+            {
+                "source": "/pwa_6522/martin_pereyra",
+                "function": "pwa_6522_martin_pereyra"
+            },
+            {
+                "source": "/pwa_6522/martin_pereyra/**",
+                "function": "pwa_6522_martin_pereyra"
+            },
+            {
+                "source": "/pwa_6522/nicolas_barboza",
+                "function": "pwa_6522_nicolas_barboza"
+            },
+            {
+                "source": "/pwa_6522/nicolas_barboza/**",
+                "function": "pwa_6522_nicolas_barboza"
+            },
+            {
+                "source": "/pwa_6522/pablo_flores_",
+                "function": "pwa_6522_pablo_flores_"
+            },
+            {
+                "source": "/pwa_6522/pablo_flores_/**",
+                "function": "pwa_6522_pablo_flores_"
+            },
+            {
+                "source": "/pwa_6522/pablo_rex",
+                "function": "pwa_6522_pablo_rex"
+            },
+            {
+                "source": "/pwa_6522/pablo_rex/**",
+                "function": "pwa_6522_pablo_rex"
+            },
+            {
+                "source": "/pwa_6522/ricardo_huamani",
+                "function": "pwa_6522_ricardo_huamani"
+            },
+            {
+                "source": "/pwa_6522/ricardo_huamani/**",
+                "function": "pwa_6522_ricardo_huamani"
+            },
+            {
+                "source": "/pwa_6522/valentina_brocanelli_novillo",
+                "function": "pwa_6522_valentina_brocanelli_novillo"
+            },
+            {
+                "source": "/pwa_6522/valentina_brocanelli_novillo/**",
+                "function": "pwa_6522_valentina_brocanelli_novillo"
             }
         ]
     }

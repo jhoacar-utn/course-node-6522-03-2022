@@ -1,14 +1,6 @@
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD:utn/agustin_castanol/lessons/lesson_1/index.js
-<<<<<<< HEAD:utn/jhonny_berdeja/lessons/lesson_1/index.js
-const STUDENT = "jhonny_berdeja"
-=======
-const STUDENT = "agustin_castanol"
->>>>>>> agustin_castanol:utn/agustin_castanol/lessons/lesson_1/index.js
-=======
-const STUDENT = "julia_ribotto"
->>>>>>> origin/julia_ribotto:utn/julia_ribotto/lessons/lesson_1/index.js
+const STUDENT = "agustin_castanol";
 const HOST = "utn-course.web.app";
 const ROUTE_PROJECT = process.env.ROUTE_PROJECT || "pwa_6522";
 const FINAL_ROUTE = `/${ROUTE_PROJECT}/${STUDENT}`;
