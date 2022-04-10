@@ -12,9 +12,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: utn
     volumes:
-      # - ./mysql/data:/var/lib/mysql
-      - mysql_pwa_6522:/var/lib/mysql
-      - ./mysql/init:/docker-entrypoint-initdb.d:ro
+      - ./mysql/data/pwa_6522:/var/lib/mysql
+      - ./mysql/init/mysql_pwa_6522-init.sql:/docker-entrypoint-initdb.d/mysql_pwa_6522-init.sql:ro
 
       
   phpmyadmin_pwa_6522:
@@ -43,9 +42,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
-      # - ./mongo/data:/data/db
-      - mongo_pwa_6522:/data/db
-      - ./mongo/init:/docker-entrypoint-initdb.d:ro
+      - ./mongo/data/pwa_6522:/data/db
+      - ./mongo/init/mysql_pwa_6522-init.sql:/docker-entrypoint-initdb.d/mysql_pwa_6522-init.sql:ro
 
   mongo_express_utn:
     image: mongo-express:1.0.0-alpha.4
@@ -61,10 +59,3 @@ services:
       LETSENCRYPT_EMAIL: jhoacar.utn@gmail.com
     depends_on:
       - mongo_pwa_6522
-
-#Use MOUNT volume because Mongo need permissions in the system NTFS
-volumes:
-  mongo_pwa_6522:
-    external: false 
-  mysql_pwa_6522:
-    external: false 
