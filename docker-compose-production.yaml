@@ -2,9 +2,9 @@ version: '3'
 
 services:
 
-  mysql_utn:
+  mysql_pwa_6522:
     image: mysql
-    container_name: mysql_utn
+    container_name: mysql_pwa_6522
     restart: always
     command: --default-authentication-plugin=mysql_native_password
     ports:
@@ -13,25 +13,29 @@ services:
       MYSQL_ROOT_PASSWORD: utn
     volumes:
       # - ./mysql/data:/var/lib/mysql
-      - mysql_utn:/var/lib/mysql
+      - mysql_pwa_6522:/var/lib/mysql
       - ./mysql/init:/docker-entrypoint-initdb.d:ro
 
       
-  phpmyadmin_utn:
+  phpmyadmin_pwa_6522:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin_utn
+    container_name: phpmyadmin_pwa_6522
     restart: always
     ports:
       - 3000:80
     environment:
-      PMA_HOST: mysql_utn
+      PMA_HOST: mysql_pwa_6522
       PMA_PORT: 3306
+      VIRTUAL_PORT: 80
+      VIRTUAL_HOST: mysql.pwa6522.jhoacar.me
+      LETSENCRYPT_HOST: mysql.pwa6522.jhoacar.me
+      LETSENCRYPT_EMAIL: jhoacar.utn@gmail.com
     depends_on:
-      - mysql_utn
+      - mysql_pwa_6522
 
-  mongo_utn:
+  mongo_pwa_6522:
     image: mongo:4.4-focal
-    container_name: mongo_utn
+    container_name: mongo_pwa_6522
     restart: always
     ports: 
       - 27017:27017
@@ -40,7 +44,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
       # - ./mongo/data:/data/db
-      - mongo_utn:/data/db
+      - mongo_pwa_6522:/data/db
       - ./mongo/init:/docker-entrypoint-initdb.d:ro
 
   mongo_express_utn:
@@ -50,13 +54,17 @@ services:
     ports:
       - 3001:8081
     environment:
-      ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo_utn:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo_pwa_6522:27017/
+      VIRTUAL_PORT: 8081
+      VIRTUAL_HOST: mongo.pwa6522.jhoacar.me
+      LETSENCRYPT_HOST: mongo.pwa6522.jhoacar.me
+      LETSENCRYPT_EMAIL: jhoacar.utn@gmail.com
     depends_on:
-      - mongo_utn
+      - mongo_pwa_6522
 
 #Use MOUNT volume because Mongo need permissions in the system NTFS
 volumes:
-  mongo_utn:
+  mongo_pwa_6522:
     external: false 
-  mysql_utn:
+  mysql_pwa_6522:
     external: false 

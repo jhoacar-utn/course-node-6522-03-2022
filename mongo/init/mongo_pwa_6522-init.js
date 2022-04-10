@@ -1,7 +1,43 @@
 
 const users = [
 
+"Johnatan_Alzate_Ospina",
+
+"Omar_Pallero",
+
+"Rodrigo_Rojas",
+
+"agustin_castanol",
+
+"alvarez_matias",
+
+"camila_coelho",
+
+"claudio_mandujano",
+
+"horacio_yeuchuk",
+
+"ignacio_martinez",
+
 "jhoan_carrero",
+
+"jhonny_berdeja",
+
+"julia_ribotto",
+
+"luciano_michalik",
+
+"martin_pereyra",
+
+"nicolas_barboza",
+
+"pablo_flores_",
+
+"pablo_rex",
+
+"ricardo_huamani",
+
+"valentina_brocanelli_novillo",
 
 ];
 
