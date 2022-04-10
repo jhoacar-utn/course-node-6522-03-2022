@@ -50,7 +50,7 @@ services:
     container_name: mongo_express_utn
     restart: always
     expose:
-      8081
+      - 8081
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo_pwa_6522:27017/
       VIRTUAL_PORT: 8081
