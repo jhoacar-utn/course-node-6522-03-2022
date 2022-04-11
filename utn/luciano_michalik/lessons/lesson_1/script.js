@@ -19,11 +19,11 @@ const calculateFunction = () =>{
         if(pos == 0)
             response_1.value = sortedMultipliers[i]
         if(pos == 1)
-        response_2.value = sortedMultipliers[i]
+            response_2.value = sortedMultipliers[i]
         if(pos == 2)
-        response_3.value = sortedMultipliers[i]
+            response_3.value = sortedMultipliers[i]
         if(pos == 3)
-        response_4.value = sortedMultipliers[i] 
+            response_4.value = sortedMultipliers[i] 
     }
 
     response_total.value = totalResponse
