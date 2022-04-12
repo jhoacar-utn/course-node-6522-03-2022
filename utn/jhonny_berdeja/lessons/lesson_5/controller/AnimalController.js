@@ -1,6 +1,11 @@
 const animal = require("../model/Animal");
 
 
-module.exports.get_animals = (req,res)=>{
-    return res.json(animal.getAll());
+//funciones async son promesas tambien
+
+module.exports.get_animals = async (req,res)=>{
+
+    const animals = await animal.getAll(); //Esto tambien es una promesa
+
+    return res.json(animals);
 }
