@@ -1,5 +1,3 @@
-
-
 class Element 
 {
     constructor(pos, value) {
