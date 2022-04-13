@@ -1,7 +1,8 @@
 
 const getAll = ()=>{
+    
 
-
+    
 }
 
 const animal ={
