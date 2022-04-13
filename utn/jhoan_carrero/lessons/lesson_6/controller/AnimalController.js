@@ -12,5 +12,5 @@ module.exports.get_animals = async (req,res)=>{
 
 module.exports.create_animal = (request,response)=>{
 
-    return response.sendFile("./views/create_animal.html");
+    return response.sendFile(__dirname+"create_animal.html");
 }
