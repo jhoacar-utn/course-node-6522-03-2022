@@ -1,0 +1,3 @@
+ctrl + shift + l-> coloca el cursor en cada coincidencia que se haya encontrado
+ctrl + C -> Matar un proceso
+git log -1 -> Muestra los commits del repo, el -1 mostrara un solo commit, el ultimo
