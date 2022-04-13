@@ -9,3 +9,8 @@ module.exports.get_animals = async (req,res)=>{
 
     return res.send(animals);
 }
+
+module.exports.create_animal = (request,response)=>{
+
+    return response.sendFile("./views/create_animal.html");
+}

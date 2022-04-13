@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 const { URL_API } = require('../../config');
-const ENDPOINT = "https://youtube.com";// URL_API + "/animals";
+const ENDPOINT = URL_API + "/animals";
 
 let animals = ["estoy vacio"];
 
@@ -19,7 +19,7 @@ const rejectPromise = parameter => {
 const getAll = async ()=>{
 
     const response = await fetch(ENDPOINT);
-    animals = await response.text();
+    animals = await response.json();
     
     return animals;
 };
