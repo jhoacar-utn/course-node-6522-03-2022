@@ -24,9 +24,19 @@ const getAll = async ()=>{
     return animals;
 };
 
+const save = (animalData)=>{
+
+    
+
+    return {
+        message: "Animal saved successfully"
+    }
+}
+
 
 const animal = {
-    getAll : getAll
+    getAll : getAll,
+    save: save
 }
 
 module.exports = animal;

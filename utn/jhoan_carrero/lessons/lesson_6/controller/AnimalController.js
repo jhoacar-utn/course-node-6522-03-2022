@@ -15,6 +15,16 @@ module.exports.create_animal = (request,response)=>{
 
     // lesson_6/controller/../views/create_animal.html -> ESTO NO LE VA A GUSTAR a sendFile
     // lesson_6/views/create_animal.html -> ESTO ESTA BIEN
-    
+
     return response.sendFile(path.resolve(__dirname+"/../views/create_animal.html"));
+}
+
+module.exports.store_animal = (request,response)=>{
+
+    const data = request.body;
+
+    const message = animal.save(data);
+
+    return response.json(message);
+
 }
