@@ -1,3 +1,4 @@
+const { response } = require('express');
 const fetch = require('node-fetch');
 
 const { URL_API } = require('../../config');
@@ -24,12 +25,17 @@ const getAll = async ()=>{
     return animals;
 };
 
-const save = (animalData)=>{
+const save = async (animalData)=>{
 
-    
+    const response = await fetch(ENDPOINT,{
+        method: "POST",
+        body: JSON.stringify(animalData)
+    })
+
+    const message = await response.json();
 
     return {
-        message: "Animal saved successfully"
+        message: message
     }
 }
 
