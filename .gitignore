@@ -1,1 +1,28 @@
+*
+!.gitignore
+!README.md
+
+!/utn
+!/utn/*
+
+# First Case
+
+!/utn/*_*/
+!/utn/*_*/**
+
+# Second Case
+
+!/utn/*_*_*/
+!/utn/*_*_*/**
+
+# Third Case
+
+!/utn/*_*_*_*/
+!/utn/*_*_*_*/**
+
+# Tasks
+
+!/utn/tasks
+!/utn/tasks/**
+
 /**/node_modules
