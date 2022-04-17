@@ -3,6 +3,8 @@
 
 ### Repositorio con el codigo del curso de cada estudiante
 
+# [Link de Zoom](https://centrodeelearning.zoom.us/j/95950851889?pwd=dmNha21QRFRzTWMyUVJCek5INy8vUT09#success)
+
 <br>
 
 # ¿Cómo funciona?
@@ -276,6 +278,5 @@ Bajo la ruta: <a href="https://utn-course.web.app/pwa_6522">https://utn-course.w
    * ) Adaptabilidad por JSX
  * Componentes y JSX
  * Ejemplos: `npx create-react-app my-app`
-
 
 
