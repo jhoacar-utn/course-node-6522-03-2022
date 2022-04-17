@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ![UTN BA Centro de e-Learning](https://www.frba.utn.edu.ar/wp-content/uploads/2016/08/logo-utn.ba-horizontal-e1471367724904.jpg)
 # Curso Programacion Web FullStack
 
@@ -8,11 +7,6 @@
 
 <br>
 
-=======
-# Esta rama tiene mi informacion sobre el curso de programacion
-# Todos los apuntes los tengo en functions/jhoan_carrero/lessons
-=======
->>>>>>> origin/alvarez_matias
 # ¿Cómo funciona?
 
 ## Paso 1
@@ -286,7 +280,3 @@ Bajo la ruta: <a href="https://utn-course.web.app/pwa_6522">https://utn-course.w
  * Ejemplos: `npx create-react-app my-app`
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/alvarez_matias
