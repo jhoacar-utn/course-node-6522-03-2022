@@ -5,7 +5,7 @@ const app = express();
 // POST -> Trabaja con el body de la request -> Archivos, Texto [req.body]
 // GET -> Trabaja con los parametros de la URL localhost/productos?id=1&price=243 [req.url]
 
-// :algo, :id -> Extraer la ruta [req.params] 
+// :algo, :id -> Extraer la ruta [req.params]  
 
 const principal = (request,response,next)=>{
 

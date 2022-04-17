@@ -23,6 +23,7 @@ router.get("/",(req,res)=>{
     `);
 });
 
+
 router.get('*', (req,res)=>{
     res.status(404);
     res.send({error:`Not found in ${FINAL_ROUTE}/**`})
