@@ -1,0 +1,25 @@
+{
+  "name": "pwa_6522",
+  "version": "1.0.0",
+  "description": "![UTN BA Centro de e-Learning](https://campus.utnba.centrodeelearning.com/pluginfile.php/1/theme_impression/logo/1642623009/eLearning-fondo-transparente.png)\r # Curso Programacion Web FullStack",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon utn/valentina_brocanelli_novillo/lessons/lesson_2/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhoacar-utn/pwa_6522.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhoacar-utn/pwa_6522/issues"
+  },
+  "homepage": "https://github.com/jhoacar-utn/pwa_6522#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}
