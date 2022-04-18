@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
 
+const {connectToServer} = require("./config/mongo/connection");
+
 const route_users = require("./routes/userRouter");
+
 
 const PORT = 5000;
 
@@ -18,5 +21,14 @@ app.use("/user",route_users);
 
 
 app.listen(PORT,()=>{
+    
     console.log("Server on port "+PORT);
+
+    connectToServer((error)=>{
+        if(error)
+            console.log(error);
+        else
+            console.log("Connection established");
+    });
+
 });
