@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+const route_users = require("./routes/user");
+
 const PORT = 5000;
 
 
@@ -12,6 +14,7 @@ const handleRequest = (request,response,next)=>{
 
 app.get("/",handleRequest);
 
+app.use("/user",route_users);
 
 
 app.listen(PORT,()=>{
