@@ -9,4 +9,4 @@ const postUser = (request,response,next)=>{
 }
 
 module.exports.getAllUsers = getAllUsers;
-module.exports.getAllUsers = postUser;
+module.exports.postUser = postUser;
