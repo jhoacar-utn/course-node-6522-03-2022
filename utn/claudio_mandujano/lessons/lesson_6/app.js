@@ -1,17 +1,17 @@
 const express = require('express');
-
-const {get_animals} = require('./controller/animalController');
-
+const animalRouter = require("./routes/Animal")
 
 const app = express();
 
+
+//http:localhost:8000/zoo/animals
+app.use("/forest",animalRouter);
 
 app.get("/",(req,res)=>{
     return res.json({message:"Welcome"})
 })
 
 
-app.get("/animals",get_animals);
     
 
 
