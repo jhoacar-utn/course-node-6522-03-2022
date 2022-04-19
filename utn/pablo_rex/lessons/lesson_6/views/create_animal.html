@@ -9,21 +9,25 @@
 </head>
 <body>
     <div class="modal-body">
-    <div class="mb-3">
-        <label class="col-form-label">Name</label>
-        <input id="name" type="text" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label class="col-form-label">Species</label>
-        <input id="species" type="text" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label class="col-form-label">Age</label>
-        <input id="age" type="text" class="form-control">
-    </div>
-    <div class="modal-footer">
-      <button onclick="sendAnimal()">Crear Animal</button>
-    </div>
+        <form id="formProp">
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="col-form-label">Name</label>
+                    <input id="name" name="name" type="text" class="form-control">
+                </div>
+            <div class="mb-3">
+                <label class="col-form-label">Species</label>
+                <input id="species" name="species" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="col-form-label">Age</label>
+                <input id="age" name="id" type="text" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button onclick="sendAnimal()">Crear Animal</button>
+            </div>
+            </div>
+        </form>
     </div>
     <script>
         function sendAnimal(){
@@ -33,10 +37,10 @@
             const id = 8
 
             const data ={
-                id: 'id',
-                name: 'name',
-                species: 'species',
-                age: 'age'
+                id: id,
+                name: name,
+                species: species,
+                age: age
             }
             console.log(data);
 
@@ -46,9 +50,9 @@
             body: JSON.stringify(data)
         }).then(
             
-            response =>{ return response.json()}
+            response =>{ return response.json(data)}
         ).then(
-            (data)=>{console.log(data)}
+            data=>{console.log(data)}
             ).catch(
                 (error)=>{console.log(error)}
                    )
