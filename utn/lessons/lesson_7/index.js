@@ -17,9 +17,9 @@ const handleRequest = (request,response,next)=>{
         .find({})
         .toArray(function (err, result) {
             if (err) 
-            response.status(400).send("Error fetching welcome collection!");
+                response.status(400).send("Error fetching welcome collection!");
             else 
-            response.json(result);
+                response.json(result);
         })
     //Constate de NODE => __dirname
     //response.sendFile(__dirname+"/views/welcome.html");
