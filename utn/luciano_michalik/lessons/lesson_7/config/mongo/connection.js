@@ -1,4 +1,5 @@
 //Lo primero es instalar mongo con "npm i mongodb"
+// Todo este código sale de la web de Mongo https://www.mongodb.com/languages/express-mongodb-rest-api-tutorial
 
 const { MongoClient } = require("mongodb"); //Codigo copiado de la documentacion de Mongo
 
