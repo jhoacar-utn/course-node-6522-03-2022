@@ -17,11 +17,10 @@ app.listen(PORT,()=>{
     
     console.log("Server on port "+PORT);
 
-    connectToServer((error)=>{
-        if(error)
-            console.log(error);
-        else
-            console.log("Connection established");
-    });
+    connectToServer().then((status)=>{
+        console.log("Conection established");
+    }).catch((error)=>{
+        console.log("Connection refused");
+    })
 
 });
