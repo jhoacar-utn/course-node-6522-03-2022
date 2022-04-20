@@ -1,11 +1,14 @@
+require('dotenv').config()
+
 const express = require("express");
 const app = express();
 
 const {connectToServer} = require("./config/mongo/connection");
+const main_route = require("./routes/index");
 
+const PORT = process.env.PORT || 5000;
 
-const PORT = 5000;
-
+app.use("/",main_route);
 
 app.listen(PORT,()=>{
     
