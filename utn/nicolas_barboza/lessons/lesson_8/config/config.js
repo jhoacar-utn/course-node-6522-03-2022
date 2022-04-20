@@ -3,6 +3,6 @@ module.exports = {
 
     },
     mongo : {
-        MONGO_URI:"mongodb://nicolas_barboza:nicolas_barboza@mongo.utn.jhoacar.me"
+        MONGO_URI:process.env.MONGO_URI
     }
 }
