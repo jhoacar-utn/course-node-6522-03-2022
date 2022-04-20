@@ -8,14 +8,14 @@ const route_users = require("./routes/userRouter");
 
 const PORT = 5000;
 
-/*https://www.mongodb.com/languages/express-mongodb-rest-api-tutorial*/
+/*La info metida en handleRequest sale de... https://www.mongodb.com/languages/express-mongodb-rest-api-tutorial*/
 
 const handleRequest = (request,response,next)=>{ //Es lo que se ejecuta al entrar al directorio raiz (/)
     
     const dbConnect = getDb(); //Desde el export de connection tomo el getDB
     dbConnect
         .collection("welcome") //if the "welcome" collection exists...
-        .find({}) //And find everything
+        .find({}) //And find everything. Es como el WHERE en SQL cuando ponias "SELECT * FROM ... WHERE id=xx"
         .toArray(function (err, result) {
             if (err) 
                 response.status(400).send("Error fetching welcome collection!"); //Error obteniendo la DB
