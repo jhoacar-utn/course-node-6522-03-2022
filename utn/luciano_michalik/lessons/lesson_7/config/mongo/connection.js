@@ -1,8 +1,10 @@
-const { MongoClient } = require("mongodb");
+//Lo primero es instalar mongo con "npm i mongodb"
 
-const {mongo} = require("../config");
+const { MongoClient } = require("mongodb"); //Codigo copiado de la documentacion de Mongo
 
-const connectionString = mongo.MONGO_URI;
+const {mongo} = require("../config"); //Al poner entre llaves hagi un destructure para traer solo el objeto "mongo"
+
+const connectionString = mongo.MONGO_URI;//DB LINK
 
 const client = new MongoClient(connectionString, {
   useNewUrlParser: true,
@@ -20,7 +22,7 @@ module.exports = {
         return callback(err);
       }
 
-      dbConnection = db.db("jhoan_carrero");
+      dbConnection = db.db("luciano_michalik"); //Nombre de mi DB en mongo
       
       console.log("Successfully connected to MongoDB.");
 
@@ -30,6 +32,6 @@ module.exports = {
     },
 
   getDb: function () {
-    return dbConnection;
+    return dbConnection;  
   },
 };
