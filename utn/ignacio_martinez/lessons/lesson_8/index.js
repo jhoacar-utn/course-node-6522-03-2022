@@ -13,14 +13,16 @@ app.use("/api",apiRoute);
 app.use("/",webRoute);
 
 
-app.listen(PORT,()=>{
+app.listen(PORT, ()=>{
     
     console.log("Server on port "+PORT);
 
     connectToServer().then((status)=>{
         console.log("Conection established");
+        console.log(status);
     }).catch((error)=>{
         console.log("Connection refused");
+        console.log(error)
     })
 
 });
