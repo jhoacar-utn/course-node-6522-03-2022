@@ -1,19 +1,18 @@
-
-
-
+const UserModel = require("../models/userModel");
 
 const getAllUsers = (request,response,next)=>{
 
 };
 
-const postUser = (request,response,next)=>{
+const postUser = async (request,response,next)=>{
 
     const data = request.body;
 
-    const user = UserModel;
-    user.save(data);
+    const user = new UserModel(data);
+    
+    await user.save();
 
-    response.send("User added");
+    response.send("User added", user);
 }
 
 module.exports.getAllUsers = getAllUsers;
