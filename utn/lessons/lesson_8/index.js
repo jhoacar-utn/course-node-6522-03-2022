@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use("/api",apiRoute);
 app.use("/",webRoute);
+app.use(express.json());    // <==== parse request body as JSON;
 
 
 app.listen(PORT, ()=>{
