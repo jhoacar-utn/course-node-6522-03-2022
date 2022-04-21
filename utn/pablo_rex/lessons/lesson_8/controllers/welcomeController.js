@@ -21,7 +21,7 @@ const handleRequest = (req,res,next)=>{
 }
 
 const handleWelcomeWeb =  (req,res,next)=>{
-  return res.sendFile(path.resolve(__dirname + "../views/welcome.html"));
+  return res.sendFile(path.resolve(__dirname+"/../views/welcome.html"));
 }
 
 module.exports.handleWelcome = handleRequest;

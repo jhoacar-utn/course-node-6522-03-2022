@@ -11,15 +11,16 @@ const PORT = process.env.PORT || 5000;
 
 app.use("/api",apiRoute);
 app.use("/",webRoute);
+app.use(express.json());
 
 
 app.listen(PORT,()=>{
     
     console.log("Server on port "+PORT);
 
-    connectToServer().then((status)=>{
+    connectToServer().then(()=>{
         console.log("connection stablished");
-        console.log(status);
+        
     }).catch((error)=>{
         console.log("connection refused");
         console.log(error);
