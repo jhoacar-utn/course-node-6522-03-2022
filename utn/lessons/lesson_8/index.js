@@ -17,9 +17,8 @@ app.listen(PORT, ()=>{
     
     console.log("Server on port "+PORT);
 
-    connectToServer().then((status)=>{
+    connectToServer().then(()=>{
         console.log("Conection established");
-        console.log(status);
     }).catch((error)=>{
         console.log("Connection refused");
         console.log(error)
