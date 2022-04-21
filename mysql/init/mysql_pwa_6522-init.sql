@@ -53,6 +53,12 @@ INSERT INTO ignacio_martinez.welcome (message) VALUES ('Welcome to your database
 CREATE USER ignacio_martinez@'%' IDENTIFIED BY 'ignacio_martinez';
 GRANT ALL ON ignacio_martinez.* TO ignacio_martinez@'%';
         
+CREATE DATABASE IF NOT EXISTS javier_romero;
+CREATE TABLE IF NOT EXISTS javier_romero.welcome (message VARCHAR(100));
+INSERT INTO javier_romero.welcome (message) VALUES ('Welcome to your database javier romero'); 
+CREATE USER javier_romero@'%' IDENTIFIED BY 'javier_romero';
+GRANT ALL ON javier_romero.* TO javier_romero@'%';
+        
 CREATE DATABASE IF NOT EXISTS jhoan_carrero;
 CREATE TABLE IF NOT EXISTS jhoan_carrero.welcome (message VARCHAR(100));
 INSERT INTO jhoan_carrero.welcome (message) VALUES ('Welcome to your database jhoan carrero'); 
