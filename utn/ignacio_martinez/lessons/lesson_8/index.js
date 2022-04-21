@@ -1,44 +1,26 @@
+require('dotenv').config()
+
 const express = require("express");
 const app = express();
 
-const {connectToServer, getDb} = require("./config/mongo/connection");
+const {connectToServer} = require("./config/mongo/connection");
+const apiRoute = require("./routes/api");
+const webRoute = require("./routes/web");
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-const handleRequest = (request,response,next)=>{
-    const dbConnect = getDb();
-
-    dbConnect
-      .collection("welcome")
-      .find({})
-      .toArray(function (err, result) {
-        if (err) {
-          response.status(400).send("Error fetching welcome collection!");
-       } else {
-          response.json(result);
-        }
-      });
-
-   // response.sendFile(__dirname+"/views/welcome.html");
-
-}
-const route_users = require("./routes/userRouter");
+app.use("/api",apiRoute);
+app.use("/",webRoute);
 
 
-app.get("/", handleRequest);
+app.listen(PORT,()=>{
+    
+    console.log("Server on port "+PORT);
 
-app.use("/usuarios",require("./routes/userRouter"));
+    connectToServer().then((status)=>{
+        console.log("Conection established");
+    }).catch((error)=>{
+        console.log("Connection refused");
+    })
 
-//app.get("/users")
-//app.post("/users")
-
-app.listen(PORT, ()=>{
-    console.log("Server on port" + PORT);
-
-    connectToServer((error)=>{
-        if(error)
-            console.log(error);
-        else
-            console.log("connection stablished");
-        });
 });
