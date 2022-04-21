@@ -4,6 +4,6 @@ module.exports = {
     },
     mongo: {
 
-        MONGO_URI: "mongodb://pablo_rex:pablo_rex@mongo.utn.jhoacar.me"
+        MONGO_URI: process.env.MONGO_URI
     }
 }
