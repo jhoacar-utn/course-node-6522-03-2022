@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
-<<<<<<<< HEAD:utn/german_niebuhr/lessons/lesson_1/index.js
 const STUDENT = "german_niebuhr"
-========
-const STUDENT = "ricardo_huamani"
->>>>>>>> 7f0baeabc173908f7ee7457d6419cb89602b4784:utn/ricardo_huamani/lessons/lesson_1/index.js
 const HOST = "utn-course.web.app";
 const ROUTE_PROJECT = process.env.ROUTE_PROJECT || "pwa_6522";
 const FINAL_ROUTE = `/${ROUTE_PROJECT}/${STUDENT}`;
 const app = express();
-
 const path_lessons = __dirname;//path.join(__dirname, 'lessons');
 
 router.use('/lessons/lesson_1', express.static(path_lessons));
