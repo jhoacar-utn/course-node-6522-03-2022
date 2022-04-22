@@ -24,3 +24,5 @@
 
 !/utn/tasks
 !/utn/tasks/**
+
+/**/node_modules
