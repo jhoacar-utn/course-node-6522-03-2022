@@ -1,9 +1,9 @@
 module.exports = {
-    mysql :{
+  mysql : {
 
-    },
-    mongo: {
-
-        MONGO_URI: "mongodb://claudio_mandujano:claudio_mandujano@mongo.utn.jhoacar.me"
-    }
+  },
+  mongo : {
+      MONGO_URI: process.env.MONGO_URI
+  },
+  CONNECTION_DATA : "mongo"
 }
