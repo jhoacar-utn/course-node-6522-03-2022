@@ -12,7 +12,7 @@ const postUser = async (request,response,next)=>{
     
     await user.save();
 
-    response.json({"user_added": data});
+    response.json({"user_added": user});
 }
 
 module.exports.getAllUsers = getAllUsers;
