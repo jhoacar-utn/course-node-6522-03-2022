@@ -22,7 +22,16 @@ const handleWelcomeWeb = (request,response,next)=>{
     return response.sendFile(path.resolve(__dirname+"/../views/welcome.html"));
 }
 
+const handleLoginWeb = (request,response,next)=>{
+    return response.sendFile(path.resolve(__dirname+"/../views/login.html"));
+}
+
+const handleRegisterWeb = (request,response,next)=>{
+    return response.sendFile(path.resolve(__dirname+"/../views/register.html"));
+}
+
 
 module.exports.handleWelcome = handleRequest;
 module.exports.handleWelcomeWeb = handleWelcomeWeb;
-
+module.exports.handleLoginWeb = handleLoginWeb;
+module.exports.handleRegisterWeb = handleRegisterWeb;
