@@ -3,7 +3,7 @@
 
 ### Repositorio con el codigo del curso de cada estudiante
 
-# [Link de Zoom](https://centrodeelearning.zoom.us/j/95950851889?pwd=dmNha21QRFRzTWMyUVJCek5INy8vUT09#success)
+# [Link de Zoom](https://centrodeelearning.zoom.us/j/95545420119?pwd=TE50VWgzcU1mNktmdDBmc1FOTlVYQT09)
 
 
 <br>
