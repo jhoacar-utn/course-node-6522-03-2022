@@ -4,7 +4,7 @@
 ### Repositorio con el codigo del curso de cada estudiante
 
 # [Link de Zoom](https://centrodeelearning.zoom.us/j/95545420119?pwd=TE50VWgzcU1mNktmdDBmc1FOTlVYQT09)
-
+## [Telegram](https://t.me/+1J1QSJCw7yg0OWIx)
 
 <br>
 
