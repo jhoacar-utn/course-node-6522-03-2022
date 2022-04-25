@@ -1,4 +1,4 @@
-const UserModel = require("../models/userModel");
+const UserModel = require("../models/mongo/userModel");
 
 const getAllUsers = (request,response,next)=>{
 
@@ -12,7 +12,7 @@ const postUser = async (request,response,next)=>{
     
     await user.save();
 
-    response.send("User added", user);
+    response.json({"user_added": data});
 }
 
 module.exports.getAllUsers = getAllUsers;
