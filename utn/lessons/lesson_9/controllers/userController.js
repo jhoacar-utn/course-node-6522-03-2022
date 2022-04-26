@@ -1,6 +1,6 @@
 const UserModel = require("../models/mongo/userModel");
 
-const getHashedPassword = require("../helpers/handleEncrypt");
+const {getHashedPassword} = require("../helpers/handleEncrypt");
 
 const getAllUsers = (request,response,next)=>{
 
