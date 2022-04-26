@@ -1,4 +1,5 @@
 const userModel = require("../models/mongo/userModel");
+const {isTheSameHash} = require("../helpers/handleEncrypt");
 
 const handleAuthLogin = async (req,res,next) =>{
 
@@ -13,9 +14,14 @@ const handleAuthLogin = async (req,res,next) =>{
             return res.json({error:"User not registered"});
         }
 
-        
+        const isAuthorized = await isTheSameHash(password,user.password);
             
+        if(!isAuthorized){
+            res.status(401);
+            return res.json({error:"User not authorized"});
+        }
 
+        return res.json({user:user});
     
     }catch(error){
         console.log(error);
