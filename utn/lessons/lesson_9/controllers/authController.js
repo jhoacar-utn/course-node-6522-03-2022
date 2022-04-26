@@ -7,7 +7,8 @@ const handleAuthLogin = async (req,res,next) =>{
 
         const {email, password} = req.body;
     
-        const user = await userModel.find({ email: email });
+        const user = await userModel.findOne({ email: email }).exec();
+        
 
         if(!user){
             res.status(400);
@@ -21,7 +22,7 @@ const handleAuthLogin = async (req,res,next) =>{
             return res.json({error:"User not authorized"});
         }
 
-        return res.json({user:user});
+        return res.json({user:user,message:"You are logged in"});
     
     }catch(error){
         console.log(error);
