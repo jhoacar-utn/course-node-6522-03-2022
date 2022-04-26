@@ -1,22 +1,32 @@
 const UserModel = require("../models/mongo/userModel");
-const getHashedPassword = require("../helpers/handleEncrypt");
+
+const {getHashedPassword} = require("../helpers/handleEncrypt");
+
 const getAllUsers = (request,response,next)=>{
 
 };
 
 const postUser = async (request,response,next)=>{
 
-    const data = request.body;
+    try{
 
-    const plainPassword = data.password;
+        const data = request.body;
 
-    data.password = await getHashedPassword(plainPassword);
+        const plainPassword = data.password;
 
-    const user = new UserModel(data);
-    
-    await user.save();
+        data.password = await getHashedPassword(plainPassword);
 
-    response.json({"user_added": user});
+        const user = new UserModel(data);
+        
+        await user.save();
+
+        response.json({"user_added": user});
+
+
+    }catch(error){
+        response.status(500);
+        response.json({"server_error":error});
+    }
 }
 
 module.exports.getAllUsers = getAllUsers;
