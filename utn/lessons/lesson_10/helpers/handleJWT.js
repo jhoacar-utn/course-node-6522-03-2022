@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+const {secretKey} = require("../config/config");
 
 const getJSONWebToken = async (userData)=>{
 
@@ -7,9 +8,8 @@ const getJSONWebToken = async (userData)=>{
         id: userData.id,
         email: userData.email
     };
-    const secretKey = process.env.SECRET_KEY || 'my_secret_key';
-
 
     return jwt.sign(payload, secretKey);
 
 }
+

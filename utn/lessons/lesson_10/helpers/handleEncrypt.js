@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 
+const {saltRounds} = require("../config/config");
 
 const isTheSameHash = (plainPassword, hashedPassword)=>{
     
@@ -7,12 +8,7 @@ const isTheSameHash = (plainPassword, hashedPassword)=>{
     
 }
 
-
-
 const getHashedPassword = (plainPassword) =>{
-
-    const saltRounds = parseInt(process.env.SALT_ROUNDS_BCRYPT || 10);
-
     
     const encryptPromise = new Promise((resolve,reject)=>{
         
