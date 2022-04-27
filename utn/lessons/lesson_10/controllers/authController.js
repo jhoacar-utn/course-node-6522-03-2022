@@ -29,7 +29,7 @@ const handleAuthLogin = async (req,res,next) =>{
 
         setCookie(req,token);
 
-        return res.json({user:user,message:"You are logged in"});
+        return res.redirect("/dashboard");
     
     }catch(error){
         console.log(error);
