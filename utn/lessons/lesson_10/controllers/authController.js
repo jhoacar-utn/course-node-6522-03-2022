@@ -1,6 +1,9 @@
 const userModel = require("../models/mongo/userModel");
 const {isTheSameHash} = require("../helpers/handleEncrypt");
 
+const {getJSONWebToken} = require("../helpers/handleJWT");
+const {setCookie} = require("../helpers/handleCookie");
+
 const handleAuthLogin = async (req,res,next) =>{
 
     try{
@@ -21,6 +24,10 @@ const handleAuthLogin = async (req,res,next) =>{
             res.status(401);
             return res.json({error:"User not authorized"});
         }
+
+        const token = getJSONWebToken(user);
+
+        setCookie(req,token);
 
         return res.json({user:user,message:"You are logged in"});
     
