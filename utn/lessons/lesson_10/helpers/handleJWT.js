@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const {secretKey} = require("../config/config");
 
-const getJSONWebToken = async (userData)=>{
+const getJSONWebToken = (userData)=>{
 
     const payload = {
         id: userData.id,
@@ -11,5 +11,16 @@ const getJSONWebToken = async (userData)=>{
 
     return jwt.sign(payload, secretKey);
 
+}
+
+const verifyJSONWebToken = (token) =>{
+
+    return jwt.verify(token, secretKey);
+
+}
+
+module.exports = {
+    getJSONWebToken,
+    verifyJSONWebToken
 }
 
