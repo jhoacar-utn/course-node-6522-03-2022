@@ -41,6 +41,18 @@ INSERT INTO claudio_mandujano.welcome (message) VALUES ('Welcome to your databas
 CREATE USER claudio_mandujano@'%' IDENTIFIED BY 'claudio_mandujano';
 GRANT ALL ON claudio_mandujano.* TO claudio_mandujano@'%';
         
+CREATE DATABASE IF NOT EXISTS german_niebuhr;
+CREATE TABLE IF NOT EXISTS german_niebuhr.welcome (message VARCHAR(100));
+INSERT INTO german_niebuhr.welcome (message) VALUES ('Welcome to your database german niebuhr'); 
+CREATE USER german_niebuhr@'%' IDENTIFIED BY 'german_niebuhr';
+GRANT ALL ON german_niebuhr.* TO german_niebuhr@'%';
+        
+CREATE DATABASE IF NOT EXISTS guadalupe_migoya;
+CREATE TABLE IF NOT EXISTS guadalupe_migoya.welcome (message VARCHAR(100));
+INSERT INTO guadalupe_migoya.welcome (message) VALUES ('Welcome to your database guadalupe migoya'); 
+CREATE USER guadalupe_migoya@'%' IDENTIFIED BY 'guadalupe_migoya';
+GRANT ALL ON guadalupe_migoya.* TO guadalupe_migoya@'%';
+        
 CREATE DATABASE IF NOT EXISTS horacio_yeuchuk;
 CREATE TABLE IF NOT EXISTS horacio_yeuchuk.welcome (message VARCHAR(100));
 INSERT INTO horacio_yeuchuk.welcome (message) VALUES ('Welcome to your database horacio yeuchuk'); 

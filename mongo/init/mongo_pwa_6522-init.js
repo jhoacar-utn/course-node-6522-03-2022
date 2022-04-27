@@ -15,6 +15,10 @@ const users = [
 
 "claudio_mandujano",
 
+"german_niebuhr",
+
+"guadalupe_migoya",
+
 "horacio_yeuchuk",
 
 "ignacio_martinez",
