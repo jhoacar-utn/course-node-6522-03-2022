@@ -4,6 +4,9 @@ const authMiddleware = (req, res, next) =>{
 
     const token = req.session.token;
 
+    if(!token)
+        return res.json({error:"Ud no mando el token"});
+
     const userData = verifyJSONWebToken(token);
 
     if(userData)

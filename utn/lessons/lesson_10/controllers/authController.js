@@ -1,6 +1,6 @@
 const userModel = require("../models/mongo/userModel");
-const {isTheSameHash} = require("../helpers/handleEncrypt");
 
+const {isTheSameHash} = require("../helpers/handleEncrypt");
 const {getJSONWebToken} = require("../helpers/handleJWT");
 const {setCookie} = require("../helpers/handleCookie");
 
