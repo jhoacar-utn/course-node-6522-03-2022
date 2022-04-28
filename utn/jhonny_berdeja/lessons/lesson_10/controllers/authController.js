@@ -32,6 +32,7 @@ const handleAuthLogin = async (req,res,next) =>{
         return res.redirect("/dashboard");
     
     }catch(error){
+        
         console.log(error);
         res.status(500);
         return res.json({"server_error":error});

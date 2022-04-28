@@ -1,4 +1,5 @@
 const express = require("express");
+const {authMiddleware} = require("../middleware/authMiddleware")
 
 const route = express.Router();
 
@@ -15,6 +16,6 @@ route.post("/login",handleAuthLogin);
 route.get("/register",handleRegisterWeb);
 
 
-route.get("/dashboard",handleDashboardWeb)
+route.get("/dashboard",authMiddleware,handleDashboardWeb)
 
 module.exports = route;
