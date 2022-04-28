@@ -1,20 +1,23 @@
-const { request } = require("express");
-const { verifyJSONWebToken } = require("../helpers/handleJWT");
-
+const {verifyJSONWebToken} = require("../helpers/handleJWT");
 
 const authMiddleware = (req, res, next) =>{
 
-    const token = request.session.token
+    const token = req.session.token;
+
+    if(!token)
+        return res.json({error:"Ud no mando el token"});
 
     const userData = verifyJSONWebToken(token);
 
-    if(userData)
+    if(userData){
+        
+        req.user = userData;
+
         return next();
+    }
     else
         return res.json({error:"Ud no esta autenticado"});
-
 }
-
 
 module.exports = {
     authMiddleware

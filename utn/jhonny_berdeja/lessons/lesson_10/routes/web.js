@@ -1,5 +1,6 @@
 const express = require("express");
-const {authMiddleware} = require("../middleware/authMiddleware")
+
+const {authMiddleware} = require("../middleware/authMiddleware");
 
 const route = express.Router();
 
@@ -14,7 +15,6 @@ route.get("/login",handleLoginWeb);
 route.post("/login",handleAuthLogin);
 
 route.get("/register",handleRegisterWeb);
-
 
 route.get("/dashboard",authMiddleware,handleDashboardWeb)
 

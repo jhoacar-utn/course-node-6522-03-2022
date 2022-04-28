@@ -6,7 +6,8 @@ const getJSONWebToken = (userData)=>{
 
     const payload = {
         id: userData.id,
-        email: userData.email
+        email: userData.email,
+        name: userData.name,
     };
 
     return jwt.sign(payload, secretKey);

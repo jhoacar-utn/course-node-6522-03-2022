@@ -13,7 +13,15 @@ const handleRegisterWeb = (request,response,next)=>{
 }
 
 const handleDashboardWeb = (request,response,next)=>{
-    return response.sendFile(path.resolve(__dirname+"/../views/dashboard.html"));
+    
+    const userData = request.user;
+    const nameUser = userData.name;
+    const emailUser = userData.email;
+    
+    return response.render('dashboard',{
+        name: nameUser,
+        email: emailUser
+    });
 } 
 
 

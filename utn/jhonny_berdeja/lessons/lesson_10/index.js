@@ -12,7 +12,8 @@ app.use(cookieSession({
     name: 'session',
     keys: ['key1', 'key2']
 }))
-
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
 
 const { connectToServer } = require("./config/mongo/connection");
