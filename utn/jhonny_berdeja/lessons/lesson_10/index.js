@@ -1,12 +1,19 @@
 require('dotenv').config()
 
 const express = require("express");
+const cookieSession = require('cookie-session')
 const app = express();
 
 // configure the app to use bodyParser()
 app.use(express.urlencoded({ extended: true })); //This enable the request.query for GET requests
 app.use(express.json()); //This enable the request.body for POST requests
 //app.use(express.json());    // <==== parse request body as JSON;
+app.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2']
+}))
+
+
 
 const { connectToServer } = require("./config/mongo/connection");
 const apiRoute = require("./routes/api");
