@@ -9,8 +9,12 @@ const authMiddleware = (req, res, next) =>{
 
     const userData = verifyJSONWebToken(token);
 
-    if(userData)
+    if(userData){
+        
+        req.user = userData;
+
         return next();
+    }
     else
         return res.json({error:"Ud no esta autenticado"});
 }
