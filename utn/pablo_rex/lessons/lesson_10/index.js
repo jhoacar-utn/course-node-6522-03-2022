@@ -1,12 +1,23 @@
 require('dotenv').config();
 
 const express = require("express");
-
+const  cookieSession = require('cookie-session')
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.use('/assets', express.static(__dirname + '/public'));
-app.use(express.static("public"));
+// Motor de plantilla
+const hbs = require('hbs');
+hbs.registerPartials(__dirname + '/views/partials', function (err) {});
+app.set('view engine', 'hbs');
+app.set("views", __dirname + "/views");
+
+app.use(express.static(__dirname + "/public"));
+
+app.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2']
+  }))
+
 
 const {connectToServer} = require("./config/mongo/connection");
 const apiRoute = require("./routes/api");
