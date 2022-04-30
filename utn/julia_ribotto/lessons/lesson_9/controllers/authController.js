@@ -7,10 +7,10 @@ const handleAuthLogin = async (req,res,next) => {
     try{
         const {email,password} = req.body;
 
-        const user = await userModel.find({email: email});
+        const user = await userModel.findOne({email: email}).exec();
  
         console.log(user);
-        
+
         if(!user) {
             //bad request
             res.status(400);
@@ -29,7 +29,7 @@ const handleAuthLogin = async (req,res,next) => {
     }catch(error){
         console.log(error);
         res.status(500);
-        return res.json({"server_error":error});
+        return res.json({"server_error":error,message:"authControllerError"});
     }
     
 

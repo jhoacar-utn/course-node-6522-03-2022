@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 
 const isTheSameHash = (plainPassword,hashedPassword) => {
     
-    return bcrypt.compare(plainPassword,hashedPassword)
+    return bcrypt.compare(plainPassword,hashedPassword);
 };
 
 const getHashedPassword = (plainPassword) => {
@@ -14,13 +14,14 @@ const getHashedPassword = (plainPassword) => {
         bcrypt.hash(plainPassword, saltRounds, function(err, hash) {
 
             if(err || !hash) {
-                rejected("Failed to hash");
+                rejected(err);
             } else {
-                resolved("hash: " + hash);
+                resolved(hash);
             }
 
         });
     });
+    
     return encryptPromise
 };
 

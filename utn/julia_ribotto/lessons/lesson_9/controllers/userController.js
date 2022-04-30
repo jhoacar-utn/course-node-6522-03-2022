@@ -25,7 +25,7 @@ const postUser = async (request,response,next)=>{
     } catch(error) {
 
         response.status(500);
-        response.json({"server_error":error});
+        response.json({"server_error":error,message:"userControllerError"});
 
     }
 
