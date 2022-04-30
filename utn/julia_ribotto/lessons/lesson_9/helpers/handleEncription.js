@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 
 const isTheSameHash = (plainPassword,hashedPassword) => {
     
-    return bcrypt.compare(plainPassword,hashedPassword);
+    return bcrypt.compare(plainPassword, hashedPassword);
 };
 
 const getHashedPassword = (plainPassword) => {
@@ -28,5 +28,5 @@ const getHashedPassword = (plainPassword) => {
 
 
 
-module.exports = getHashedPassword;
-module.exports = isTheSameHash;
+module.exports.getHashedPassword = getHashedPassword;
+module.exports.isTheSameHash = isTheSameHash;
