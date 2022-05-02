@@ -12,10 +12,14 @@
         <img src="<%= avatar %>" alt="User Profile Image">
         <h2>Name: <%= name %></h2>
         <h2>Email: <%= email %></h2>
-        <form method="POST" action="/api/user/avatar" enctype="multipart/form-data">
-            <input type="file" name="avatarFile">
-            <input type="submit" value="Upload Image">
+
+
+        <form method="POST" id="avatarForm" action="/api/user/avatar" enctype="multipart/form-data">
+            <label for="avatar" style="cursor:pointer;padding:10px;border-radius: 10px;outline: solid 1px black;">Upload Your Image</label>
+            <input id="avatar" style="display: none;"  type="file" name="avatarFile" onchange="document.getElementById('avatarForm').submit()">
         </form>
+
+        
     </div>
 </body>
 </html>
