@@ -10,8 +10,7 @@ const handleAuthLogin = async (req,res,next) =>{
 
         const {email, password} = req.body;
     
-        const user = await userModel.findOne({ email: email }).exec();
-        
+        const user = await userModel.findOne({ email: email }).lean().exec();
 
         if(!user){
             res.status(400);

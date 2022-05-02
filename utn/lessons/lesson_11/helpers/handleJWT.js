@@ -4,13 +4,7 @@ const {secretKey} = require("../config/config");
 
 const getJSONWebToken = (userData)=>{
 
-    const payload = {
-        id: userData.id,
-        email: userData.email,
-        name: userData.name,
-    };
-
-    return jwt.sign(payload, secretKey);
+    return jwt.sign(userData, secretKey);
 
 }
 
