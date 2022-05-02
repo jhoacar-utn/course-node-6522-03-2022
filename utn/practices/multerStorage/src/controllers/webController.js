@@ -5,9 +5,6 @@ const getWelcomePage = (req, res, next) => {
 
     const isAuthorized = typeof req.auth.error === 'undefined';
 
-    if (isAuthorized)
-        return res.redirect('dashboard');
-
     const context = {
         title: 'My App',
         hasButtonNav: true,
