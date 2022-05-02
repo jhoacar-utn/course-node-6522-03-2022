@@ -19,6 +19,6 @@ const customUpdateOne = async (objectUpdate, objectQuery) => {
 const User = mongoose.model('User', userSchema);
 
 User.first = customFindOne;
-User.updateFist = customUpdateOne;
+User.updateFirst = customUpdateOne;
 
 module.exports = User;

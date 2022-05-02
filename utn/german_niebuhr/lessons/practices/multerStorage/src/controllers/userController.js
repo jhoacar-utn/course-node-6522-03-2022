@@ -14,19 +14,19 @@ const postUser = async (req, res, next) => {
 
         const userData = req.body;
 
-        console.log(userData);
-
         userData.password = await getHashedPassword(userData.password);
         userData.avatar = '/users/default.png';
 
-        const user = await userModel.create(userData);
+        await userModel.create(userData);
+        const message = "User Registered successfully";
 
-        return res.json({ user: user });
+        return res.redirect(encodeURI(`/register/?message=${message}`));
 
     } catch (error) {
-        console.log(error)
-        res.status(500);
-        res.json({ error: error });
+
+        console.log(error);
+        error = JSON.stringify(error);
+        return res.redirect(encodeURI(`/register/?error=${error}`));
     }
 }
 
@@ -42,13 +42,13 @@ const saveAvatar = async (req, res, next) => {
             { avatar: pathAvatar },
             { email }
         );
-
-        return res.redirect("/dashboard");
+        const message = "User avatar updated succesfully";
+        return res.redirect(encodeURI(`/dashboard/?message=${message}`));
 
     } catch (error) {
         console.log(error)
-        res.status(500);
-        res.json({ error: error });
+        error = JSON.stringify(error);
+        res.redirect(encodeURI(`/dashboard/?error=${error}`));
     }
 }
 

@@ -5,9 +5,6 @@ const getWelcomePage = (req, res, next) => {
 
     const isAuthorized = typeof req.auth.error === 'undefined';
 
-    if(isAuthorized)
-        return res.redirect('dashboard');
-
     const context = {
         title: 'My App',
         hasButtonNav: true,
@@ -25,11 +22,14 @@ const getRegisterPage = (req, res, next) => {
     if (isAuthorized)
         return res.redirect('dashboard');
 
+    const { error, message } = req.query;
+
     const context = {
         title: 'Register',
         hasButtonNav: false,
         isAuthorized,
-        error: req.auth.error
+        error:error,
+        message:message
     }
     return res.render('register', context);
 };
@@ -41,11 +41,13 @@ const getLoginPage = (req, res, next) => {
     if (isAuthorized)
         return res.redirect('dashboard');
 
+    const {error} = req.query;
+
     const context = {
         title: 'Login',
         hasButtonNav: false,
         isAuthorized,
-        error: req.auth.error
+        error: error,
     }
     return res.render('login', context);
 };
@@ -58,6 +60,7 @@ const getDashboardPage = async (req, res, next) => {
     if (!isAuthorized)
         return res.redirect('login');
 
+    const { error, message } = req.query;
     const email = req.user.email;
     const user = await userModel.first({ email });
 
@@ -65,8 +68,9 @@ const getDashboardPage = async (req, res, next) => {
         title: 'Dashboard',
         user,
         hasButtonNav: true,
-        isAuthorized,
-        error: req.auth.error
+        isAuthorized: isAuthorized,
+        error: error,
+        message: message,
     }
 
     return res.render('dashboard', context);
