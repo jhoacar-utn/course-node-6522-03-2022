@@ -17,10 +17,12 @@ const handleDashboardWeb = (request,response,next)=>{
     const userData = request.user;
     const nameUser = userData.name;
     const emailUser = userData.email;
+    const avatarUser = userData.avatar;
     
     return response.render('dashboard',{
         name: nameUser,
-        email: emailUser
+        email: emailUser,
+        avatar: avatarUser,
     });
 } 
 
