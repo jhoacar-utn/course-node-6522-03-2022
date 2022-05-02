@@ -9,7 +9,7 @@ route.get("/",getAllUsers);
 
 route.post("/",postUser);
 
-route.post("/avatar",uploadMiddleware,postAvatar);
+route.post("/avatar",uploadMiddleware.single('avatarFile'),postAvatar);
 
 module.exports = route;
 
