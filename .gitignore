@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *
 !.gitignore
 !README.md
@@ -23,3 +24,7 @@
 
 !/utn/tasks
 !/utn/tasks/**
+=======
+/**/node_modules
+/**/.env
+>>>>>>> 5a4873ae68d2ca137b73e0df01292829c96fa6e9
