@@ -24,6 +24,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use("/api", apiRoute);
 app.use("/", webRoute);
+app.use("/users",express.static(__dirname+"/storage"));
 
 
 app.listen(PORT, () => {

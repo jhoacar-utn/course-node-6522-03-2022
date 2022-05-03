@@ -1,8 +1,14 @@
+const multer = require("multer")
 
 
-const uploadMiddleware= (req,res,next)=>{
+const myStorage = require("../helpers/handleStorage");
 
-    next();
-};
+const uploadMiddleware = multer({ 
+    storage: myStorage,
+    limits:{
+        fileSize: 5 * 1024 * 1024 
+    }
+ });
+
 
 module.exports = uploadMiddleware;
