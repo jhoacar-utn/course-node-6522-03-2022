@@ -1,4 +1,7 @@
 module.exports = {
+    connection: process.env.DB_CONNECTION,
+    MYSQL: 'mysql',
+    MONGO: 'mongodb',
     mysql: {
         user: process.env.DB_USER,
         database: process.env.DB_DATABASE,
