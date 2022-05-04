@@ -34,7 +34,7 @@ const customUpdate = async (dataToFind, dataToUpdate) => {
 
 const customFind = async (dataToFind)=>{
     
-    const user = await User.findOne({ where: dataToFind });
+    const user = await User.findOne({ where: dataToFind,  raw: true });
     return user;
 }
 

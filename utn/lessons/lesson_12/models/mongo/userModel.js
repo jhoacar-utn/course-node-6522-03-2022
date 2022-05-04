@@ -25,7 +25,7 @@ const customUpdate = async (dataToFind, dataToUpdate) => {
 }
 
 const customFind = async (dataToFind)=>{
-    const user = await userModel.findOne(dataToFind).lean().exec();
+    const user = await User.findOne(dataToFind).lean().exec();
     return user;
 }
 

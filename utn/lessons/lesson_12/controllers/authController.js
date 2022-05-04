@@ -17,8 +17,11 @@ const handleAuthLogin = async (req,res,next) =>{
             return res.json({error:"User not registered"});
         }
 
+        
         const isAuthorized = await isTheSameHash(password,user.password);
             
+
+
         if(!isAuthorized){
             res.status(401);
             return res.json({error:"User not authorized"});
