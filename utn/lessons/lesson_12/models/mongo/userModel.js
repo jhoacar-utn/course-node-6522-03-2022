@@ -11,4 +11,28 @@ console.log("Using Moongose");
 
 const User = mongoose.model('User', userSchema);
 
+const customCreate = async (dataUser) => {
+
+    const user = new User(dataUser);
+    await user.save();
+    return user;
+}
+
+const customUpdate = async (dataToFind, dataToUpdate) => {
+
+    await User.updateOne(dataToFind,dataToUpdate);
+    
+}
+
+const customFind = async (dataToFind)=>{
+    const user = await userModel.findOne(dataToFind).lean().exec();
+    return user;
+}
+
+
+User.create = customCreate;
+
+User.updateFirst = customUpdate;
+User.findFirst = customFind;
+
 module.exports = User;

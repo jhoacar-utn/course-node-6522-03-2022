@@ -19,7 +19,7 @@ const handleDashboardWeb = async (request,response,next)=>{
     
     const emailUser = userData.email;
 
-    const user = await userModel.findOne({email:emailUser}).lean().exec();
+    const user = await userModel.findFirst({email:emailUser});
 
     const nameUser = user.name;
     const avatarUser = user.avatar;

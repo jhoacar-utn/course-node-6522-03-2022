@@ -25,4 +25,22 @@ const User = sequelize.define('User', {
 console.log("Using Sequelize")
 
 
+const customUpdate = async (dataToFind, dataToUpdate) => {
+
+    await User.update(dataToUpdate, { where: dataToFind });
+
+}
+
+
+const customFind = async (dataToFind)=>{
+    
+    const user = await User.findOne({ where: dataToFind });
+    return user;
+}
+
+
+User.updateFirst = customUpdate;
+User.findFirst = customFind;
+
+
 module.exports = User;
