@@ -1,4 +1,4 @@
-const UserModel = require("../models/mongo/userModel");
+const {userModel} = require("../models");
 
 const { getHashedPassword } = require("../helpers/handleEncrypt");
 
@@ -17,7 +17,7 @@ const postUser = async (request, response, next) => {
         data.password = await getHashedPassword(plainPassword);
         data.avatar = "/users/default.png";
 
-        const user = new UserModel(data);
+        const user = new userModel(data);
 
         await user.save();
 
@@ -37,7 +37,7 @@ const postAvatar = async (request, response, next) => {
         const avatarPath = request.avatarFile;
         const user = request.user;
 
-        await UserModel.updateOne({ email: user.email }, { avatar: avatarPath });
+        await userModel.updateOne({ email: user.email }, { avatar: avatarPath });
 
         return response.redirect("/dashboard");
     }

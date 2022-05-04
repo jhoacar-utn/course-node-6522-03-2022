@@ -7,8 +7,8 @@ const userSchema = new mongoose.Schema({
     avatar: String
 });
 
-const User = mongoose.model('User', userSchema);
+console.log("Using Moongose");
 
-console.log("using mongo model");
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

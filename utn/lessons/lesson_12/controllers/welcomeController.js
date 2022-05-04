@@ -1,5 +1,5 @@
 const path = require("path");
-const userModel = require("../models/mongo/userModel");
+const {userModel} = require("../models");
 
 const handleWelcomeWeb = (request,response,next)=>{
     return response.sendFile(path.resolve(__dirname+"/../views/welcome.html"));

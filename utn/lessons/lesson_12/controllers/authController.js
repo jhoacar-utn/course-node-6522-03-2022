@@ -1,4 +1,4 @@
-const userModel = require("../models/mongo/userModel");
+const {userModel} = require("../models");
 
 const {isTheSameHash} = require("../helpers/handleEncrypt");
 const {getJSONWebToken} = require("../helpers/handleJWT");
