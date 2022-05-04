@@ -1,6 +1,8 @@
 const { MongoClient } = require("mongodb");
-const connectionString = require("../config");
 
+const {mongo} = require("../config");
+
+const connectionString = mongo.MONGO_URI;
 
 const client = new MongoClient(connectionString, {
   useNewUrlParser: true,
@@ -10,19 +12,22 @@ const client = new MongoClient(connectionString, {
 let dbConnection;
 
 module.exports = {
-  connectToServer: function (callback) {
 
+  connectToServer: function (callback) {
+    
     client.connect(function (err, db) {
       if (err || !db) {
         return callback(err);
       }
 
-      dbConnection = db.db("welcome");
+      dbConnection = db.db("Omar_Pallero");
+      
       console.log("Successfully connected to MongoDB.");
 
       return callback();
     });
-  },
+  
+    },
 
   getDb: function () {
     return dbConnection;

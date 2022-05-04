@@ -1,5 +1,6 @@
 const animal = require("../model/Animal");
 
+const path = require("path");
 
 //funciones async son promesas tambien
 
@@ -12,5 +13,19 @@ module.exports.get_animals = async (req,res)=>{
 
 module.exports.create_animal = (request,response)=>{
 
-    return response.sendFile("./views/create_animal.html");
+    // lesson_6/controller/../views/create_animal.html -> ESTO NO LE VA A GUSTAR a sendFile
+    // lesson_6/views/create_animal.html -> ESTO ESTA BIEN
+
+    return response.sendFile(path.resolve(__dirname+"/../views/create_animal.html"));
+}
+
+module.exports.store_animal = async (request,response)=>{
+
+    const data = request.body;
+    //console.log(request.body);
+
+    const message = await animal.save(data);
+
+    return response.json(message);
+
 }
