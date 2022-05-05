@@ -1,28 +1,31 @@
-const fetch = require("node-fetch");
-const { URL_API } = require("../../config");
+const fetch = require('node-fetch');
 
-const animals = [];
+const { URL_API } = require('../../config');
+
+let animals = ["estoy vacio"];
 
 const resolvePromise = jsonData =>{
 
     animals = jsonData;
-};
 
-const rejetPromise = parameter =>{
-    console.log("Reject", parameter)
+}
 
-};
+const rejectPromise = parameter => {
+    console.log("Reject",parameter);
+}
 
-const getAll = ()=>{
+
+const getAll = async ()=>{
+
+    const response = await fetch(URL_API+"/animals");
+    animals = await response.json();
     
-    fetch(URL_API+"/animals")
-    .then(response=>response.json())
-    .catch(rejectPromise);
     return animals;
 };
 
-const animal ={
-    getAll: this.getAll
+
+const animal = {
+    getAll : getAll
 }
 
 module.exports = animal;

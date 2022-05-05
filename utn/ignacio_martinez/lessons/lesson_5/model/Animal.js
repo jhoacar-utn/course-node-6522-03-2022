@@ -1,12 +1,10 @@
-const {CONNECTION_DATA} = require("../config");
+const {CONNECION_DATA} = require("../config");
 
-const option = "api";
-
-if (option =="api")
+if(CONNECION_DATA=="api")
     module.exports = require("./api/Animal");
-else if(option=="mysql")
+else if(CONNECION_DATA=="mysql")
     module.exports = require("./mysql/Animal");
-else if(option=="mongo")
+else if(CONNECION_DATA=="mongo")
     module.exports = require("./mongo/Animal");
 else
-    module.exports = require api
+    module.exports = require("./api/Animal");

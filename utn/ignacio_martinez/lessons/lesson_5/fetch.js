@@ -1,15 +1,11 @@
-const fetch = require("node-fetch");
-
-
+const fetch = require('node-fetch');
 
 const resolvePromise = parameter =>{
-    console.log("Resolved", parameter)
-
+    console.log("Resolved",parameter);
 }
 
-const rejetPromise = parameter =>{
-    console.log("Reject", parameter)
+const rejectPromise = parameter => {
+    console.log("Reject",parameter);
 }
 
-fetch("https://mysql.utn.jhoacar.me").then(resolvePromise).catch(rejectPromise);
-
+fetch("https://youtube.com").then(resolvePromise).catch(rejectPromise);

@@ -1,17 +1,18 @@
 {
-  "name": "lesson_3",
+  "name": "lesson_5",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
     "fetchData": "node fetch.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3",
+    "express": "^4.18.1",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.7",
     "sequelize": "^6.18.0"
