@@ -21,8 +21,6 @@ const handleRequest = (request,response,next)=>{
             else 
                 response.json(result);
         })
-    //Constate de NODE => __dirname
-    //response.sendFile(__dirname+"/views/welcome.html");
 }
 
 app.get("/",handleRequest);
