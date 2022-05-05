@@ -34,6 +34,7 @@ const customUpdate = async (dataToFind, dataToUpdate) => {
 
 const customFind = async (dataToFind)=>{
     
+    //La opcion raw:true limpia el modelo de metodos y devuelve solo data, esto es util para trabajar con JWT
     const user = await User.findOne({ where: dataToFind,  raw: true });
     return user;
 }
