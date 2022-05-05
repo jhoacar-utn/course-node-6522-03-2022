@@ -1,5 +1,5 @@
 const path = require("path");
-const userModel = require("../models/mongo/userModel");
+const {userModel} = require("../models");
 
 const handleWelcomeWeb = (request,response,next)=>{
     return response.sendFile(path.resolve(__dirname+"/../views/welcome.html"));
@@ -19,7 +19,7 @@ const handleDashboardWeb = async (request,response,next)=>{
     
     const emailUser = userData.email;
 
-    const user = await userModel.findOne({email:emailUser}).lean().exec();
+    const user = await userModel.findFirst({email:emailUser});
 
     const nameUser = user.name;
     const avatarUser = user.avatar;
