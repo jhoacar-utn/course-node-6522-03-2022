@@ -17,50 +17,56 @@ function mayorYmenor(){
 
     
     //logic of solution
-    
-    //identify coin box
+
+     //identify coin box
     const indexMax = coins.findIndex(function (index){
         return index == mayor
     })
 
-    const indexMin = coins.findIndex(function (index){
+    const indexmin_tmp = coins.findIndex(function (index){
         return index == menor
-    })
+    })    
+
+    const indexMin = indexidem(indexMax,indexmin_tmp,indexmin_tmp)
+
+    function indexidem (a,b,valor){
+        if (a==b){
+            valor=a+2
+            return valor
+        }else {
+            valor == b
+            return valor
+        }
+        };
 
     const valInt = valintermedio(indexMax,indexMin)
 
-    console.log(valInt);
-
+    
     function valintermedio (may,men){
     for (i =0; i<coins.length; i++){
         if (i != may && i !=men){
             valor = coins[i]
+            indexValInt=i
             return valor
         }
     }
     }
  
-    const indexValInt = coins.findIndex(function (index){
-        return index == valInt
-    })
-    console.log(mayor,menor,indexValInt);
 
     const valInt2 = valintermedio2(indexMax,indexMin,indexValInt)
-    console.log(valInt2);
+  
 
     function valintermedio2 (may,men,int){
         for (i =0; i<coins.length; i++){
             if (i != may && i !=men && i != int){
                 valor = coins[i]
+                indexValInt2=i
                 return valor
             }
         }
         }
-    const indexValInt2 = coins.findIndex(function (index){
-        return index == valInt2
-    })
-    console.log(indexValInt2);
-    
+
+   
      //identify multiplier
 
 
@@ -68,55 +74,52 @@ function mayorYmenor(){
         return index == MulMayor
     })
 
-    const indexMultMin = mult.findIndex(function (index){
+
+    const indexmultmin_tmp = mult.findIndex(function (index){
         return index == MulMenor
-    })
+    })    
+
+
+    const indexMultMin = indexidem(indexMultMax,indexmultmin_tmp,indexmultmin_tmp)
+
     
     const MulInt = mulintermedio(indexMultMax,indexMultMin)
-    console.log(MulInt);
+    
 
     function mulintermedio (may,men){
         for (i =0; i<mult.length; i++){
             if (i != may && i !=men){
                 valor = mult[i]
+                indexMultInt=i
                 return valor
             }
         }
         }
 
-    const indexMultInt = mult.findIndex(function (index){
-        return index == MulInt
-    })
 
     const MulInt2 = mulintermedio2(indexMultMax,indexMultMin,indexMultInt)
-    console.log(MulInt2);
+
 
     function mulintermedio2 (may,men,int){
         for (i =0; i<mult.length; i++){
             if (i != may && i !=men && i != int){
                 valor = mult[i]
+                indexMultInt2=i
                 return valor
             }
         }
         }
-
-    const indexMultInt2 = mult.findIndex(function (index){
-        return index == MulInt2
-    })
 
 
     const insertados1 = out_array.splice(indexMax,1,MulMayor)
     const insertados2 = out_array.splice(indexMin,1,MulMenor)
     const insertados3 = out_array.splice(indexValInt,1,MulInt)
     const insertados4 = out_array.splice(indexValInt2,1,MulInt2)
-
-    console.log(MulMayor,MulMenor,MulInt,MulInt2);
-    console.log(indexMax,indexMin,indexValInt,indexValInt2);
-    console.log(indexMultMax,indexMultMin,indexMultInt,indexMultInt2);
-    console.log(out_array);
-
+    
     const resultado = MulMayor*mayor + MulMenor*menor + MulInt*valInt + MulInt2*valInt2
     
+    
+
     document.getElementById('response_1').value = out_array[0]
     document.getElementById('response_2').value = out_array[1]
     document.getElementById('response_3').value = out_array[2]

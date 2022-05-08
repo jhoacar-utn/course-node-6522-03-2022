@@ -5,7 +5,6 @@ const HOST = "utn-course.web.app";
 const ROUTE_PROJECT = process.env.ROUTE_PROJECT || "pwa_6522";
 const FINAL_ROUTE = `/${ROUTE_PROJECT}/${STUDENT}`;
 const app = express();
-
 const path_lessons = __dirname;//path.join(__dirname, 'lessons');
 
 router.use('/lessons/lesson_1', express.static(path_lessons));
