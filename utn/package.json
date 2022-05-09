@@ -13,9 +13,25 @@
   },
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-session": "^2.0.0",
     "dotenv": "^16.0.0",
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "express-hbs": "^2.4.0",
     "firebase-admin": "^10.0.2",
-    "firebase-functions": "^3.20.0"
+    "firebase-functions": "^3.21.0",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.0",
+    "multer": "^1.4.4",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.19.0",
+    "@google-cloud/storage": "^5.19.4",
+    "aws-sdk": "^2.1125.0",
+    "env-cmd": "^10.1.0",
+    "multer-s3": "^2.10.0"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0"

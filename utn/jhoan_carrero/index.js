@@ -1,2 +1,2 @@
-const app = require('./lessons/lesson_1/index');
+const app = require('./practices/multerStorage/dist/server');
 module.exports = app;
