@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session')
 const app = express();
 const { nameCookie, keyCookie } = require("./config/cookies");
 
-// configure the app to use bodyParser()
+// configure the app to use bodyParser().
 app.use(express.urlencoded({ extended: true })); //This enable the request.query for GET requests
 app.use(express.json()); //This enable the request.body for POST requests
 //app.use(express.json());    // <==== parse request body as JSON;
