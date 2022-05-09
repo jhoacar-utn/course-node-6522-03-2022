@@ -10,4 +10,4 @@ const User = mongoose.model('User', userSchema);
 
 console.log("using mongo model");
 
-module.exports = User;
+module.exports = User;  

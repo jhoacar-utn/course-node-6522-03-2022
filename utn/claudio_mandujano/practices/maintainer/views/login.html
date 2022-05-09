@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Login</title>
 </head>
 <body>
-    <div  style="width: 200px; border: 2px solid black; margin: 1rem; padding: 2rem;">
-    <form method="POST" action="/api/user" >
-        <input name="text" name="name" placeholder="name" required>
+
+    <form method="POST" action="/login">
         <input type="email" name="email" placeholder="email" required>
         <input type="password" name="password" placeholder="password" required>
-        <input type="submit" value="Postear Usuario">
+        <input type="submit" value="Login">
     </form>
-    </div>
 </body>
 </html>

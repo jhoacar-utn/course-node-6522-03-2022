@@ -27,6 +27,8 @@ app.use("/", webRoute);
 app.use("/users",express.static(__dirname+"/storage"));
 
 
+//module.exports = app;
+
 app.listen(PORT, () => {
 
     console.log("Server on port " + PORT);

@@ -1,4 +1,4 @@
-const userModel = require("../models/mongo/userModel");
+const {userModel} = require("../models");
 
 const {isTheSameHash} = require("../helpers/handleEncrypt");
 const {getJSONWebToken} = require("../helpers/handleJWT");
@@ -10,16 +10,18 @@ const handleAuthLogin = async (req,res,next) =>{
 
         const {email, password} = req.body;
     
-        const user = await userModel.findOne({ email: email }).exec();
-        
+        const user = await userModel.findFirst({ email: email });
 
         if(!user){
             res.status(400);
             return res.json({error:"User not registered"});
         }
 
+        
         const isAuthorized = await isTheSameHash(password,user.password);
             
+
+
         if(!isAuthorized){
             res.status(401);
             return res.json({error:"User not authorized"});
