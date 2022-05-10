@@ -1,5 +1,5 @@
 {
-  "name": "jhoan_carrero",
+  "name": "horacio_yeuchuk",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.19.0"
   }
 }

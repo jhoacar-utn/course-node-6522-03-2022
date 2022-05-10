@@ -1,7 +1,7 @@
 git status -> estado del repo
 
 git add . -> agrega todo el proyecto, o el directorio
-
+ 
 git restore . -> desahace todos los cambios que se hicieron
 
 git commit -m "mensaje de lo que agregue" -> commitea los cambios

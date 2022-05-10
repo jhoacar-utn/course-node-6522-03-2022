@@ -1,2 +1,2 @@
-const app = require('./lessons/lesson_1/index');
+const app = require('./lessons/lesson_12/sever');
 module.exports = app;
