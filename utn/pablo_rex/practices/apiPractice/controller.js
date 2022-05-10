@@ -1,4 +1,3 @@
-const { json } = require('express');
 const fetch = require('node-fetch')
 
 const getAllProducts=async (req,res)=>{
@@ -19,12 +18,12 @@ const postProducts= async (req,res)=>{
         headers:{
             'Accept':'application/json',
             'Content-Type': 'application/json'
-        }
+        },
 
 })   
     .then(res=>res.json())
-    .then(res=>json.stringify(res))
-    .cath(err=>console.error(error.json()))
+    .then(res=>JSON.stringify(res))
+    .catch(error=>console.log(error.json()))
     res.send(`Dato cargado en la API ${dataPush}`)
 };
 
