@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Animal
+    </title>
+</head>
+<body>
+    <input id="name" type="text">
+    <input id="species" type="text">
+    <input id="age" type="text">
+    <button onclick="sendAnimal()">Enviar animal</button>
+    <script>
+        function sendAnimal(){
+            const name= document.getElementById("name").value;
+            const specie=document.getElementById("species").value;
+            const age=document.getElementById("age").value
+            
+            const data={
+                name:name,
+                species:species,
+                age:age
+            }
+        }
+        //fetch son peticiones ascincronas
+        fetch("",{
+            method:"post",//siempre que se usa el post necesito el boddy 
+            body:JSON.stringify(data)/*stringify me convierte todo en string*/
+}).then((res) => {return Res.JSON/*se pide que nos devuelva la respuesta en json*/()}).then(
+                (data)=>{console.log(data)}).catch(
+                    (error)=>(console.log(error)))//se ejecuta si no se cumple la promesa
+    </script>
+</body>
+</html>

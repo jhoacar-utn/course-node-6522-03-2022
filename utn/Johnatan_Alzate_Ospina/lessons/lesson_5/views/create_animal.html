@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="name" type="text">
+    <input id="species" type="text">
+    <input id="age" type="text">
+    <button onclick="sendAnimal()">Enviar animal</button>
+    <script>
+        function senAnimal(){
+            const name= document.getElementById("name").value;
+            const specie=document.getElementById("specie").value;
+            const age=document.getElementById("age")
+            const data={
+                name:name,
+                species:species,
+                age:age
+            }
+        }
+        //fetch son peticiones ascincronas
+        fetch("/",{
+            method:"post",
+            body:JSON.stringify(data)
+        }).then(
+            (res) => {return Response.JSON()}
+            ).then(
+                (data)=>{console.log(data)}).catch(
+                    (error)=>(console.log(error)))//se va a ejecutar cuando se cumpla la promesa
+    </script>
+</body>
+</html>
