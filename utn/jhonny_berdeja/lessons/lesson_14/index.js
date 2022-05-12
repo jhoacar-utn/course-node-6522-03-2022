@@ -14,9 +14,22 @@ var DaysOfWeek;
     DaysOfWeek[DaysOfWeek["domingo"] = 7] = "domingo";
 })(DaysOfWeek || (DaysOfWeek = {}));
 var workedDays = [DaysOfWeek.Monday, DaysOfWeek.martes];
-function addWorkedDays(dayWorked) {
+//El tercer parametro no es obligatorio y el segundo tiene un valor por defeto
+function addWorkedDays(dayWorked, customLog, info) {
+    if (customLog === void 0) { customLog = "Se ha agregado"; }
     workedDays.push(dayWorked);
-    return "Dia agregado";
+    var messageInfo = info != undefined ? "- " + info : "";
+    return "".concat(customLog, "  ").concat(dayWorked, "  ").concat(messageInfo);
 }
-addWorkedDays(DaysOfWeek.miercoles);
+console.log(addWorkedDays(DaysOfWeek.miercoles));
+console.log(addWorkedDays(DaysOfWeek.jueves, "Dia agregado", "viernes"));
 console.log(workedDays);
+var addDays = function () {
+    var days = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        days[_i] = arguments[_i];
+    }
+    console.log(days);
+};
+addDays(DaysOfWeek.miercoles);
+addDays(DaysOfWeek.miercoles, DaysOfWeek.jueves, DaysOfWeek.viernes);

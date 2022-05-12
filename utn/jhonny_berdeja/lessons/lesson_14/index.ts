@@ -18,11 +18,24 @@ enum DaysOfWeek{
 
 const workedDays: Number[] = [DaysOfWeek.Monday, DaysOfWeek.martes];
 
-function addWorkedDays(dayWorked: Number): String{
+//El tercer parametro no es obligatorio y el segundo tiene un valor por defeto
+function addWorkedDays(dayWorked: Number, customLog: String = "Se ha agregado", info?: String): String{
     workedDays.push(dayWorked);
-    return "Dia agregado";
+
+    const messageInfo = info != undefined? "- " + info: "";
+
+    return `${customLog}  ${dayWorked}  ${messageInfo}`;
 }
 
-addWorkedDays(DaysOfWeek.miercoles);
+console.log(addWorkedDays(DaysOfWeek.miercoles));
+console.log(addWorkedDays(DaysOfWeek.jueves, "Dia agregado","viernes"));
 
 console.log(workedDays);
+
+//Parametro "strate operator" para definir n cantidad de parametors, este siempre debe ser el ultimo parametro
+const addDays = function(...days:any[]){
+    console.log(days);
+}
+
+addDays(DaysOfWeek.miercoles);
+addDays(DaysOfWeek.miercoles, DaysOfWeek.jueves, DaysOfWeek.viernes);
