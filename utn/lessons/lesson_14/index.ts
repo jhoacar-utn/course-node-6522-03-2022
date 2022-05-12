@@ -8,21 +8,37 @@ enum DaysOfWeek {
     Sunday
 }
 
-const workedDays:number[] = [DaysOfWeek.Monday];
+const workedDays: number[] = [DaysOfWeek.Monday];
 
-const addWorkedDay =  function(dayWorked:number):string {
+const addWorkedDay = function (dayWorked: number, otroLog:string = "Se ha agregado", info?: string ): string {
 
     workedDays.push(dayWorked);
 
-    return "Dia agregado"; 
+    const messageInfo = info ? "- " + info  : "";
+    
+    // let messageInfo:string = "";
+    
+    // if(info!==undefined)
+    //     messageInfo = "- "+ info;
+    // else
+    //     messageInfo = "";
+
+
+    return `${otroLog} ${dayWorked} ${messageInfo}`;
 };
 
+console.log(  addWorkedDay(DaysOfWeek.Tuesday)  );
 
 
-let Name:String = "Jhoan";
+console.log ( addWorkedDay(DaysOfWeek.Wednesday,"Dia agregado","Miercoles")  );
 
-let names:string[] = ["Jhoan", "Carrero"]; 
 
-names.push("Name");
+const addDays = function ( otroParametro:string , ...days:any[]){
 
-console.log(names);
+    console.log(days);
+}
+
+addDays("un string" ,DaysOfWeek.Thursday );
+
+addDays( "otro string", DaysOfWeek.Friday, DaysOfWeek.Saturday, DaysOfWeek.Sunday  );
+
