@@ -10,6 +10,10 @@ class Student implements Person {
     public name: String;
     public age: number;
 
+    /**
+     * Trabajar con private o protected o public es llamado encapsulamiento 
+     */
+
     constructor(name: String, career: String, age: number) {
         this.name = name;
         this.career = career;
@@ -23,5 +27,22 @@ class Student implements Person {
     }
 }
 
+class Matematica {
+
+    public static PI = 3.1415;
+
+    constructor() {
+
+    }
+
+    public static suma(num1: number, num2: number) {
+        return num1 + num2;
+    }
+}
+
+
 const maria = new Student("maria", "informatica", 18);
 maria.study();
+
+//const math = new Matematica();
+console.log(Matematica.suma(Matematica.PI,2));
