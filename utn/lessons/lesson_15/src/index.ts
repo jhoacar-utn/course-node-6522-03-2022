@@ -5,9 +5,12 @@ dotenv.config();
 import express from 'express';
 //const express = require("express");
 
-
+import avatarRoute from './routes/avatar';
 
 const app = express();
+app.use(express.json());
+
+app.use("/avatar",avatarRoute);
 
 const PORT = process.env.PORT || 5000;
 
