@@ -1,12 +1,37 @@
-import { Router } from 'express'
-//const express =require("express");
+import { NextFunction, Request, Response } from "express";
 
-const route:Router = Router();
+interface Avatar {
+  name: String;
+  image: String;
+}
 
-import {getAvatar,postAvatar} from '../controllers/avatar'
+export const getAvatar = function (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const avatar: Avatar = {
+    name: "avatarName",
+    image: "avatarImage",
+  };
 
-route.get("/",getAvatar);
-route.post("/",postAvatar);
+  return res.json(avatar);
+};
 
-export default route;
-//module.exports =route;
+export const postAvatar = function (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const avatar: Avatar = req.body;
+
+  if (!avatar.name || !avatar.image) return;
+
+  const message = "Avatar saved";
+  return res.send(message);
+};
+
+// module.exports = {
+//     getAvatar,
+//     postAvatar
+// }

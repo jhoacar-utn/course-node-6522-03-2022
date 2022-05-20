@@ -19,6 +19,9 @@ const User = sequelize.define('User', {
   },
   avatar: {
     type: DataTypes.STRING,
+  },
+  song:{
+    type: DataTypes.STRING,
   }
 }, {
   tableName: 'users'

@@ -52,8 +52,31 @@ const saveAvatar = async (req, res, next) => {
     }
 }
 
+const saveSong = async (req, res, next) => {
+
+    try {
+
+        const email = req.user.email;
+
+        const pathSong = req.SongFile;
+
+        await userModel.updateFirst(
+            { song: pathSong },
+            { email }
+        );
+        const message = "User song updated succesfully";
+        return res.redirect(encodeURI(`/dashboard/?message=${message}`));
+
+    } catch (error) {
+        console.log(error)
+        error = JSON.stringify(error);
+        res.redirect(encodeURI(`/dashboard/?error=${error}`));
+    }
+}
+
 module.exports = {
     getUsers,
     postUser,
     saveAvatar,
+    saveSong
 };
