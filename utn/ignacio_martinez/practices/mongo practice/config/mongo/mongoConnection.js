@@ -2,7 +2,7 @@ const { MongoClient } = require("mongodb");
 
 const {mongo} = require("../config");
 
-const connectionString = mongo.MONGO_URI
+const connectionString = mongo.MONGO_URI;
 const client = new MongoClient(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
