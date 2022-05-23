@@ -9,3 +9,5 @@ se debe tener una sola carpeta .git por el repo
 
 git pull origin lessons
 git merge --abort
+
+.gitkepp -> Si la carpeta esta vacia, git no la sube, utilizando este comando, la carpeta SI es subida.
