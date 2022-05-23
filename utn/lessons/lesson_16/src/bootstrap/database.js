@@ -1,21 +1,20 @@
-const {connection} = require("../config/database");
+const { connection, MYSQL, MONGO } = require("../config/database");
 
 
-switch(connection){
+switch (connection) {
 
-    case 'mysql':
+    case MYSQL:
         console.log("A trabajar con mysql");
         break;
-    case 'mongodb':
+    case MONGO:
         console.log("A trabajar con mongodb");
         break;
     default:
-        console.log("Se debe especificar una conexion y debe ser mysql o mongodb");
-        break;
+        throw `Se debe especificar una conexion y debe ser ${MYSQL} o ${MONGO}, no debe ser ${connection}`;
 }
 
 
-const init = ()=>{
+const init = () => {
     console.log("Arrancando la conexion con la base de datos");
 }
 
