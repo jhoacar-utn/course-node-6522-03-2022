@@ -9,13 +9,25 @@ var DaysOfWeek;
     DaysOfWeek[DaysOfWeek["Sunday"] = 7] = "Sunday";
 })(DaysOfWeek || (DaysOfWeek = {}));
 var workedDays = [DaysOfWeek.Monday];
-var Name = ['jhoan', 'jack'];
-Name.push("name");
-function addWorkedDay(dayWorked, custonLog, info) {
-    if (custonLog === void 0) { custonLog = "se ha agregado"; }
+var addWorkedDay = function (dayWorked, otroLog, info) {
+    if (otroLog === void 0) { otroLog = "Se ha agregado"; }
     workedDays.push(dayWorked);
-    var messageInfo = (info !== undefined) ? "- " + info : "";
-    return "".concat(custonLog, " ").concat(dayWorked, " ").concat(messageInfo);
-}
+    var messageInfo = info ? "- " + info : "";
+    // let messageInfo:string = "";
+    // if(info!==undefined)
+    //     messageInfo = "- "+ info;
+    // else
+    //     messageInfo = "";
+    return "".concat(otroLog, " ").concat(dayWorked, " ").concat(messageInfo);
+};
 console.log(addWorkedDay(DaysOfWeek.Tuesday));
-console.log(addWorkedDay(DaysOfWeek.Wednesday, "dia agregado", "miercoles"));
+console.log(addWorkedDay(DaysOfWeek.Wednesday, "Dia agregado", "Miercoles"));
+var addDays = function () {
+    var days = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        days[_i] = arguments[_i];
+    }
+    console.log(days);
+};
+addDays(DaysOfWeek.Thursday);
+addDays(DaysOfWeek.Friday, DaysOfWeek.Saturday, DaysOfWeek.Sunday);

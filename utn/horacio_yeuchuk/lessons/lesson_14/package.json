@@ -5,14 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"npx tsc index.ts",
-    "start":"npm run build && node index.js"
+    "build": "npx tsc index.ts",
+    "start": "npm run build && node index.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "npx": "^3.0.0"
-  },
   "devDependencies": {
     "typescript": "^4.6.4"
   }
