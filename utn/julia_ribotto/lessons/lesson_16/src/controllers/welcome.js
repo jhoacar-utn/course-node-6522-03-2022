@@ -1,5 +1,8 @@
+const {welcome} = require('../models')
+
 const handleWelcome = (req,res)=>{
-    res.send("Welcome");
+    const message = welcome.getMessage();
+    res.send(message);
 };
 
-module.exports = {handleWelcome}
+module.exports = {handleWelcome};
