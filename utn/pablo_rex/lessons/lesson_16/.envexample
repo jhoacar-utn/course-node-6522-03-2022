@@ -1,0 +1,6 @@
+DB_CONNECTION =  mysql
+DB_URI=mysql://pablo_rex:pablo_rex@mysql.utn.jhoacar.me:3306/pablo_rex
+PORT=5001
+
+DB_CONNECTION =  mongodb
+DB_URI=mongodb://pablo_rex:pablo_rex@mongo.utn.jhoacar.me:27017/pablo_rex
