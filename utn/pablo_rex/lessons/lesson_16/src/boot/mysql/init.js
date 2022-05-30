@@ -1,14 +1,12 @@
-const {connection} = require("../../config/mysql/connection");
-const initialization = async ()=>{
+const { connection } = require("../../config/mysql/connection");
+
+const initialization = async () => {
   try {
-      await connection();
-  console.log("Conexion establecida con mysql");
+    await connection();
+    console.log("Conexion establecida con mysql");
   } catch (error) {
     console.log(error);
   }
-
-
-
 };
 
 
