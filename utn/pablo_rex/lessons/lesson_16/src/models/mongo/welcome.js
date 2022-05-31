@@ -7,4 +7,8 @@ const welcomeSchema = new mongoose.Schema({
 const Welcome = mongoose.model('welcome', welcomeSchema);
 
 
+Welcome.getMessage = function () {
+  return welcomeSchema
+}
+
 module.exports = Welcome;
