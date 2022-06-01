@@ -1,0 +1,4 @@
+Controlador -> Recibe las peticiones, las procesa y las valida
+Modelo -> Procesa toda la info del Controlador
+Vistas -> Muestra los datos al usuario
+
