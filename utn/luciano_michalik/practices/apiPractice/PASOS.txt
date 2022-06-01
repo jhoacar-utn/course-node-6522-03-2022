@@ -1,0 +1,22 @@
+PASOS PARA INICIALIZAR CUALQUIER PROYECTO TIPICO
+ 
+1) npm init --yes //Para iniciar el proyecto y crear el package.json
+2) npm i express //Instalar express
+3) npm i -D nodemon //instalar nodemon como dependencia de desarrollo.
+4) en el package.json agregar un script que se llame "start" : "node index.js" y otra "dev":"nodemon index.js" donde index.js es mi archivo principal.
+5) Crear el archivo index.js
+6) Crear el .gitignore e inculir /node_modules para no cargarlo a git
+7) Instalar fetch -> npm i node-fetch@2
+
+8) En el index.js siempre iniciar con const express = require("express") y const app = express().
+9) Agregar las variables de entorno en el archivo .env e instalar la dependencia con npm i dotenv. Luego en el index.js agregar "require('dotenv').config()" para poder usar las variables
+
+10) Agregar los archivos routes.js y controllers.js. Agregar en el index.js (que es el tronco del programa, donde se inicia todo) la linea "const routes = require("./routes")" que basicamente es decirle que la variable "routes" corresponde al archivo "routes.js". Luego, en el index digo "app.use("",routes) para buscar en el archivo routes.js cómo manejar esa petición. 
+Lo primero que se hace es consultar a las routes, para saber qué hacer, en ese archivo están los métodos de post y get. Luego desde la route correspondiente pasa al controller que hace lo que necesito.
+IMPORTANTE -> Recordar que al separar mi código en distintos archivos (como el routes.js, controller.js, etc) pierdo contacto con ellos desde el index.js. Para poder usarlo con el require() SI o SI necesito hacer un module.export desde cada archivo para usar sus métodos
+
+11) En este ejemplo se utilizó el fetch cuando se hace un getAllProducts. Ver en el AV, en Novedades y anuncios, la calse de repaso del 14/4 y bajar el .zip que tiene los resumenes
+
+12) Cuando se hace un post el mensaje viaja como un json. El controlador lo recibe por el parámetro "req"
+
+13) Puedo hacer un fetch a Mockapi y usan los métodos stringify
