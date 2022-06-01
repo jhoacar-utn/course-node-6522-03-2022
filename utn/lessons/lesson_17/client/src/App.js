@@ -1,5 +1,6 @@
 import MiClaseComponente from "./components/MiClaseComponente";
 import MiComponente from "./components/MiComponente";
+import MiFuncionComponente from "./components/MiFuncionComponente";
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
         <MiComponente></MiComponente>
         <hr></hr>
         <MiClaseComponente></MiClaseComponente>
+        <hr></hr>
+        <MiFuncionComponente></MiFuncionComponente>
     </div>
   );
 }

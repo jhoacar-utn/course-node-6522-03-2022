@@ -9,18 +9,10 @@ class MiClaseComponente extends Component {
             contador: 0
         }
 
+        this.contador = 10;
+
         this.handleClick = this.handleClick.bind(this);
     }
-
-    handleClick(props) {
-        
-        // this.state.contador = this.state.contador + 1;
-        
-        this.setState({
-            contador: this.state.contador + 1
-        })
-    }
-
 
     render() {
 
@@ -36,6 +28,21 @@ class MiClaseComponente extends Component {
         );
 
     }
+    
+    componentDidMount(){
+
+    }
+
+    componentWillUnmount(){
+
+    }
+
+    handleClick(props) {
+        console.log("Le di click")
+       // this.state.contador = this.state.contador + 1;
+       this.setState({contador : this.state.contador + 1 });
+    }
+    
 }
 
 export default MiClaseComponente;
