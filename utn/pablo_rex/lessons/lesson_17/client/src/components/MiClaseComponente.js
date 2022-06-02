@@ -11,13 +11,7 @@ class MiClaseComponente extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(props) {
-    console.log(props);
-    // this.state.contador++; Esto no se debe hacer
-    this.setState({
-      contador: this.state.contador + 1
-    })
-  }
+
 
   render() {
 
@@ -27,7 +21,26 @@ class MiClaseComponente extends Component {
       <button onClick={this.handleClick}>Incrementar</button>
     </div>
   }
+  handleClick(props) {
+    console.log("le di click")
+    this.setState({ contador: this.state.contador + 1 });
+    // this.setState({
+    //   contador: this.state.contador + 1
+    // })
+  }
 
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
+
+
+  }
 }
+
+
+
+
 
 export default MiClaseComponente

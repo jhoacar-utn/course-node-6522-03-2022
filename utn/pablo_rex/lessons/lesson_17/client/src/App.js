@@ -1,16 +1,19 @@
-import MiClaseComponente from "./components/MiClaseComponente";
-import MiComponente from "./components/MiComponente";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import RickCharacter from "./components/Characters/index";
+import Layout from './components/Layout';
 
-function App() {
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark', // 'dark' or 'light'
+  },
+});
+
+export default function App() {
   return (
-    <div className="App">
-      <h2>Hola Mundo</h2>
-      <hr></hr>
-      <MiComponente></MiComponente>
-      <hr></hr>
-      <MiClaseComponente></MiClaseComponente>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <Layout>
+        <RickCharacter></RickCharacter>
+      </Layout>
+    </ThemeProvider>
   );
 }
-
-export default App;
