@@ -3,6 +3,7 @@ import { getAllCharacters } from '../services/api';
 
 
 function RickCharacter() {
+
     const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
