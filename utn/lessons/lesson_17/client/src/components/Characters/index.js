@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllCharacters } from '../services/api';
+import { getAllCharacters } from '../../services/api';
 
 
 function RickCharacter() {

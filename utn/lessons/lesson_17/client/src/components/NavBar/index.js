@@ -22,9 +22,12 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            My App
           </Typography>
           <Button color="inherit">Login</Button>
+          <Button color="inherit">Register</Button>
+          <Button color="inherit">Dashboard</Button>
+          <Button color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
     </Box>
