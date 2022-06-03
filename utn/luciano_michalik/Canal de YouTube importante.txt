@@ -1,0 +1,4 @@
+Video que usa la misma estructura de la diplo para hacer back
+
+Canal: Leifer Mendez
+Video: Mi manera de aprender backend desde cero NODE, aprender MySql o MongoDB
