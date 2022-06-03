@@ -1,0 +1,16 @@
+//This practice was developed using Leifer Mendez tutorial
+
+It's a good practice work with a ".env.example" and a ".env", the last one it's a copy of the first.
+
+Scaffold -> Based on MVC 
+---controllers
+
+---models
+
+---routes
+
+---config
+
+---utils (or helpers)
+
+---storage
