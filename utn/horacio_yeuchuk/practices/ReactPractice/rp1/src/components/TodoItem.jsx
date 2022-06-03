@@ -1,7 +1,10 @@
 import React from 'react'
 
-export default function TodoItem() {
+export function TodoItem({todo}) {
+    const { id, task, completed }=todo
   return (
-    <div>TodoItem</div>
+    <li>
+        {task}
+    </li>
   )
 }
