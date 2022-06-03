@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <base href="/">
     <title>Register User</title>
 </head>
 <body>
+    <div style="display: flex ; align-items: center; justify-content: center;">
     <form method="POST" action="/api/user">
-        <input type="text" name="name" placeholder="name" required>
-        <input type="email" name="email" placeholder="email" required>
-        <input type="password" name="password" placeholder="password" required>
-        <input type="submit" value="Registrar Usuario">
+        
+        <img style="height: 100px;width: 100px;" src="../storage/default.png" alt=""><br>
+    
+        <label for="name">Nombre de usuario <br>
+        <input type="text" name="name" placeholder="name" required><br></label>
+        <label for="email">Email <br>
+            <input type="email" name="email" placeholder="email" required><br></label>
+        <label for="password">Password <br><input type="password" name="password" placeholder="password" required><br></label>
+        <br><input type="submit" value="Registrar Usuario">
     </form>
+</div>
 </body>
 </html>

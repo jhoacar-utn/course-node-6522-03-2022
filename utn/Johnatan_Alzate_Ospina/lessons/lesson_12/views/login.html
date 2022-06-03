@@ -7,11 +7,16 @@
     <title>Login</title>
 </head>
 <body>
-
+    <div style="display: flex; justify-content: center;align-items: center;">
     <form method="POST" action="/login">
-        <input type="email" name="email" placeholder="email" required>
-        <input type="password" name="password" placeholder="password" required>
+        <img style="width:100px;height: 100px;" src="../storage/default.png" alt=""><br>
+        <label for="email">Ingrese el email <br>
+        <input type="email" name="email" placeholder="email" required></label><br>
+<label for="password">Ingrese el password <br>
+        <input type="password" name="password" placeholder="password" required></label><br>
+        <br>
         <input type="submit" value="Login">
     </form>
+</div>
 </body>
 </html>
