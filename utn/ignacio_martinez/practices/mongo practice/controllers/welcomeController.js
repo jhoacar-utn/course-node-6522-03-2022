@@ -1,4 +1,6 @@
+const path = require("path")
 
+const { response } = require("express");
 const {getDb} = require("../config/mongo/mongoConnection");
 
 const handleRequest = (req, res, next)=>{
@@ -20,4 +22,9 @@ const handleRequest = (req, res, next)=>{
 // res.sendFile(__dirname+"/views/index.html");
 }
 
+const handleWelcomeWeb = (req, res, next)=>{
+  return res.sendFile(path.resolve(__dirname+"/../views/index.html"))
+} 
+
 module.exports.handleWelcome = handleRequest;
+module.exports.handleWelcomeWeb = handleWelcomeWeb;
