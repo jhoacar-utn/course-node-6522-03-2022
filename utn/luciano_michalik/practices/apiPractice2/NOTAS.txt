@@ -11,6 +11,11 @@ Scaffold -> Based on MVC
 
 ---config
 
----utils (or helpers)
+---utils (or helpers) -> Almacena los manejadores de storage, middlewares, y otros metodos
 
 ---storage
+
+
+Models -> hacen referencia a la estructura de los datos que van a existir en la base de datos. Se crea un modelo por cada colección o tabla (en mySql).
+
+Multer -> Para subir archivos a la DB. Para probar en postman se debe ubicar en la pestaña body->form-data
