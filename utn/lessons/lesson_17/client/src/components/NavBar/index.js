@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import styles from './index.module.css';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
   return (
@@ -26,13 +27,13 @@ export default function NavBar() {
             My App
           </Typography>
           <Button color="inherit">
-            <a className={styles['navbar-link']} href="/login">Login</a>
+            <Link className={styles['navbar-link']} to="/login">Login</Link>
           </Button>
           <Button color="inherit">
-            <a className={styles['navbar-link']} href="/register">Register</a>
+            <Link className={styles['navbar-link']} to="/register">Register</Link>
           </Button>
           <Button color="inherit">
-            <a className={styles['navbar-link']} href="/dashboard">Dashboard</a>
+            <Link className={styles['navbar-link']} to="/dashboard">Dashboard</Link>
           </Button>
           <Button color="inherit">Logout</Button>
         </Toolbar>
