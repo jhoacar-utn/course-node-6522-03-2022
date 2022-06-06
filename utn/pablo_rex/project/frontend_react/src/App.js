@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import RickCharacter from "./components/Characters/index";
+import Layout from './components/Layout/index';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Dashboard from './components/Dashboard';
+import CompLogin from './components/Login';
+import Footer from './components/Footer';
 
-function App() {
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark', // 'dark' or 'light'
+  },
+});
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeProvider theme={darkTheme}>
+        <Layout>
+          <Routes>
+            <Route path="/login" element={<CompLogin />} />
+            <Route path="/" element={<RickCharacter />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+
+        </Layout>
+      </ThemeProvider>
+    </Router>
+
   );
 }
-
-export default App;
