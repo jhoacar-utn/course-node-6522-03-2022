@@ -29,10 +29,10 @@ export default function NavBar() {
             <a className={styles['navbar-link']} href="/login">Login</a>
           </Button>
           <Button color="inherit">
-            <a className={styles['navbar-link']} href="/login">Register</a>
+            <a className={styles['navbar-link']} href="/register">Register</a>
           </Button>
           <Button color="inherit">
-            <a className={styles['navbar-link']} href="/login">Dashboard</a>
+            <a className={styles['navbar-link']} href="/dashboard">Dashboard</a>
           </Button>
           <Button color="inherit">Logout</Button>
         </Toolbar>
