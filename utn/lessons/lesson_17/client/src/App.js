@@ -16,8 +16,8 @@ const darkTheme = createTheme({
 export default function App() {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -25,8 +25,8 @@ export default function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
