@@ -1,8 +1,26 @@
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel } from '@mui/material';
+import { useState } from 'react';
 
 export default function Login() {
+
+    const [email , setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleChangeEmail = (event)=>{
+        setEmail(event.target.value);
+    };
+
+    const handleChangePassword  = (event)=>{
+        setPassword(event.target.value)
+    };
+
+    const handleSubmit = (event)=>{
+
+        event.preventDefault();
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <Card sx={{
                 minHeight: '500px',
                 minWidth: '500px',
@@ -14,14 +32,14 @@ export default function Login() {
                 padding: '10px'
             }}>
                 <FormControl >
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <Input id="my-input" aria-describedby="my-helper-text" />
-                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
+                    <InputLabel>Email address</InputLabel>
+                    <Input type="email" value={email} onChange={handleChangeEmail}/>
+                    <FormHelperText>We'll never share your email.</FormHelperText>
                 </FormControl>
                 <FormControl >
-                    <InputLabel htmlFor="my-input">Password</InputLabel>
-                    <Input id="password" aria-describedby="password-helper-text" />
-                    <FormHelperText id="password-helper-text">Please type your password.</FormHelperText>
+                    <InputLabel>Password</InputLabel>
+                    <Input type="password" value={password} onChange={handleChangePassword}/>
+                    <FormHelperText>Please type your password.</FormHelperText>
                 </FormControl>
                 <Button type="submit">
                     Iniciar sesion
