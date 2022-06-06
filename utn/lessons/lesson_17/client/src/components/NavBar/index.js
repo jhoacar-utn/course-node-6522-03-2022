@@ -24,7 +24,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            My App
+            <Link className={styles['navbar-link']} to="/">My App</Link>
           </Typography>
           <Button color="inherit">
             <Link className={styles['navbar-link']} to="/login">Login</Link>
