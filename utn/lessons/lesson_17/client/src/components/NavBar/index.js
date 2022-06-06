@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import './index.css';
+import styles from './index.module.css';
 
 export default function NavBar() {
   return (
@@ -26,10 +26,14 @@ export default function NavBar() {
             My App
           </Typography>
           <Button color="inherit">
-            <a className='navbar-link' href="/login">Login</a>
+            <a className={styles['navbar-link']} href="/login">Login</a>
           </Button>
-          <Button color="inherit">Register</Button>
-          <Button color="inherit">Dashboard</Button>
+          <Button color="inherit">
+            <a className={styles['navbar-link']} href="/login">Register</a>
+          </Button>
+          <Button color="inherit">
+            <a className={styles['navbar-link']} href="/login">Dashboard</a>
+          </Button>
           <Button color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
