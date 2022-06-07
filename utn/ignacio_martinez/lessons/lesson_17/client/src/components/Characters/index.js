@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getAllCharacters } from '../../services/api';
 import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardContent } from '@mui/material';
-import { Container } from '@mui/system';
-
+import { Grid } from '@mui/material';
 
 function RickCharacter() {
 
@@ -27,19 +26,23 @@ function RickCharacter() {
 
     return (
         <Card>
-            <Typography sx={{textAlign: "center"}} component="h3" variant="h3">
-            All Characters:
+            <Typography sx={{ textAlign: 'center' }} component="h3" variant="h3">
+                All Characters
             </Typography>
-            <Grid component="ul" sx={{display:"grid", ali}}>
+            <Grid component="ul" sx={{display:"grid", alignItems:"center", justifyContent:"center"}}>
                 {characters.map((element) => {
                     return (
-                        <Card component="li" sx={{maxWidth: 300}} key={element.name}>
+                        <Card
+                            component="li"
+                            sx={{ maxWidth: 300 }}
+                            key={element.name}>
                             <CardMedia
                                 component="img"
                                 width="100"
                                 image={element.image}
                                 alt={element.name}
-                            ></CardMedia>
+                            >
+                            </CardMedia>
                             <CardContent>
                                 <Typography
                                     variant="h5"

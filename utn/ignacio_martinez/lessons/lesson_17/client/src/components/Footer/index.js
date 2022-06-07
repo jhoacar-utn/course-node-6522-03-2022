@@ -1,10 +1,16 @@
+import { AppBar } from "@mui/material";
 
 
-export default function Footer (){
+export default function Footer() {
 
     return (
-        <div>
-            Footer
-        </div>
+        <AppBar position="static" sx={{
+            minHeight: '4vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}>
+            Hecho por Ignacio Martinez
+        </AppBar>
     )
 }

@@ -1,26 +1,24 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function MiFuncionComponente() {
 
-    const [contador, setContador] = useState(0)
+    const [contador, setContador ] = useState(0); 
 
-    let numero = 10;
-
-    const hadleClick = function()
-    {
-        console.log("le di click");
+    const handleClick = function () {
+        console.log("Le di click en incrementar MiFuncionComponente")
+        // contador += 1;
         setContador(contador+1);
     }
 
     return (
         <div>
-            Hola desde MiComponente
+            Hola desde MiFuncionComponente
             <div>
-                Esto es un boton incremental
+                Esto es un boton incremental:
             </div>
             <div>
-                <span id="numero">{numero}</span>
-                <button onClick={hadleClick}>Incrementar</button>
+                <span id="numero">{contador}</span>
+                <button onClick={handleClick}>Incrementar</button>
             </div>
         </div>
     );
