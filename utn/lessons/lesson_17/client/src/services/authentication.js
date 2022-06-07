@@ -3,7 +3,7 @@ const API_URL = '/api/v1/auth';
 
 export const handleLogin = async (email, password) => {
 
-    return 'ok';
+    // return 'ok';
 
     const response = await fetch(API_URL + '/login');
     const jsonResponse = await response.json();

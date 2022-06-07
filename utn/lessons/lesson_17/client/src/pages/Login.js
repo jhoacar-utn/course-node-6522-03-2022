@@ -2,6 +2,7 @@ import { Button, Card, FormControl, FormHelperText, Input, InputLabel } from '@m
 import { useState } from 'react';
 import { handleLogin } from '../services/authentication';
 import { Navigate } from 'react-router-dom';
+import {toast} from 'react-hot-toast';
 
 export default function Login() {
 
@@ -22,7 +23,11 @@ export default function Login() {
         event.preventDefault();
 
         handleLogin(email, password).then(() => {
+            toast.success('Successfully logged!')
             setIsLoggedIn(true);
+        }).catch((error)=>{
+            console.log(error);
+            toast.error("An error has ocurred in the login.")
         });
     }
 
