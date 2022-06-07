@@ -1,0 +1,9 @@
+git pull origin lessons 
+Traer las clases con conflictos, pero no tener en cuenta los conflictos.
+
+Pasar todas carpetas a mi carpeta
+git merge --abort, para volver al estado normal.
+
+git add .
+git commit -m ...
+git push
