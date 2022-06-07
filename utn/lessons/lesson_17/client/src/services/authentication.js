@@ -3,25 +3,15 @@ const API_URL = '/api/v1/auth';
 
 export const handleLogin = async (email, password) => {
 
-    try {
+    return 'ok';
 
-        const response = await fetch(API_URL + '/login');
-        const jsonResponse = response.json();
+    const response = await fetch(API_URL + '/login');
+    const jsonResponse = await response.json();
 
-        if (jsonResponse.error)
-            return {
-                error: jsonResponse.error
-            }
+    if (jsonResponse.error)
+        throw jsonResponse.error;
 
-        return {
-            success: jsonResponse.message
-        }
-
-    } catch (error) {
-        console.log(error);
-        return {
-            error: error
-        }
-
+    return {
+        success: jsonResponse.message
     }
 }
