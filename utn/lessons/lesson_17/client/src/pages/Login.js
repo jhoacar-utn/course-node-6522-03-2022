@@ -1,5 +1,6 @@
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel } from '@mui/material';
 import { useState } from 'react';
+import { handleLogin } from '../services/authentication';
 
 export default function Login() {
 
@@ -17,6 +18,19 @@ export default function Login() {
     const handleSubmit = (event)=>{
 
         event.preventDefault();
+
+        handleLogin(email, password).then(result=>{
+
+            if(result.error){
+                console.log("Hay un error");
+                console.log(result.error)
+            }
+            if(result.success)
+            {
+                console.log("Se ha logueado satisfactoriamente");
+                console.log(result.success);
+            }
+        });
     }
 
     return (
