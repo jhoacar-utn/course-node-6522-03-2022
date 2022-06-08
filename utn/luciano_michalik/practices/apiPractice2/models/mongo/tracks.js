@@ -39,7 +39,7 @@ const tracksScheme = new mongoose.Schema(
         },
       },
       mediaId: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Types.ObjectId, //Me la devuelve el storage.js
       },
     },
     {

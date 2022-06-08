@@ -9,6 +9,7 @@ const port = process.env.PORT || 8080
 
 app.use(cors())
 app.use(express.json())//Esta linea permite recibir datos via json cuando hago un post
+app.use(express.static("storage")) //Para poder acceder a los datos de la carpeta storage desde chrome. Hago publica esta carpeta
 
 app.use("/api",router)//Se dirige a index.js de la carpeta routes
 

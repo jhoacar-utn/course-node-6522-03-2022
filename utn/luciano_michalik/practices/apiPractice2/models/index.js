@@ -5,4 +5,4 @@ const models = {
     storageModels: require("./mongo/storage")
 }
 
-module.exports=models
+module.exports=models //Exporto cada modelo desde acá. 

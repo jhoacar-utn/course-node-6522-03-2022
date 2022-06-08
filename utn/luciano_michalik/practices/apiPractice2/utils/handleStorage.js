@@ -1,7 +1,7 @@
 const multer = require("multer")
 
 const storage = multer.diskStorage({ //Como minimo necesita el destination y el filename
-    destination:function(req,file,cb){
+    destination:function(req,file,cb){ //Estos argumentos siempre se tienen que pasar
         const pathStorage = `${__dirname}/../storage`//Le indico donde guardar los archivos
         cb(null,pathStorage)//Una callback que pasa como primer argumento un error si existiese y por otro lado el destination
     },

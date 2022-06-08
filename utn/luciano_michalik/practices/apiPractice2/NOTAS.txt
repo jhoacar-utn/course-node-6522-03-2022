@@ -19,3 +19,5 @@ Scaffold -> Based on MVC
 Models -> hacen referencia a la estructura de los datos que van a existir en la base de datos. Se crea un modelo por cada colección o tabla (en mySql).
 
 Multer -> Para subir archivos a la DB. Para probar en postman se debe ubicar en la pestaña body->form-data
+
+Validators -> Sirven para validar que la info que llega a los controladores sea correcta. Es un paquete que se instala con npm i express-validator y me da todas las herramientas de validacion en vez de ir haciendo distintos ifs para verificar.
