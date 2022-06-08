@@ -1,5 +1,5 @@
 
-const API_URL = '/api/v1/auth';
+const API_URL = process.env.REACT_APP_API_URL || '/api/v1/auth';
 
 export const handleLogin = async (email, password) => {
 
