@@ -1,12 +1,13 @@
 
-const API_URL = process.env.REACT_APP_API_URL || '/api/v1/auth';
+const API_URL = process.env.REACT_APP_API_URL || '/api/v1';
+
+const AUTH_URL = API_URL + "/auth";
 
 export const handleLogin = async (email, password) => {
 
-    // return 'ok';
     const data = { email, password };
 
-    const response = await fetch(API_URL + '/login', {
+    const response = await fetch(AUTH_URL + '/login', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
