@@ -1,14 +1,15 @@
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { handleLogin } from '../services/authentication';
 import { Navigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { AuthorizationContext } from '../context/authorization';
 
 export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthorizationContext);
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
