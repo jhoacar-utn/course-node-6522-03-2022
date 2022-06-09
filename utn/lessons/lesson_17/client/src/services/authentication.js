@@ -20,7 +20,23 @@ export const handleLogin = async (email, password) => {
     if (jsonResponse.error)
         throw jsonResponse.error;
 
+    const body = jsonResponse.body;
+    const {token} = body;
+
+    if(!token)
+        throw "Token is required in the login";
+
+    saveToken(token);
+
     return {
         success: jsonResponse.message
     }
+}
+
+export const saveToken = (token)=>{
+    localStorage.setItem('token',token);
+}
+
+export const getToken = ()=>{
+    localStorage.getItem('token');
 }
