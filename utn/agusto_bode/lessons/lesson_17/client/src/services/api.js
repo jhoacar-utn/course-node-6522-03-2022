@@ -1,4 +1,4 @@
-const API_URL = "https://rickandmortyapi.com/api"
+const API_URL = process.env.REACT_APP_RICK_API_URL || "https://rickandmortyapi.com/api";
 
 export const getAllCharacters = async () => {
 
