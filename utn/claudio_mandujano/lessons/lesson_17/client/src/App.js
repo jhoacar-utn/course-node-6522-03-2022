@@ -1,11 +1,15 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import { useState } from 'react';
+import { AuthorizationContext } from './context/authorization';
+
 
 const darkTheme = createTheme({
   palette: {
@@ -14,9 +18,14 @@ const darkTheme = createTheme({
 });
 
 export default function App() {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
+    <AuthorizationContext.Provider value={{isLoggedIn,setIsLoggedIn}}>
     <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
+        <Toaster position="top-center" reverseOrder={false} />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -28,5 +37,6 @@ export default function App() {
         </Layout>
       </BrowserRouter>
     </ThemeProvider>
+    </AuthorizationContext.Provider>
   );
 }
