@@ -15,9 +15,11 @@ const webRoute = require("./routes/web");
 
 const PORT = process.env.PORT || 5000;
 
-app.use("/api",apiRoute); //todas las rutas que voy a usar
+//Defino rutas que voy a usar
+app.use("/api",apiRoute);
 app.use("/",webRoute);
 
+//Levanta servidor
 app.listen(PORT, ()=> {
     console.log('Server on port: '+PORT);
 

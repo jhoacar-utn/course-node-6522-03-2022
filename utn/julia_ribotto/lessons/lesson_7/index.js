@@ -5,7 +5,7 @@ const {connectToServer,getDb} = require("./config/mongo/connection")
 
 const route_users = require("./routes/user-router");
 
-const PORT = 3002;
+const PORT = 4000;
 
 const handleRequest = (request,response,next) => {
     //response.send("Welcome to my app");

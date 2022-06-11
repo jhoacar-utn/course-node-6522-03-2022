@@ -15,7 +15,7 @@ const handleRequest = (request,response,next) => {
             } else {
                 response.json(result);
             }
-        });        
+        });
 };
 
 const handleWelcomeWeb = (request,response,next) => {

@@ -15,7 +15,9 @@ const handleRequest = (request,response,next) => {
             } else {
                 response.json(result);
             }
-        });        
+        });
+    
+    console.log('hola')
 };
 
 const handleWelcomeWeb = (request,response,next) => {

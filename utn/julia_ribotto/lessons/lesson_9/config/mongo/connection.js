@@ -12,7 +12,7 @@ module.exports = {
   },
   
   getDb: function() {
-
+    console.log('hola desde getDB')
   }
 };
 

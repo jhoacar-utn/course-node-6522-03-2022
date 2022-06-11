@@ -3,6 +3,6 @@ module.exports = {
 
     },
     mongo: {
-        MONGO_URI:"mongodb://julia_ribotto:julia_ribotto@localhost/julia_ribotto"
+        MONGO_URI:"mongodb://julia_ribotto:julia_ribotto@mongo.utn.jhoacar.me/julia_ribotto"
     }
 }
