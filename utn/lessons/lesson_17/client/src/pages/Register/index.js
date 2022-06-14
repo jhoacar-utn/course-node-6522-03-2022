@@ -1,8 +1,10 @@
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material";
-import { useContext, useState, useEffect } from "react"
+import { useContext, useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import { AuthorizationContext } from "../../context/authorization";
 import { getAllCharacters } from "../../services/api";
+import { handleRegister } from "../../services/authentication";
 
 export default function Register() {
 
@@ -36,7 +38,22 @@ export default function Register() {
     const { name, email, password, avatar, image } = registerState;
 
     const handleSubmit = (event) => {
-        console.log(event);
+        
+        event.preventDefault();
+
+        const userData = {
+            name,
+            email,
+            password,
+            avatar,
+            image
+        }
+        handleRegister(userData).then(() => {
+            toast.success('Registered successfully!')
+        }).catch((error) => {
+            console.log(error);
+            toast.error("An error has ocurred in the register.")
+        });
     }
 
     const handleChangeEmail = (event) => {
@@ -96,26 +113,26 @@ export default function Register() {
                         width: "50%"
                     }}>
                         <InputLabel>User name</InputLabel>
-                        <Input type="text" value={name} onChange={handleChangeName} />
+                        <Input type="text" value={name} onChange={handleChangeName} required/>
                     </FormControl>
                     <FormControl sx={{
                         width: "50%"
                     }} >
                         <InputLabel>Email address</InputLabel>
-                        <Input type="email" value={email} onChange={handleChangeEmail} />
+                        <Input type="email" value={email} onChange={handleChangeEmail} required/>
                         <FormHelperText>We'll never share your email.</FormHelperText>
                     </FormControl>
                     <FormControl sx={{
                         width: "50%"
                     }}>
                         <InputLabel>Password</InputLabel>
-                        <Input type="password" value={password} onChange={handleChangePassword} />
+                        <Input type="password" value={password} onChange={handleChangePassword} required/>
                         <FormHelperText>Please type your password.</FormHelperText>
                     </FormControl>
                     <FormControl sx={{
                         width: "50%"
                     }}>
-                        <Select value={avatar} onChange={handleChangeAvatar}>
+                        <Select value={avatar} onChange={handleChangeAvatar} required>
                             {avatars.map((element) => {
                                 return (
                                     <MenuItem value={element.name}>{element.name}</MenuItem>
