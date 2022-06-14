@@ -1,11 +1,30 @@
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material";
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { Navigate } from "react-router-dom";
-import { AuthorizationContext } from "../../context/authorization"
+import { AuthorizationContext } from "../../context/authorization";
+import { getAllCharacters } from "../../services/api";
 
 export default function Register() {
 
     const { isLoggedIn } = useContext(AuthorizationContext);
+
+    const [avatars, setAvatars] = useState([]);
+
+    useEffect(() => {
+
+        getAllCharacters()
+            .then(result => {
+                setAvatars(result)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }, []);
+    // Si se especifica un array vacio, 
+    // eso quiere decir que no depende de nada y solo se ejecuta la callback una sola vez
+
+
     const [registerState, setRegisterState] = useState({
         name: "",
         email: "",
@@ -42,16 +61,19 @@ export default function Register() {
     };
 
     const handleChangeAvatar = (event) => {
-        setRegisterState({
-            ...registerState,
-            avatar: event.target.value
-        })
-    };
+        
+        const newAvatar = event.target.value;
+        
+        const avatarObject = avatars.find((element)=>{
+            return element.name === newAvatar
+        });
 
-    const handleChangeImage = (event) => {
+        const newImage = avatarObject.image;
+
         setRegisterState({
             ...registerState,
-            image: event.target.value
+            avatar: newAvatar,
+            image: newImage
         })
     };
 
@@ -94,10 +116,13 @@ export default function Register() {
                         width: "50%"
                     }}>
                         <Select value={avatar} onChange={handleChangeAvatar}>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            {avatars.map((element)=>{
+                                return (
+                                    <MenuItem value={element.name}>{element.name}</MenuItem>
+                                )
+                            })}
                         </Select>
+                        <FormHelperText>Please select an avatar.</FormHelperText>
                     </FormControl>
                     <FormControl sx={{
                         width: "50%"
