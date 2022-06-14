@@ -61,12 +61,12 @@ export default function Register() {
     };
 
     const handleChangeAvatar = (event) => {
-        
+
         const newAvatar = event.target.value;
-        
-        const avatarObject = avatars.find((element)=>{
+
+        const avatarObject = avatars.find((element) => {
             return element.name === newAvatar
-        });
+        })
 
         const newImage = avatarObject.image;
 
@@ -116,7 +116,7 @@ export default function Register() {
                         width: "50%"
                     }}>
                         <Select value={avatar} onChange={handleChangeAvatar}>
-                            {avatars.map((element)=>{
+                            {avatars.map((element) => {
                                 return (
                                     <MenuItem value={element.name}>{element.name}</MenuItem>
                                 )
