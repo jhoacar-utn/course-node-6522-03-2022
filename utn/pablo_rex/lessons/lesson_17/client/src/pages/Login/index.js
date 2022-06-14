@@ -1,9 +1,9 @@
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel } from '@mui/material';
 import { useContext, useState } from 'react';
-import { handleLogin } from '../services/authentication';
+import { handleLogin } from '../../services/authentication';
 import { Navigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { AuthorizationContext } from '../context/authorization';
+import { AuthorizationContext } from '../../context/authorization';
 
 export default function Login() {
 

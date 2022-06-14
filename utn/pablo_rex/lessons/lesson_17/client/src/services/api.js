@@ -1,11 +1,16 @@
+import axios from "axios";
+
 const API_URL = process.env.REACT_APP_RICK_API_URL || "https://rickandmortyapi.com/api"
 
 export const getAllCharacters = async () => {
 
   try {
 
-    const response = await fetch(API_URL + "/character");
-    const jsonData = await response.json();
+    // const response = await fetch(API_URL + "/character"); //Usando Fetch
+    // const jsonData = await response.json();
+
+    const response = await axios.get(API_URL + "/character");
+    const jsonData = response.data
 
     const results = jsonData.results;
 

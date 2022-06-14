@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import { useState } from 'react';
 import { AuthorizationContext } from './context/authorization';
+import { AuthMiddleware } from './middlewars/Auth';
 
 const darkTheme = createTheme({
   palette: {
@@ -30,7 +31,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<AuthMiddleware><Dashboard /></AuthMiddleware>} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Layout>
