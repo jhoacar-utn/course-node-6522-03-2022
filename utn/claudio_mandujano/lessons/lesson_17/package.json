@@ -8,17 +8,20 @@
   },
   "scripts": {
     "start": "npm run build-client && npm run start-server",
-    
-    "start-client": "env-cmd -f client.env npm start --prefix=client",
+    "dev-client": "env-cmd -f client.env npm start --prefix=client",
     "build-client": "env-cmd -f client.env npm run build --prefix=client",
-    
     "start-server": "env-cmd -f server.env npm start --prefix=server",
-    "dev-server": "env-cmd -f server.env npm run dev --prefix=server"
+    "dev-server": "env-cmd -f server.env npm run dev --prefix=server",
+    "dev": "concurrently \"npm:dev-*\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "env-cmd": "^10.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1"
   }
 }

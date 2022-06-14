@@ -9,7 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import { useState } from 'react';
 import { AuthorizationContext } from './context/authorization';
-
+import AuthMiddleware from './middlewares/Auth';
 
 const darkTheme = createTheme({
   palette: {
@@ -19,24 +19,26 @@ const darkTheme = createTheme({
 
 export default function App() {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <AuthorizationContext.Provider value={{isLoggedIn,setIsLoggedIn}}>
-    <ThemeProvider theme={darkTheme}>
-      <BrowserRouter>
-        <Toaster position="top-center" reverseOrder={false} />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </ThemeProvider>
+    <AuthorizationContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+      <ThemeProvider theme={darkTheme}>
+        <BrowserRouter>
+          <Toaster position="bottom-right" reverseOrder={false} />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/dashboard" element={<AuthMiddleware>
+                                                 <Dashboard /> 
+                                               </AuthMiddleware>} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
     </AuthorizationContext.Provider>
   );
 }
