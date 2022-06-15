@@ -8,11 +8,10 @@
   },
   "scripts": {
     "start": "npm run build-client && npm run start-server",
-    
-    "start-client": "env-cmd -f client.env npm start --prefix=client",
+    "dev": "concurrently \"npm:dev-*\"",
     "build-client": "env-cmd -f client.env npm run build --prefix=client",
-    
     "start-server": "env-cmd -f server.env npm start --prefix=server",
+    "dev-client": "env-cmd -f client.env npm start --prefix=client",
     "dev-server": "env-cmd -f server.env npm run dev --prefix=server"
   },
   "keywords": [],
@@ -20,5 +19,8 @@
   "license": "ISC",
   "dependencies": {
     "env-cmd": "^10.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1"
   }
 }
