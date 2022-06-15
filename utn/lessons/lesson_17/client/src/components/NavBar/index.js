@@ -8,16 +8,25 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import { AuthorizationContext } from '../../context/authorization';
 import { saveToken } from '../../services/authentication';
+import { ThemeContext } from '../../context/theme';
 
 export default function NavBar() {
 
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthorizationContext)
 
-  const handleLogout =  ( )=>{
+  const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
+
+  const handleLogout = () => {
     setIsLoggedIn(false);
     saveToken("");
+  }
+
+  const handleChangeTheme = ()=>{
+    setIsDarkMode(!isDarkMode);
   }
 
   return (
@@ -36,6 +45,21 @@ export default function NavBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link className={styles['navbar-link']} to="/">My App</Link>
           </Typography>
+
+          <Button onClick={handleChangeTheme}
+            sx={{
+              color: "unset"
+            }}
+          >
+            {
+              isDarkMode &&
+              <LightModeIcon />
+            }
+            {
+              !isDarkMode &&
+              <DarkModeIcon />
+            }
+          </Button>
 
           {
             !isLoggedIn && <>
