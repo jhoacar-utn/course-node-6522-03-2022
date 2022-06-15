@@ -13,20 +13,30 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import { AuthorizationContext } from '../../context/authorization';
 import { saveToken } from '../../services/authentication';
 import { ThemeContext } from '../../context/theme';
+import { StoreContext } from '../../context/store';
+import { CHANGE_LOGGED_IN, CHANGE_DARK_MODE } from '../../reducers/action';
 
 export default function NavBar() {
 
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthorizationContext)
-
-  const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
+  const { globalState, setGlobalState } = useContext(StoreContext);
+  const { isLoggedIn, isDarkMode } = globalState;
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    // setIsLoggedIn(false);
+    setGlobalState({
+      type: CHANGE_LOGGED_IN,
+      payload: false
+    })
     saveToken("");
   }
 
-  const handleChangeTheme = ()=>{
-    setIsDarkMode(!isDarkMode);
+  const handleChangeTheme = () => {
+
+    //setIsDarkMode(!isDarkMode);
+    setGlobalState({
+      type: CHANGE_DARK_MODE,
+      payload: !globalState.isDarkMode
+    })
   }
 
   return (
