@@ -5,9 +5,11 @@ const router = express.Router();
 
 const {authMiddleware} = require("../../middleware/authMiddleware");
 
-const route = express.Router();
+// route.get("/", handleWelcomeWeb);
 
-route.get("/", handleWelcomeWeb);
+router.get("/", (req,res)=>{
+    res.send("Hello world")
+})
 
 
 

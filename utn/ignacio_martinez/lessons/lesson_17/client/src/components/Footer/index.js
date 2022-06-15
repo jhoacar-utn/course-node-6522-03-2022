@@ -10,7 +10,7 @@ export default function Footer() {
             justifyContent: 'center',
             alignItems: 'center',
         }}>
-            Hecho por Ignacio Martinez
+            Hecho por Jhoan Carrero
         </AppBar>
     )
 }
