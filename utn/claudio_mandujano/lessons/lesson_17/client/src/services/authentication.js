@@ -8,7 +8,7 @@ export const handleLogin = async (email, password) => {
     const data = { email, password };
     // Las peticiones por post, put, patch se le especifica por primer parametro
     // la URL a donde envia la informacion y segundo parametro la informacion a enviar
-    const response = await axios.post(AUTH_URL + '/login', data); 
+    const response = await axios.post(AUTH_URL + '/login', data);
     const jsonResponse = response.data;  // El atributo .data contendra toda la informacion que se extrajo de la peticion
 
     if (jsonResponse.error)
@@ -26,6 +26,21 @@ export const handleLogin = async (email, password) => {
         success: jsonResponse.message
     }
 }
+
+export const handleRegister = async (userData) => {
+
+    console.log(userData);
+    const response = await axios.post(AUTH_URL + "/register", userData);
+    const jsonResponse = response.data;
+
+    if (jsonResponse.error)
+        throw jsonResponse.error;
+
+    return {
+        success: jsonResponse.message
+    }
+}
+
 
 export const saveToken = (token) => {
     localStorage.setItem('token', token);

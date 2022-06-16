@@ -2,17 +2,18 @@ import { Button, Card, FormControl, FormHelperText, Input, InputLabel } from '@m
 import { useContext, useState } from 'react';
 import { handleLogin } from '../../services/authentication';
 import { Navigate } from 'react-router-dom';
-import {toast} from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { AuthorizationContext } from '../../context/authorization';
+import { StoreContext } from '../../context/store';
+import { CHANGE_LOGGED_IN } from '../../reducers/action';
 
 export default function Login() {
 
-    
-
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {isLoggedIn, setIsLoggedIn} = useContext(AuthorizationContext);
+    // const { isLoggedIn, setIsLoggedIn } = useContext(AuthorizationContext);
+    const { globalState, setGlobalState } = useContext(StoreContext);
+    const { isLoggedIn } = globalState;
 
     const handleChangeEmail = (event) => {
         setEmail(event.target.value);
@@ -28,8 +29,11 @@ export default function Login() {
 
         handleLogin(email, password).then(() => {
             toast.success('Successfully logged!')
-            setIsLoggedIn(true);
-        }).catch((error)=>{
+            setGlobalState({
+                type: CHANGE_LOGGED_IN,
+                payload: true
+            })
+        }).catch((error) => {
             console.log(error);
             toast.error("An error has ocurred in the login.")
         });
