@@ -29,6 +29,7 @@ export const handleLogin = async (email, password) => {
 
 export const handleRegister = async (userData) => {
 
+  console.log(userData);
   const response = await axios.post(AUTH_URL + "/register", userData);
   const jsonResponse = response.data;
 

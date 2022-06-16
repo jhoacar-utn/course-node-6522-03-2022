@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthorizationContext } from "../../context/authorization";
+import { StoreContext } from "../../context/store";
 
-export function AuthMiddleware({ children }) {
 
-  const { isLoggedIn } = useContext(AuthorizationContext);
+export default function AuthMiddleware({ children }) {
+
+  const { globalState } = useContext(StoreContext);
+  const { isLoggedIn } = globalState;
 
   return (
     <>
       {isLoggedIn && children}
-
       {!isLoggedIn && <Navigate to="/"></Navigate>}
     </>
   )
