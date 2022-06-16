@@ -1,14 +1,16 @@
-import React from 'react'
-import "./Footer.css"
+import { AppBar } from "@mui/material";
 
-const Footer = () => {
+
+export default function Footer() {
+
   return (
-    <div ClassName="main-footer">
-      <div className='container' >
-        <h2>Developed By Pablo Rex UTN FRBA - Year 2022</h2>
-      </div>
-    </div>
+    <AppBar position="static" sx={{
+      minHeight: '4vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+      Hecho por Pablo Rex
+    </AppBar>
   )
 }
-
-export default Footer
