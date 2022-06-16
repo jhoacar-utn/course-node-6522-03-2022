@@ -12,8 +12,8 @@ import { CHANGE_AVATAR_AND_IMAGE, CHANGE_EMAIL, CHANGE_NAME, CHANGE_PASSWORD } f
 */
 export default function reducerFunction(state, action) {
 
-    console.log(state);
-    console.log(action);
+    // console.log(state);
+    // console.log(action);
 
     switch (action.type) {
         case CHANGE_PASSWORD:
@@ -36,7 +36,7 @@ export default function reducerFunction(state, action) {
         case CHANGE_EMAIL:
             return {
                 ...state,
-                email: action.payload.email
+                email: action.payload
             }
         default:
             return state;
