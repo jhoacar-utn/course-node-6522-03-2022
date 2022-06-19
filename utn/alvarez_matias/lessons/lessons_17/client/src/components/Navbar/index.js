@@ -10,15 +10,34 @@ import style from './index.module.css'
 import { Link } from 'react-router-dom';
 import { AuthorizationContext } from '../../context/authorization';
 import { saveToken } from '../../services/authentication';
+import { ThemeContext } from '../../context/theme'
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { StoreContext } from '../../context/store';
+import { CHANGE_LOGGED_IN, CHANGE_DARK_MODE } from '../../reducers/action';
+
 
 export default function Navbar() {
 
-  const { isloggedIn, setIsloggedInd } = useContext(AuthorizationContext)
+  const { globalState, setGlobalState } = useContext(StoreContext)
+  const { isloggedIn, isDarksMode } = globalState
 
 
   const handleLogout = () => {
-    setIsloggedInd(false)
+    /*     setIsloggedInd(false) */
+    setGlobalState({
+      type: CHANGE_LOGGED_IN,
+      payload: false
+    })
     saveToken("")
+  }
+
+  const handleChangeClick = () => {
+    /*  setIsDarkMode(!isDarksMode) */
+    setGlobalState({
+      type: CHANGE_DARK_MODE,
+      payload: !globalState.isDarksMode
+    })
   }
 
   return (
@@ -38,6 +57,17 @@ export default function Navbar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link className={style['navbar-link']} to="/">  My App</Link>
           </Typography>
+
+          <Button onClick={handleChangeClick} sx={{ color: 'unset' }}>
+            {
+              isDarksMode &&
+              <LightModeIcon />
+            }
+            {
+              !isDarksMode &&
+              <DarkModeIcon />
+            }
+          </Button>
 
           {
             !isloggedIn && <>
@@ -61,6 +91,6 @@ export default function Navbar() {
 
         </Toolbar>
       </AppBar>
-    </Box>
+    </Box >
   );
 }

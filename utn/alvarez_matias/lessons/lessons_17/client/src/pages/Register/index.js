@@ -1,14 +1,18 @@
-import { Button, Card, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material"
-import { useContext, useEffect, useState } from "react"
+import { accordionActionsClasses, Button, Card, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material"
+import { useContext, useEffect, useReducer, useState } from "react"
 import { Navigate } from "react-router-dom"
 import { AuthorizationContext } from "../../context/authorization"
 import { getAllCharacter } from '../../services/api'
 import { handleRegister } from '../../services/authentication'
 import { toast } from 'react-hot-toast'
+import reducerFunction from "./reducer"
+import { CHANGE_AVATAR_AND_IMAGE, CHANGE_EMAIL, CHANGE_NAME, CHANGE_PASSWORD } from "./action"
+import { StoreContext } from "../../context/store"
 
 export default function Register() {
 
-    const { isloggedIn } = useContext(AuthorizationContext)
+    const { globalState } = useContext(StoreContext)
+    const { isloggedIn } = globalState
 
     const [avatars, setAvatars] = useState([])
 
@@ -23,7 +27,8 @@ export default function Register() {
     }, [])
 
 
-    const [registerState, setRegisterState] = useState({
+
+    const [registerState, dispatch] = useReducer(reducerFunction, {
         name: "",
         email: "",
         password: "",
@@ -43,6 +48,7 @@ export default function Register() {
             avatar,
             image
         }
+
         handleRegister(userData).then(() => {
             toast.success('Registared successfully')
         }).catch((error) => {
@@ -52,24 +58,26 @@ export default function Register() {
     }
 
     const handleChangeEmail = (event) => {
-        setRegisterState({
-            ...registerState,
-            email: event.target.value
+        dispatch({
+            type: CHANGE_EMAIL,
+            payload: event.target.value
         })
     }
+
     const handleChangePassword = (event) => {
-        setRegisterState({
-            ...registerState,
-            password: event.target.value
+        dispatch({
+            type: CHANGE_PASSWORD,
+            payload: event.target.value
         })
     }
 
     const handleChangeName = (event) => {
-        setRegisterState({
-            ...registerState,
-            name: event.target.value
+        dispatch({
+            type: CHANGE_NAME,
+            payload: event.target.value
         })
     }
+
 
     const handleChangeAvatar = (event) => {
         const newAvatar = event.target.value
@@ -79,13 +87,15 @@ export default function Register() {
         })
 
         const newImage = avatarObject.image
-
-        setRegisterState({
-            ...registerState,
-            avatar: newAvatar,
-            image: newImage
+        dispatch({
+            type: CHANGE_AVATAR_AND_IMAGE,
+            payload: {
+                avatar: newAvatar,
+                image: newImage
+            }
         })
     }
+
 
 
     return (
@@ -128,7 +138,7 @@ export default function Register() {
                         <Select value={avatar} onChange={handleChangeAvatar} required>
                             {avatars.map((element) => {
                                 return (
-                                    <MenuItem value={element.name}>{element.name}</MenuItem>
+                                    <MenuItem value={element.name} key={element.name}>{element.name}</MenuItem>
                                 )
                             })}
                         </Select>
