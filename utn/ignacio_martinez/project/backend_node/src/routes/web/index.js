@@ -1,17 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const welcome = require("../../models/index");
+const {handleWelcome} = require("../../controllers/welcome");
 
 // const path = require("path");
 
-const {authMiddleware} = require("../../middleware/authMiddleware");
+// const {authMiddleware} = require("../../middleware/authMiddleware");
 
-// route.get("/", handleWelcomeWeb);
+ router.get("/", handleWelcome);
 
-router.get("/", (req,res)=>{
-    res.send("Hello world")
-})
-
-
-
-
+ 
 module.exports = router;
