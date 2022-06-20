@@ -16,6 +16,7 @@ const handleRegisterWeb = (request,response,next) => {
 const handleDashboardWeb = async (request,response,next) => {
     
     const userData = request.user;
+    console.log(userData)
     const emailUser = userData.email;
     
     //actualiza el dashboard

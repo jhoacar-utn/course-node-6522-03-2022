@@ -52,7 +52,6 @@ function RickCharacter () {
             </Container>
         </Card>
     )
-
 }
 
 export default RickCharacter

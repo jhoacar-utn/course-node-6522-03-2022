@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,11 +7,25 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import styles from './index.module.css';
+import { Link } from 'react-router-dom';
+import { AuthorizationContext } from '../../context/authorization';
+import { saveToken } from '../../services/authentication';
 
 export default function NavBar() {
+
+  const {isLoggedIn, setIsLoggedIn} = useContext(AuthorizationContext);
+
+  const handleLogOut = () => {
+    setIsLoggedIn(false);
+    saveToken("");
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{
+        minHeight:'5vh'
+      }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -19,15 +34,26 @@ export default function NavBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            MyApp
+          <Link className={styles['navbar-link']} to='/'>My App</Link>
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Register</Button>
-          <Button color="inherit">Dashboard</Button>
-          <Button color="inherit">Logout</Button>
+
+          {!isLoggedIn && <>
+          <Button color="inherit">
+            <Link className={styles['navbar-link']} to='/login'>Login</Link>
+          </Button>
+          <Button color="inherit">
+            <Link className={styles['navbar-link']} to='/register'>Register</Link>
+          </Button>
+          </>}
+
+          {isLoggedIn && <>
+          <Button color="inherit">
+            <Link className={styles['navbar-link']} to='/dashboard'>Dashboard</Link>
+          </Button>
+          <Button onClick={handleLogOut} color="inherit">Logout</Button>
+          </>}
         </Toolbar>
       </AppBar>
     </Box>

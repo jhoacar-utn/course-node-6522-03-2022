@@ -15,13 +15,16 @@ const postUser = async (request,response,next)=>{
         const plainPassword = data.password;
 
         data.password = await getHashedPassword(plainPassword);
-        data.avatar = "user/default.jpg"
+        data.avatar = "user/default.jpg";
 
         const user = new UserModel(data);
+
+        console.log(data)
         
         await user.save();
 
         response.json({"user_added": user});
+        //response.redirect("/")
 
     } catch(error) {
 

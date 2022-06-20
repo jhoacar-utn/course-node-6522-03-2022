@@ -36,9 +36,6 @@ const handleAuthLogin = async (req,res,next) => {
         res.status(500);
         return res.json({"server_error":error,message:"authControllerError"});
     }
-    
-
-
 };
 
 module.exports.handleAuthLogin = handleAuthLogin;

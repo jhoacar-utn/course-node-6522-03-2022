@@ -9,6 +9,7 @@ const handleAuthLogin = async (req,res,next) => {
     try{
         const {email,password} = req.body;
 
+        //Gets all the data associated with the user, through their email
         const user = await userModel.findOne({email: email}).lean().exec();
 
         if(!user) {
