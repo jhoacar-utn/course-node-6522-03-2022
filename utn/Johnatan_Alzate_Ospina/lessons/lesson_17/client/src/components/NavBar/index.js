@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,8 +6,37 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import styles from './index.module.css';
+import { Link } from 'react-router-dom';
+import { AuthorizationContext } from '../../context/authorization';
+import { saveToken } from '../../services/authentication';
+import { ThemeContext } from '@emotion/react';
+import { darkScrollbar } from '@mui/material';
+import { StoreContext } from '../../context/store';
+import {CHANGE_LOGUED_IN, CHANGE_DARK_MODE} from '../../reducers/action'
+
 
 export default function NavBar() {
+  const {globalState,setGloblState}=useContext(StoreContext)
+  const {isLoggedIn,isDarckMode}=globalState
+  const handleLogout =  ( )=>{
+    //setIsLoggedIn(false);
+    setGloblState({
+      type:CHANGE_LOGUED_IN,
+      payload:false
+    })
+    saveToken("");
+  }
+  const handleChangeTheme=()=>{
+    //setIsDarckMode(!isDarckMode)
+    setGloblState({
+      type:CHANGE_DARK_MODE,
+      payload:!globalState.isDarckMode
+  }) 
+}
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -22,12 +51,41 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            My App
+            <Link className={styles['navbar-link']} to="/">My App</Link>
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Register</Button>
-          <Button color="inherit">Dashboard</Button>
-          <Button color="inherit">Logout</Button>
+          <Button onClick={handleChangeTheme}
+          sx={{
+            color: "unset"
+          }}>
+          {
+            isDarckMode && 
+          <LightModeIcon/>
+          }
+          {
+            !isDarckMode &&
+            <DarkModeIcon/>
+          }
+          </Button>
+
+          {
+            !isLoggedIn && <>
+              <Button color="inherit">
+                <Link className={styles['navbar-link']} to="/login">Login</Link>
+              </Button>
+              <Button color="inherit">
+                <Link className={styles['navbar-link']} to="/register">Register</Link>
+              </Button>
+            </>
+          }
+
+          {
+            isLoggedIn && <>
+              <Button color="inherit">
+                <Link className={styles['navbar-link']} to="/dashboard">Dashboard</Link>
+              </Button>
+              <Button onClick={handleLogout} color="inherit">Logout</Button>
+            </>
+          }
         </Toolbar>
       </AppBar>
     </Box>

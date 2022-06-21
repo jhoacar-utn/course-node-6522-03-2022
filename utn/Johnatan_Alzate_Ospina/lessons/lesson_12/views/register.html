@@ -19,6 +19,29 @@
         <label for="email">Email <br>
             <input type="email" name="email" placeholder="email" required><br></label>
         <label for="password">Password <br><input type="password" name="password" placeholder="password" required><br></label>
+        <div>
+        <label for="icon">Escoja su abatar
+            <button onclick="traer()">clickear</button>
+        <select name="abatar" >
+            
+            <option id="contenido" value="avatar" ></option>
+        </select>
+        </label>
+    </div>
+        <script>
+            let contenido= document.querySelector('#contenido')
+            function traer(){
+                fetch('https://rickandmortyapi.com/api')
+                .then(res=> res.json())
+                .then(data=>{
+                    console.log(data.results)
+                    contenido.innerHTML=`
+                    <img src="${data.results.picture} " whidth="100px" class="img-fuid rounded-circle">
+                    <p>Nombre:${data.result.name.last} </p>
+                    `
+                })
+            }
+        </script>
         <br><input type="submit" value="Registrar Usuario">
     </form>
 </div>
