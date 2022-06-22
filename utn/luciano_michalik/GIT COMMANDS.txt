@@ -1,0 +1,15 @@
+ESTOS SON LOS COMANDOS MÁS COMUNES E IMPORTANTES Y LA ESTRUCTURA QUE SE USA!! GRABARSELO A FULL
+
+git status -> Me devuelve el estado actual de mi proyecto. Es muy util, usarlo siemore si tengo dudas con algo!!!!
+
+git add . -> Agrega todos los archivos que hayan sido editados para podere commitearlos
+git restore . -> Es un CTRL Z del CTRL S que le doy en Visual
+git restore --staged . ->Es un CTRL Z de git add . GUARDA porque no se recupera nada que se haya hecho restore!!!
+
+git commit -m "Mensaje" -> Sello la información del git add. Es decir, coloca una marca en la linea de tiempo de mi repo.
+
+git push origin nombre_rama -> Sube lo comiteado en el repo local al repo remoto
+
+git pull origin nombre_rama -> Actualiza mi repo local con lo que hay en el remoto
+
+//PULL REQUEST -> Es unir la rama remota hecha por mi al protyecto principal que está en la rama master!!!. Para hacerla hay que ir a la sección de PullRequest de GitHub y ahi poner "New Pull Request" y elegir como base:master y compare:mi_rama

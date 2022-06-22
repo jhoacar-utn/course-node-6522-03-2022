@@ -1,0 +1,23 @@
+//This practice was developed using Leifer Mendez tutorial
+
+It's a good practice work with a ".env.example" and a ".env", the last one it's a copy of the first.
+
+Scaffold -> Based on MVC 
+---controllers
+
+---models
+
+---routes
+
+---config
+
+---utils (or helpers) -> Almacena los manejadores de storage, middlewares, y otros metodos
+
+---storage
+
+
+Models -> hacen referencia a la estructura de los datos que van a existir en la base de datos. Se crea un modelo por cada colección o tabla (en mySql).
+
+Multer -> Para subir archivos a la DB. Para probar en postman se debe ubicar en la pestaña body->form-data
+
+Validators -> Sirven para validar que la info que llega a los controladores sea correcta. Es un paquete que se instala con npm i express-validator y me da todas las herramientas de validacion en vez de ir haciendo distintos ifs para verificar.

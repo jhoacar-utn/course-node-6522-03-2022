@@ -1,0 +1,3 @@
+Las rutas permiten un orden en el código. Cuadno se trabaja con rutas se puede usar un enrutador para separar la lógica 
+de la app.js de las rutas.
+Para las rutas uso la función de Router de express

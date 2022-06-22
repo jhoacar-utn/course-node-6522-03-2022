@@ -1,0 +1,13 @@
+Ctrl + K + C -> Comenta el codigo seleccionado
+Ctrl + K + U -> Descomenta el codigo deseleccionado
+Ctrl + Shift + L -> Coloca el cursor en cada coincidencia del texto seleccionado
+Ctrl + D -> Ubica el cursor una por una de las coincidencias del texto seleccionado
+
+En la seccion en windows se puede visualizar los archivos ocultos, que entre esos
+se encuentra la carpeta .git que es la encargada de manejar el repositorio,
+se debe tener una sola carpeta .git por el repo
+
+git pull origin lessons
+git merge --abort
+
+Las cookies son para almacenar configuraciones del entorno web que estamos viendo
