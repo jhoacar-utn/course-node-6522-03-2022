@@ -1,14 +1,19 @@
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useReducer } from "react";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { AuthorizationContext } from "../../context/authorization";
 import { getAllCharacters } from "../../services/api";
 import { handleRegister } from "../../services/authentication";
+import reducerFunction from "./reducer";
+import { CHANGE_NAME, CHANGE_AVATAR_AND_IMAGE, CHANGE_PASSWORD, CHANGE_EMAIL } from "./actions";
+import { StoreContext } from "../../context/store";
+
 
 export default function Register() {
 
-    const { isLoggedIn } = useContext(AuthorizationContext);
+    const { globalState } = useContext(StoreContext);
+    const { isLoggedIn } = globalState;
 
     const [avatars, setAvatars] = useState([]);
 
@@ -26,8 +31,14 @@ export default function Register() {
     // Si se especifica un array vacio, 
     // eso quiere decir que no depende de nada y solo se ejecuta la callback una sola vez
 
+    /*
+    Redux se compone de tres fundamentos:
 
-    const [registerState, setRegisterState] = useState({
+        dispatch -> disparador de eventos para cambiar el estado
+        -> las distintas acciones para cambiar partes especificas del estado
+        reducers -> las distintas funciones que cambiaran el estado
+    */
+    const [registerState, setRegisterState] = useReducer(reducerFunction, {
         name: "",
         email: "",
         password: "",
@@ -38,7 +49,7 @@ export default function Register() {
     const { name, email, password, avatar, image } = registerState;
 
     const handleSubmit = (event) => {
-        
+
         event.preventDefault();
 
         const userData = {
@@ -57,23 +68,26 @@ export default function Register() {
     }
 
     const handleChangeEmail = (event) => {
+
         setRegisterState({
-            ...registerState,
-            email: event.target.value
+            type: CHANGE_EMAIL,
+            payload: event.target.value
         });
     };
 
     const handleChangePassword = (event) => {
+
         setRegisterState({
-            ...registerState,
-            password: event.target.value
+            type: CHANGE_PASSWORD,
+            payload: event.target.value
         })
     };
 
     const handleChangeName = (event) => {
+
         setRegisterState({
-            ...registerState,
-            name: event.target.value
+            type: CHANGE_NAME,
+            payload: event.target.value
         })
     };
 
@@ -88,10 +102,12 @@ export default function Register() {
         const newImage = avatarObject.image;
 
         setRegisterState({
-            ...registerState,
-            avatar: newAvatar,
-            image: newImage
-        })
+            type: CHANGE_AVATAR_AND_IMAGE,
+            payload: {
+                avatar: newAvatar,
+                image: newImage
+            }
+        });
     };
 
 
@@ -113,20 +129,20 @@ export default function Register() {
                         width: "50%"
                     }}>
                         <InputLabel>User name</InputLabel>
-                        <Input type="text" value={name} onChange={handleChangeName} required/>
+                        <Input type="text" value={name} onChange={handleChangeName} required />
                     </FormControl>
                     <FormControl sx={{
                         width: "50%"
                     }} >
                         <InputLabel>Email address</InputLabel>
-                        <Input type="email" value={email} onChange={handleChangeEmail} required/>
+                        <Input type="email" value={email} onChange={handleChangeEmail} required />
                         <FormHelperText>We'll never share your email.</FormHelperText>
                     </FormControl>
                     <FormControl sx={{
                         width: "50%"
                     }}>
                         <InputLabel>Password</InputLabel>
-                        <Input type="password" value={password} onChange={handleChangePassword} required/>
+                        <Input type="password" value={password} onChange={handleChangePassword} required />
                         <FormHelperText>Please type your password.</FormHelperText>
                     </FormControl>
                     <FormControl sx={{

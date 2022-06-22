@@ -7,23 +7,39 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import { AuthorizationContext } from './context/authorization';
 import AuthMiddleware from './middlewares/Auth';
+import { ThemeContext } from './context/theme';
+import { StoreContext } from './context/store';
+import { globalReducer } from './reducers/global';
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark', // 'dark' or 'light'
-  },
-});
 
 export default function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [globalState, setGlobalState] = useReducer(globalReducer, {
+    isLoggedIn: false,
+    isDarkMode: true
+  })
+
+  const { isDarkMode } = globalState;
+
+  const value = {
+    globalState,
+    setGlobalState
+  }
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const theme = createTheme({
+    palette: {
+      mode: isDarkMode ? 'dark' : 'light', // 'dark' or 'light'
+    },
+  });
 
   return (
-    <AuthorizationContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      <ThemeProvider theme={darkTheme}>
+    <StoreContext.Provider value={value}>
+      <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Toaster position="bottom-right" reverseOrder={false} />
           <Layout>
@@ -41,6 +57,6 @@ export default function App() {
           </Layout>
         </BrowserRouter>
       </ThemeProvider>
-    </AuthorizationContext.Provider>
+    </StoreContext.Provider >
   );
 }
