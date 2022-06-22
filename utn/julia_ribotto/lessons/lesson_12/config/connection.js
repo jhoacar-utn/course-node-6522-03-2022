@@ -1,0 +1,20 @@
+//Este script decide con qué conexión a base de datos va a trabajar
+
+const {connection, MYSQL, MONGO} = require('./database');
+
+let initDatabase;
+
+
+switch(connection) {
+    case MYSQL:
+        initDatabase = require('./mysql/init');
+        break;
+    case MONGO:
+        initDatabase = require('./mongo/init');
+        break;
+    default:
+        throw `Must be specified DB_CONNECTION and only can be ${MYSQL} or ${MONGO}`;
+        break;
+};
+
+module.exports = initDatabase;
