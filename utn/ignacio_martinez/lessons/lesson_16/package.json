@@ -1,25 +1,21 @@
 {
-  "name": "backend_node",
+  "name": "lesson_16",
   "version": "1.0.0",
-  "description": "mi proyecto con nodejs",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src",
-    "dev": "nodemon src"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "cookie-session": "^2.0.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.7.0",
-    "mongoose": "^6.3.6",
+    "mongoose": "^6.3.4",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.20.1"
+    "sequelize": "^6.20.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
