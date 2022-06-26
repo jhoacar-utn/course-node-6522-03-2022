@@ -8,16 +8,35 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import { AuthorizationContext } from '../../context/authorization';
 import { saveToken } from '../../services/authentication';
+import { ThemeContext } from '../../context/theme';
+import { StoreContext } from '../../context/store';
+import { CHANGE_LOGGED_IN, CHANGE_DARK_MODE } from '../../reducers/action';
 
 export default function NavBar() {
 
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthorizationContext)
+  const { globalState, setGlobalState } = useContext(StoreContext);
+  const { isLoggedIn, isDarkMode } = globalState;
 
-  const handleLogout =  ( )=>{
-    setIsLoggedIn(false);
+  const handleLogout = () => {
+    // setIsLoggedIn(false);
+    setGlobalState({
+      type: CHANGE_LOGGED_IN,
+      payload: false
+    })
     saveToken("");
+  }
+
+  const handleChangeTheme = () => {
+
+    //setIsDarkMode(!isDarkMode);
+    setGlobalState({
+      type: CHANGE_DARK_MODE,
+      payload: !globalState.isDarkMode
+    })
   }
 
   return (
@@ -36,6 +55,21 @@ export default function NavBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link className={styles['navbar-link']} to="/">My App</Link>
           </Typography>
+
+          <Button onClick={handleChangeTheme}
+            sx={{
+              color: "unset"
+            }}
+          >
+            {
+              isDarkMode &&
+              <LightModeIcon />
+            }
+            {
+              !isDarkMode &&
+              <DarkModeIcon />
+            }
+          </Button>
 
           {
             !isLoggedIn && <>
