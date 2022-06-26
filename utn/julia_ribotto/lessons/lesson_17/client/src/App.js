@@ -8,38 +8,56 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import { Toaster } from 'react-hot-toast';
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { AuthorizationContext } from "./context/authorization";
 import AuthMiddleware from "./middleware/Auth";
+import { ThemeContext } from "./context/theme";
+import { StoreContext } from "./context/store";
+import { globalReducer } from "./reducers/global";
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark'
-  },
-});
+
 
 export default function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [globalState, setGlobalState] = useReducer(globalReducer, {
+    isLoggedIn: false,
+    isDarkMode: true
+  });
+
+  const { isDarkMode } = globalState;
+
+  const value = {
+    globalState,
+    setGlobalState
+  }
+
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const theme = createTheme({
+    palette: {
+      mode: isDarkMode ? 'dark' : 'light'
+    },
+  });
 
   return (
-    <AuthorizationContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
-    <ThemeProvider theme={darkTheme}>
-      <BrowserRouter>
-        <Toaster position="bottom-right" reverseOrder={false}></Toaster>
-        <Layout>
-          <Routes>
-            <Route exact="" path="/" element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="dashboard" element={<AuthMiddleware>
-              <Dashboard />
+    <StoreContext.Provider value={value}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Toaster position="bottom-right" reverseOrder={false}></Toaster>
+          <Layout>
+            <Routes>
+              <Route exact="" path="/" element={<Home />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="dashboard" element={<AuthMiddleware>
+                <Dashboard />
               </AuthMiddleware>} />
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </ThemeProvider>
-    </AuthorizationContext.Provider>
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StoreContext.Provider>
   );
 }

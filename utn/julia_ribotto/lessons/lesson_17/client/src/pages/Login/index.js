@@ -4,12 +4,18 @@ import { toast } from 'react-hot-toast';
 import { handleLogin } from '../../services/authentication';
 import { Navigate } from "react-router-dom";
 import { AuthorizationContext } from '../../context/authorization';
+import { StoreContext } from '../../context/store';
+import { CHANGE_LOGGED_IN } from '../../reducers/action';
 
 export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {isLoggedIn, setIsLoggedIn} = useContext(AuthorizationContext);
+
+    const { globalState, setGlobalState } = useContext(StoreContext);
+    const { isLoggedIn } = globalState;
+
+    //const {isLoggedIn, setIsLoggedIn} = useContext(AuthorizationContext);
 
     const handleChangeEmail = (event) => {
         setEmail(event.target.value)
@@ -26,7 +32,10 @@ export default function Login() {
         handleLogin(email, password).then(() => {
 
             toast.success('You are logged in');
-            setIsLoggedIn(true);
+            setGlobalState({
+                type: CHANGE_LOGGED_IN,
+                payload: true
+            });
 
         }).catch((error)=>{
 

@@ -8,16 +8,7 @@ export const handleLogin = async (email, password) => {
     
     const response = await axios.post(AUTH_URL + '/login', data);
 
-    // const response = await fetch(AUTH_URL + '/login',{
-    //     method: "POST",
-    //     body: JSON.stringify(data),
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     }
-    // });
-
-    const jsonResponse = await response.json();
+    const jsonResponse = response.data;
 
     if (jsonResponse.error) {
 
@@ -39,6 +30,8 @@ export const handleLogin = async (email, password) => {
 }
 
 export const handleRegister = async (userData) => {
+
+    console.log(userData)
     const response = await axios.post(AUTH_URL + "/register", userData);
     const jsonResponse = response.data;
 

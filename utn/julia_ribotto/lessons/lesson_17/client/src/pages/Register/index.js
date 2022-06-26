@@ -1,15 +1,18 @@
-import * as React from 'react';
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material";
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext, useState, useReducer } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthorizationContext } from "../../context/authorization";
 import { getAllCharacters } from '../../services/api';
 import { handleRegister } from "../../services/authentication";
 import toast from 'react-hot-toast';
+import reducerFunction from "./reducer";
+import { CHANGE_AVATAR_AND_IMAGE, CHANGE_EMAIL, CHANGE_NAME, CHANGE_PASSWORD } from "./actions";
+import { StoreContext } from "../../context/store";
 
 export default function Register() {
 
-    const { isLoggedIn } = useContext(AuthorizationContext);
+    const { globalState } = useContext(StoreContext);
+    const { isLoggedIn } = globalState;
 
     const [avatars, setAvatars] = useState([]);
 
@@ -24,7 +27,8 @@ export default function Register() {
             })
     }, []);
 
-    const [registerState, setRegisterState] = useState({
+
+    const [registerState, setRegisterState] = useReducer(reducerFunction, {
         name: "",
         email: "",
         password: "",
@@ -59,24 +63,40 @@ export default function Register() {
     };
 
     const handleChangeEmail = (event) => {
+
         setRegisterState({
-            ...registerState,
-            email: event.target.value
+            type: CHANGE_EMAIL,
+            payload: event.target.value
         });
+
+        // setRegisterState({
+        //     ...registerState,
+        //     email: event.target.value
+        // });
     };
 
     const handleChangePassword = (event) => {
+
         setRegisterState({
-            ...registerState,
-            password: event.target.value
-        })
+            type: CHANGE_PASSWORD,
+            payload: event.target.value
+        });
+        // setRegisterState({
+        //     ...registerState,
+        //     password: event.target.value
+        // })
     };
 
     const handleChangeName = (event) => {
+
         setRegisterState({
-            ...registerState,
-            name: event.target.value
-        })
+            type: CHANGE_NAME,
+            payload: event.target.value
+        });
+        // setRegisterState({
+        //     ...registerState,
+        //     name: event.target.value
+        // })
     };
 
     const handleChangeAvatar = (event) => {
@@ -90,10 +110,19 @@ export default function Register() {
         const newImage = newAvatarObject.image;
 
         setRegisterState({
-            ...registerState,
-            avatar: newAvatar,
-            image: newImage
-        })
+            type: CHANGE_AVATAR_AND_IMAGE,
+            payload: {
+                avatar: newAvatar,
+                image: newImage
+            }
+        });
+
+        // setRegisterState({
+            //     ...registerState,
+            //     avatar: newAvatar,
+            //     image: newImage
+            // })
+        
     };
 
 
@@ -155,7 +184,7 @@ export default function Register() {
 
                     <FormControl>
                         {
-                            image.length > 0 && <img style={{borderRadius:'50%', width:'200px'}} src={image}></img>
+                            image.length > 0 && <img style={{borderRadius:'50%', width:'200px'}} src={image} alt={avatar.name}></img>
                         }
 
                     </FormControl>
