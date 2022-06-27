@@ -28,9 +28,15 @@ const customFind = async (dataToFind) => {
   return user;
 }
 
+const customFindOne = async (dataToFind) => {
+  const user = await User.findOne(dataToFind).lean().exec();
+  return user;
+}
+
 
 User.customCreate = customCreate;
 User.customUpdate = customUpdate;
 User.customFind = customFind;
+User.customFindOne = customFindOne;
 
 module.exports = User;

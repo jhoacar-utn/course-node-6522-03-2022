@@ -4,6 +4,7 @@ const { userModel } = require("../models");
 const { isTheSameHash } = require("../helpers/handleEncrypt");
 //const { setCookie } = require("../helpers/handleCookie");
 
+
 const handleLogin = async (req, res) => {
 
   try {
@@ -37,7 +38,9 @@ const handleLogin = async (req, res) => {
       body: {
         email,
         name: user.name,
-        token
+        token,
+        avatar: user.avatar,
+        image: user.image
       }
     });
 
@@ -87,7 +90,33 @@ const handleRegister = async (req, res) => {
   }
 }
 
+const handleGetDashboard = async (req, res) => {
+  try {
+
+    const { email } = req.body;
+
+    const user = await userModel.customFindOne({ email: email });
+
+    if (!user) {
+      res.status(400);
+      return res.json({ error: "Profile not found" });
+    }
+    return res.json(
+      [{
+        email: user.email,
+        name: user.name,
+        avatar: user.avatar,
+        image: user.image
+      }]
+    );
+
+  } catch (error) {
+    res.json({ message: error.message })
+  }
+}
+
 module.exports = {
   handleRegister,
-  handleLogin
+  handleLogin,
+  handleGetDashboard,
 }

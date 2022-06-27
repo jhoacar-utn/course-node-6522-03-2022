@@ -1,10 +1,12 @@
 import axios from "axios";
 
 const API_URL = process.env.REACT_APP_RICK_API_URL || "https://rickandmortyapi.com/api"
+const AUTH_URL = process.env.REACT_APP_API_URL + "/dashboard/";
 
 export const getAllCharacters = async () => {
 
   try {
+
 
     // const response = await fetch(API_URL + "/character"); //Usando Fetch
     // const jsonData = await response.json();
@@ -24,19 +26,34 @@ export const getAllCharacters = async () => {
       }
     })
 
-    // const dataCharacters = [];
+  } catch (error) {
 
-    // for (let i = 0; i < results.length; i++) {
+    console.log(error);
+    return [];
+  }
+}
 
-    //     character = results[i];
+export const getOneCharacters = async () => {
 
-    //     dataCharacters.push({
-    //         name: character.name,
-    //         image: character.image
-    //     })
-    // }
+  try {
+    const dataEmail = localStorage.getItem('email')
 
-    // return dataCharacters;
+    const response = await axios.get(AUTH_URL + dataEmail);
+    const jsonData = response.data
+
+    const results = jsonData.results;
+
+    if (!results)
+      return [];
+
+    return results.map((element) => {
+      return {
+        name: element.name,
+        email: element.email,
+        image: element.image,
+        avatar: element.avatar
+      }
+    })
 
   } catch (error) {
 
