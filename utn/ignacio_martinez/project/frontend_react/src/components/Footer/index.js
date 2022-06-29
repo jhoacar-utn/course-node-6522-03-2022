@@ -9,8 +9,10 @@ export default function Footer() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            p:0,
+            m:0,
         }}>
-            Creado por Ignacio Martinez
+            Created by Ignacio Martinez
         </AppBar>
     )
 }
