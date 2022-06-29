@@ -1,0 +1,100 @@
+Sistema Decimal: -> 10 Digitos [0,1,2,3,4,5,6,7,8,9]
+
+-> 3625 = 5 + 2*10 + 6*100 + 3*1000 
+-> 3625 = 5*(10^0) + 2*(10^1) + 6*(10^2) + 3*(10^3)  
+
+Sistema Octal: -> 8 Digitos [0,...,7]
+
+-> 3625 (octal) = 5*(8^0) + 2*(8^1) + 6*(8^2) + 3*(8^3)  
+
+Sistema Hexadecimal: -> 16 Digitos [0,...,9,A,B,C,D,E,F]
+
+-> 8CAF (hexadecimal) = (15_F)*(16^0) + (10_A)*(16^1) + (12_C)*(16^2) + (8)*(16^3)  
+
+Sistema Binario: -> 2 Digitos [0,1]
+
+-> 11100001 -> 8 bits -> 1 byte
+
+1Kb -> 1024Bytes -> 1024*8 bits
+
+Direcciones IP:
+
+    -> Para cada direccion que se encuentre en la red le asignamos 32 bits
+
+    00000000 00000010 00001000 00000100
+
+        0 .  2 . 8 . 4
+
+    Notacion Punto decimal 
+    
+    0.0.0.0 -> Todas las direcciones ips existentes
+
+    -> Ip publica: es una direccion que se encontrara en internet
+
+        - Comienzan con cualquiera que no sea:
+
+        - 192.168.x.x
+        - 172.x.x.x
+        - 10.x.x.x
+
+
+    -> Ip privada: es una direccion que se encontrara en una red local o red privada
+
+        -> Router: Tiene su propia ip en la red privada o local
+                    Este dispositivo debe tener servicios de reconocimiento
+                    por lo general en el puerto 53 y deja saber la ip de 
+                    cada dispositivo en la red
+
+                Si se desea consumir un recurso en internet, lo primero que va
+                a pasar es que se va a conectar con el router.
+                Luego el router se comunicara con el IPS (Internet Service Provider)
+                (Fibertel, ...)
+        
+        - 192.168.x.x
+        - 172.x.x.x
+        - 10.x.x.x
+
+
+ipconfig -> Muestra la informacion de la red local (Windows)
+ifconfig -> Muestra la informacion de la red local (Linux o Mac)
+
+ping -> Muestra las estadisticas del servicio o computadora que se desea
+
+Mascara de Red:
+
+    255.255.255.0 -> 256 direcciones ip disponibles
+
+    Si se desea mas direcciones ip en la red
+
+    255.255.0.0 -> 256*256 direcciones ip disponibles
+
+Representacion de Direccion IP y Mascara de Red abreviada
+
+    - 0.0.0.0/0 
+
+    Dirección IPv4. . . . . . . . . . . . . . : 192.168.0.13
+    Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+
+    11111111 . 11111111 . 11111111 . 00000000 -> 255.255.255.0
+
+                    Red             |  Host
+    (Representa la cantidad de espacios ya ocupados) | (Representa la cantidad de ips que van a ser asignadas)
+
+    Otra forma de decir estas dos cosas es la siguiente:
+
+    192.168.0.13/(La cantidad de bits de red que se encuentra en la mascara de subred)
+    
+    192.168.0.13/24
+
+Direccion MAC:
+
+    Es una direccion unica en todo el mundo y es especifica del
+    dispositivo de conexion:
+
+    - Bluetooth -> Tendra su direccion MAC
+    - Wifi -> Tendra su direccion MAC
+
+
+
+
+
