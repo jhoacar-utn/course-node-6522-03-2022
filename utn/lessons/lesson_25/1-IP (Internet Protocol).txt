@@ -50,6 +50,8 @@ Direcciones IP:
                 Luego el router se comunicara con el IPS (Internet Service Provider)
                 (Fibertel, ...)
         
+        Estos son los prefijos para las redes privadas o locales:
+
         - 192.168.x.x
         - 172.x.x.x
         - 10.x.x.x
@@ -60,7 +62,7 @@ ifconfig -> Muestra la informacion de la red local (Linux o Mac)
 
 ping -> Muestra las estadisticas del servicio o computadora que se desea
 
-Mascara de Red:
+Mascara de Red o Subred:
 
     255.255.255.0 -> 256 direcciones ip disponibles
 
@@ -70,7 +72,7 @@ Mascara de Red:
 
 Representacion de Direccion IP y Mascara de Red abreviada
 
-    - 0.0.0.0/0 
+    - 0.0.0.0/0 -> Ejemplo de todas las direcciones IP y todas las redes y subredes
 
     Dirección IPv4. . . . . . . . . . . . . . : 192.168.0.13
     Máscara de subred . . . . . . . . . . . . : 255.255.255.0
