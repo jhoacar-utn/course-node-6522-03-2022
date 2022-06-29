@@ -1,9 +1,10 @@
+import RickCharacter from "../../components/Characters"
 
 export default function Home()
 {
     return (
         <div>
-            Estoy en home
+            <RickCharacter />
         </div>
     )
 }

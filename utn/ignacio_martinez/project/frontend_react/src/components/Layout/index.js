@@ -12,7 +12,6 @@ export default function Layout({ children }) {
                 display:'flex',
                 justifyContent:'center',
                 alignItems: 'center',
-                backgroundColor: 'white',
                 color: 'black'
             }}>
                 {children}

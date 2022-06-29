@@ -25,16 +25,16 @@ function RickCharacter() {
     }, []);
 
     return (
-        <Card>
+        <Card sx={{mt:5}}>
             <Typography sx={{ textAlign: 'center' }} component="h3" variant="h3">
                 All Characters
             </Typography>
-            <Grid component="ul" sx={{display:"grid", alignItems:"center", justifyContent:"center"}}>
+            <Grid component="ul" sx={{display:"grid", alignItems:"center", justifyContent:"center", p:0}}>
                 {characters.map((element) => {
                     return (
                         <Card
                             component="li"
-                            sx={{ maxWidth: 300 }}
+                            sx={{ maxWidth: 300, alignItems:"center", pr:2, pl:2 }}
                             key={element.name}>
                             <CardMedia
                                 component="img"

@@ -2,8 +2,6 @@
 export default function Dashboard()
 {
     return (
-        <div>
-            Estoy en dasboard
-        </div>
+        <h1>You are in the dashboard</h1>
     )
 }

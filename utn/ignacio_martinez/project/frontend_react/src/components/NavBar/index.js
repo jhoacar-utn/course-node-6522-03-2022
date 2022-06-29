@@ -34,7 +34,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link className={styles['navbar-link']} to="/">My App</Link>
+            <Link className={styles['navbar-link']} to="/">Avatar App</Link>
           </Typography>
 
           {
