@@ -1,0 +1,15 @@
+DNS: Es un servicio que traduce direcciones ip a nombres y viceversa
+    Por lo general esta habilitado en el puerto 53
+
+Cada nombre de dominio debe poseer una direccion ip,
+para registrar esta direccion ip hacemos uso de un 'record' que
+es llamado 
+
+        A o AA -> IPv4 -> x.x.x.x -> Es sistema binario
+        AAAA -> IPv6 -> xxx::xxx:xxxx:xxxxx -> No es con sistema binario, sino hexadecimal
+
+        Ejemplo IPv6:
+                fe80::cf0:5f7e:5626:ef5f%20
+
+        CNAME -> Alias para resolver la ip con algun record A o AA o AAAA que se haya registrado anteriormente
+        

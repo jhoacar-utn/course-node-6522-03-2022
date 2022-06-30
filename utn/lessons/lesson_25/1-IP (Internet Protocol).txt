@@ -36,7 +36,12 @@ Direcciones IP:
         - 192.168.x.x
         - 172.x.x.x
         - 10.x.x.x
+        - 127.0.0.x -> localhost
 
+    -> El protocolo de NAT (Network Address Translation) es el encargado
+        de convertir las direcciones ip privadas que recibe mi router hacia
+        direcciones ip publicas que seran usadas para buscar informacion 
+        a traves de internet
 
     -> Ip privada: es una direccion que se encontrara en una red local o red privada
 
@@ -47,6 +52,12 @@ Direcciones IP:
 
                 Si se desea consumir un recurso en internet, lo primero que va
                 a pasar es que se va a conectar con el router.
+                El router resolvera el dominio, sea (youtube.com, google.com,...)
+                y devolvera la IP, ya con la ip procede a comunicarse en internet
+                y consumira por ejemplo con el verbo GET un recurso comunicandose
+                con el router a traves del puerto 80 (El puerto 80 es el puerto 
+                utilizado para peticiones por HTTP).
+
                 Luego el router se comunicara con el IPS (Internet Service Provider)
                 (Fibertel, ...)
         
@@ -55,6 +66,7 @@ Direcciones IP:
         - 192.168.x.x
         - 172.x.x.x
         - 10.x.x.x
+        - 127.0.0.x -> localhost
 
 
 ipconfig -> Muestra la informacion de la red local (Windows)
