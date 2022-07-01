@@ -1,0 +1,4 @@
+Este comando me permite conectarme a las distintas computadoras usando
+una ip o un nombre de dominio
+
+    ssh (ip o nombre del dominio)
