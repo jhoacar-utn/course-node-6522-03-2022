@@ -9,21 +9,30 @@ import { Link } from 'react-router-dom';
 import { AuthorizationContext } from '../../context/authorization';
 import { saveToken } from '../../services/authentication';
 import CustomizedSwitches from "../themeSwitch";
+import { ThemeContext } from '../../context/theme';
 
 export default function NavBar() {
 
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthorizationContext)
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthorizationContext);
+
+  const {isDarkMode, setIsDarkMode } = useContext(ThemeContext);
 
   const handleLogout =  ( )=>{
     setIsLoggedIn(false);
     saveToken("");
   }
 
+  const handleChangeTheme = ()=> {
+    setIsDarkMode(!isDarkMode);
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <CustomizedSwitches></CustomizedSwitches>
+          <button onClick={handleChangeTheme} className={styles['switch-theme']}>
+          <CustomizedSwitches onClick={handleChangeTheme}></CustomizedSwitches>
+          </button>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link className={styles['navbar-link']} to="/">Avatar App</Link>
           </Typography>

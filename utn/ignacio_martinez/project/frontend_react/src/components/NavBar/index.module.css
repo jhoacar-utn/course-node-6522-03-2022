@@ -2,3 +2,10 @@
     text-decoration: none;
     color: inherit;
 }
+
+.switch-theme {
+    background-color: inherit;
+    border: none;
+    width:min-content;
+    height: min-content;
+}
