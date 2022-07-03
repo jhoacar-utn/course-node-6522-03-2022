@@ -7,17 +7,31 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import { AuthorizationContext } from './context/authorization';
 import AuthMiddleware from './middlewares/Auth';
 import { ThemeContext } from './context/theme';
+import { StoreContext } from './context/store';
+import { globalReducer } from './reducers/global';
 
 
 export default function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [globalState, setGlobalState] = useReducer(globalReducer, {
+    isLoggedIn: false,
+    isDarkMode: true
+  })
 
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { isDarkMode } = globalState;
+
+  const value = {
+    globalState,
+    setGlobalState
+  }
+
+ // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+ // const [isDarkMode, setIsDarkMode] = useState(true);
 
   const theme = createTheme({
     palette: {
@@ -26,27 +40,25 @@ export default function App() {
   });
 
   return (
-    <ThemeContext.Provider value={{isDarkMode, setIsDarkMode }}>
-      <AuthorizationContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-        <ThemeProvider theme={theme}>
-          <BrowserRouter>
-            <Toaster position="bottom-right" reverseOrder={false} />
-            <Layout>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/dashboard" element={
-                  <AuthMiddleware>
-                    <Dashboard />
-                  </AuthMiddleware>
-                } />
-                <Route path="/*" element={<NotFound />} />
-              </Routes>
-            </Layout>
-          </BrowserRouter>
-        </ThemeProvider>
-      </AuthorizationContext.Provider>
-    </ThemeContext.Provider>
+    <StoreContext.Provider value={value}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Toaster position="bottom-right" reverseOrder={false} />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/dashboard" element={
+                <AuthMiddleware>
+                  <Dashboard />
+                </AuthMiddleware>
+              } />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StoreContext.Provider >
   );
 }

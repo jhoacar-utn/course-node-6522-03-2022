@@ -1,14 +1,18 @@
 import { Button, Card, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useReducer } from "react";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { AuthorizationContext } from "../../context/authorization";
 import { getAllCharacters } from "../../services/api";
 import { handleRegister } from "../../services/authentication";
+import reducerFunction from "./reducer";
+import { CHANGE_NAME, CHANGE_AVATAR_AND_IMAGE, CHANGE_PASSWORD, CHANGE_EMAIL, changeName, changePassword, changeEmail, changeAvatarAndImage } from "./actions";
+import { StoreContext } from "../../context/store";
 
 export default function Register() {
 
-    const { isLoggedIn } = useContext(AuthorizationContext);
+    const { globalState } = useContext(StoreContext);
+    const { isLoggedIn } = globalState;
 
     const [avatars, setAvatars] = useState([]);
 
@@ -26,8 +30,13 @@ export default function Register() {
     // Si se especifica un array vacio, 
     // eso quiere decir que no depende de nada y solo se ejecuta la callback una sola vez
 
+    // Redux se compone en tres fundamentos:
+        // dispatch -> dispara eventos para cambiar el estado
+        // actions -> acciones para cambiar partes especificas del estado
+        // reducers -> funciones que cambiaran el estado
 
-    const [registerState, setRegisterState] = useState({
+
+    const [registerState, setRegisterState] = useReducer(reducerFunction,{
         name: "",
         email: "",
         password: "",
@@ -57,24 +66,15 @@ export default function Register() {
     }
 
     const handleChangeEmail = (event) => {
-        setRegisterState({
-            ...registerState,
-            email: event.target.value
-        });
+        setRegisterState(changeEmail(event.target.value));
     };
 
     const handleChangePassword = (event) => {
-        setRegisterState({
-            ...registerState,
-            password: event.target.value
-        })
+        setRegisterState(changePassword(event.target.value))
     };
 
     const handleChangeName = (event) => {
-        setRegisterState({
-            ...registerState,
-            name: event.target.value
-        })
+        setRegisterState(changeName(event.target.value));
     };
 
     const handleChangeAvatar = (event) => {
@@ -87,11 +87,7 @@ export default function Register() {
 
         const newImage = avatarObject.image;
 
-        setRegisterState({
-            ...registerState,
-            avatar: newAvatar,
-            image: newImage
-        })
+        setRegisterState(changeAvatarAndImage(newAvatar, newImage));
     };
 
 
