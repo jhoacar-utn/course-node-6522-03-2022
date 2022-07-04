@@ -1,3 +1,4 @@
+/*
 const {connection} = require("../../config/mongo/connection");
 
 const mongoInit = async ()=> {
@@ -12,3 +13,4 @@ try {
 }
 
 module.exports = mongoInit;
+*/

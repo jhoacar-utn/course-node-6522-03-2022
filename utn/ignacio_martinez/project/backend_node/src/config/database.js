@@ -1,6 +1,11 @@
 module.exports = {
     connection: process.env.DB_CONNECTION,
-    uri: process.env.DB_URI,
     MYSQL: "mysql",
-    MONGO: "mongodb"
+    MONGO: "mongodb",
+    mysql: {
+        uri: process.env.DB_URI,
+    },
+    mongo: {
+        uri: process.env.DB_URI,
+    }
 }

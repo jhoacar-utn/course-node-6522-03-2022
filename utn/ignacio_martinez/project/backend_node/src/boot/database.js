@@ -1,3 +1,4 @@
+/*
 const {connection, MYSQL, MONGO} = require("../config/database");
 
 let initialization;
@@ -20,3 +21,4 @@ switch(connection){
 
 
 module.exports = initialization;
+*/

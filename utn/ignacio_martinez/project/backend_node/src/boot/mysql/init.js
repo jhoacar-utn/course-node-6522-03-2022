@@ -1,3 +1,4 @@
+/*
 const {connection} = require("../../config/mysql/connection");
 
 const mysqlInit = async ()=> {
@@ -13,3 +14,4 @@ try {
 
 
 module.exports = mysqlInit;
+*/
