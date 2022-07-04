@@ -23,7 +23,6 @@ const customUpdate = async (dataToFind, dataToUpdate) => {
 }
 
 const customFind = async (dataToFind) => {
-  //El metodo .lean() limpia el modelo de metodos y devuelve solo data, esto es util para trabajar con JWT
   const user = await User.findOne(dataToFind).lean().exec();
   return user;
 }

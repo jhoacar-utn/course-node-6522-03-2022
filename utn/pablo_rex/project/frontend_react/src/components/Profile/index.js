@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { handleDashboard } from '../../services/authentication';
+import { handleDashboard } from '../../services/user';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -9,14 +9,13 @@ import { Grid } from '@mui/material';
 function OneCharacter() {
 
   const [profile, setprofile] = useState([]);
-  const dataEmail = localStorage.getItem('email');
 
+  const token = localStorage.getItem('token');
   useEffect(() => {
 
-    handleDashboard(dataEmail)
+    handleDashboard(token)
       .then(arrayprofile => {
 
-        // console.log("Profile Character" + arrayprofile);
         setprofile(arrayprofile);
 
       }).catch(error => {

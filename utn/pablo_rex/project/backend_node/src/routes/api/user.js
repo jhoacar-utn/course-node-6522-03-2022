@@ -1,13 +1,11 @@
 const express = require("express");
 const authMiddleware = require("../../middleware/authMiddleware");
-const { handleRegister, handleLogin } = require("../../controllers/auth");
-
+const { handleGetDashboard } = require("../../controllers/user");
 
 
 const router = express.Router();
 
-router.post("/login", handleLogin);
-router.post("/register", handleRegister);
 
+router.get("/profile/:token", handleGetDashboard);
 
 module.exports = router;

@@ -28,8 +28,6 @@ export default function App() {
     globalState,
     setGlobalState
   }
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [isDarkMode, setIsDarkMode] = useState(true);
 
   const theme = createTheme({
     palette: {

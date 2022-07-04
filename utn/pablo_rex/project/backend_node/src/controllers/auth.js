@@ -1,9 +1,10 @@
 const { getHashedPassword } = require("../helpers/handleEncrypt");
-const { getJSONWebToken } = require("../helpers/handleJWT");
+const { getJSONWebToken, verifyJSONWebToken } = require("../helpers/handleJWT");
 const { userModel } = require("../models");
 const { isTheSameHash } = require("../helpers/handleEncrypt");
 //const { setCookie } = require("../helpers/handleCookie");
-
+const jwt = require('jsonwebtoken');
+const { secretKey } = require("../config/config");
 
 const handleLogin = async (req, res) => {
 
@@ -23,6 +24,7 @@ const handleLogin = async (req, res) => {
       return res.json({ error: "User not registered" });
     }
 
+
     const isAuthorized = await isTheSameHash(password, user.password);
 
     if (!isAuthorized) {
@@ -37,10 +39,7 @@ const handleLogin = async (req, res) => {
       message: "user loggedin successfully",
       body: {
         email,
-        name: user.name,
-        token,
-        avatar: user.avatar,
-        image: user.image
+        token
       }
     });
 
@@ -70,8 +69,9 @@ const handleRegister = async (req, res) => {
     const plainPassword = data.password;
 
     data.password = await getHashedPassword(plainPassword);
+
     await userModel.customCreate(data);
-    console.log(userModel);
+    //console.log(userModel);
     return res.json({
       message: "user registered successfully",
       body: {
@@ -93,22 +93,31 @@ const handleRegister = async (req, res) => {
 const handleGetDashboard = async (req, res) => {
   try {
 
-    const { email } = req.body;
+    const { token } = req.body;
+    console.log("viene del front: " + token);
+    if (!token)
+      return res.json({ error: "Usuario no autenticado" });
+
+    const userData = verifyJSONWebToken(token);
+
+    //------------------------------------
+    const { email } = userData.email;
 
     const user = await userModel.customFindOne({ email: email });
 
     if (!user) {
       res.status(400);
-      return res.json({ error: "Profile not found" });
+      return res.json({ error: "Perfil no encontrado" });
     }
-    return res.json(
-      [{
+    return res.json({
+      message: "Perfil del usuario con toda la información",
+      body: {
         email: user.email,
         name: user.name,
         avatar: user.avatar,
         image: user.image
-      }]
-    );
+      }
+    });
 
   } catch (error) {
     res.json({ message: error.message })
