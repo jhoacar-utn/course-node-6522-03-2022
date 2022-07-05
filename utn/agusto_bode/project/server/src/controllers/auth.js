@@ -10,6 +10,16 @@ const handleLogin = (req, res) => {
             error: "email and passwords are required"
         })
 
+    /* if (email != 'test@test.com')
+        return res.json({
+            error: "user not registered"
+        })
+
+    if (password != 'test')
+        return res.json({
+            error: "password incorrect"
+        }) */
+
     if (email != req.body.email)
         return res.json({
             error: "user not registered"
