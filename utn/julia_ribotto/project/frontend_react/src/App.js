@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/NotFound";
+import { useReducer } from "react";
+import AuthMiddleware from "./middleware/Auth";
+import { StoreContext } from "./context/store";
+import { globalReducer } from "./reducers/global";
 
-function App() {
+
+
+export default function App() {
+
+  const [globalState, setGlobalState] = useReducer(globalReducer, {
+    isLoggedIn: false,
+    isDarkMode: true,
+  });
+
+  const { isDarkMode } = globalState;
+
+  const value = {
+    globalState,
+    setGlobalState
+  };
+
+
+  const theme = createTheme({
+    palette: {
+      mode: isDarkMode ? 'dark' : 'light'
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StoreContext.Provider value={value}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Toaster position="bottom-center" reverseOrder={false}></Toaster>
+          <Layout>
+            <Routes>
+              <Route exact="" path="/" element={<Home />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="dashboard" element={<AuthMiddleware>
+                <Dashboard />
+              </AuthMiddleware>} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StoreContext.Provider>
   );
 }
-
-export default App;
