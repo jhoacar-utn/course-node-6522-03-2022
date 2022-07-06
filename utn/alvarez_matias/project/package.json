@@ -1,0 +1,21 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build-client && npm run start-server",
+    "dev-client": "env-cmd -f client.env npm start --prefix=client",
+    "build-client": "env-cmd -f client.env npm run build --prefix=client",
+    "start-server": "env-cmd -f server.env npm start --prefix=server",
+    "dev-server": "env-cmd -f server.env npm run dev --prefix=server",
+    "dev": "concurrently  \"npm:dev-*\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.2.1",
+    "env-cmd": "^10.1.0"
+  }
+}
