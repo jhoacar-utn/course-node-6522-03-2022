@@ -1,6 +1,4 @@
 /node_modules
 /**/node_modules
-/**/.*env
+//.*env
 /**/.envexample
-server.env
-client.env
