@@ -15,8 +15,7 @@ function OneCharacter() {
 
     handleDashboard(dataEmail)
       .then(arrayprofile => {
-
-        // console.log("Profile Character" + arrayprofile);
+  
         setprofile(arrayprofile);
 
       }).catch(error => {

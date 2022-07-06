@@ -1,7 +1,7 @@
 import NavBar from "../Navbar";
 import Footer from "../Footer";
 import { Card } from "@mui/material";
-
+import styles from './index.module.css';
 
 export default function Layout({ children }) {
 
@@ -13,7 +13,7 @@ export default function Layout({ children }) {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#00CCFA',
+        backgroundColor: 'transparent',        
         color: 'black'
       }}>
         {children}

@@ -5,12 +5,12 @@ export default function Footer() {
 
   return (
     <AppBar position="static" sx={{
-      minHeight: '4vh',
+      minHeight: '10vh',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
     }}>
-      Hecho por ClaudioM.
+      Hecho por Claudio Mandujano
     </AppBar>
   )
 }

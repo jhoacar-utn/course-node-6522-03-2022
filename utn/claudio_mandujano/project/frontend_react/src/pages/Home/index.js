@@ -1,7 +1,9 @@
 export default function Home() {
     return (
+
+       
       <div>
-        Estoy en home
+        <h1>Welcome AvatarApp Rick and Morty</h1>
       </div>
     )
   }
