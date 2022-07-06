@@ -27,6 +27,9 @@ const User = sequelize.define('User', {
 
 console.log("Using Sequelize")
 
+
+
+
 const customCreate = async (dataUser) => {
   return await User.create(dataUser);
 }
@@ -42,10 +45,17 @@ const customFind = async (dataToFind) => {
   return user;
 }
 
+const customFindOne = async (dataToFind) => {
+  //La opcion raw:true limpia el modelo de metodos y devuelve solo data, esto es util para trabajar con JWT
+  const user = await User.findOne({ where: dataToFind, raw: true });
+  return user;
+}
+
 
 
 User.customCreate = customCreate;
 User.customUpdate = customUpdate;
 User.customFind = customFind;
+User.customFindOne = customFindOne;
 
 module.exports = User;

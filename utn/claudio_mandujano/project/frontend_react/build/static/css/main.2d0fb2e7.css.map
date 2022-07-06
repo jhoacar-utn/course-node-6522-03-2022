@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.2d0fb2e7.css","mappings":"AAAA,2BAEI,aAAwB,CADxB,oBAEJ","sources":["components/NavBar/index.module.css"],"sourcesContent":[".navbar-link {\r\n    text-decoration: none;\r\n    color: rgb(12, 176, 241);\r\n}"],"names":[],"sourceRoot":""}

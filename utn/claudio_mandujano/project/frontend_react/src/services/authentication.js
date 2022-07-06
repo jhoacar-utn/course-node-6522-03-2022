@@ -10,7 +10,7 @@ export const handleLogin = async (email, password) => {
   // la URL a donde envia la informacion y segundo parametro la informacion a enviar
   const response = await axios.post(AUTH_URL + '/login', data);
   const jsonResponse = response.data;  // El atributo .data contendra toda la informacion que se extrajo de la peticion
-
+  saveDashboardEmail(email);
   if (jsonResponse.error)
     throw jsonResponse.error;
 
@@ -21,6 +21,8 @@ export const handleLogin = async (email, password) => {
     throw "Token is required in the login";
 
   saveToken(token);
+
+
 
   return {
     success: jsonResponse.message
@@ -41,6 +43,30 @@ export const handleRegister = async (userData) => {
   }
 }
 
+export const handleDashboard = async (email) => {
+  try {
+    const data = { email };
+
+    const response = await axios.post(AUTH_URL + '/dashboard', data);
+    const profile = response.data;
+
+    if (!profile)
+      return [];
+
+    return profile.map((element) => {
+      return {
+        name: element.name,
+        image: element.image,
+        avatar: element.avatar,
+        email: element.email
+      }
+    })
+
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
 
 export const saveToken = (token) => {
   localStorage.setItem('token', token);
@@ -48,4 +74,12 @@ export const saveToken = (token) => {
 
 export const getToken = () => {
   localStorage.getItem('token');
+}
+
+export const saveDashboardEmail = (email) => {
+  localStorage.setItem('email', email);
+}
+
+export const getDashboardEmail = () => {
+  localStorage.getItem('email');
 }

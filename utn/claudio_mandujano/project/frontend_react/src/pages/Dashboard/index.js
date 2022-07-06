@@ -1,7 +1,16 @@
+import OneCharacter from "../../components/Profile";
+
+
 export default function Dashboard() {
-    return (
+  return (
+    <div>
+      <div><h1>Avatar App "Rick and Morty"</h1></div>
       <div>
-        Estoy en dashboard
+        <OneCharacter></OneCharacter>
+
       </div>
-    )
-  }
+
+
+    </div>
+  )
+}

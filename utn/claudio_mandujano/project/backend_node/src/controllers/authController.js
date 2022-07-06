@@ -27,9 +27,9 @@ const handleAuthLogin = async (req, res, next) => {
       return res.json({ error: "User not authorized" });
     }
 
-    // const token = getJSONWebToken(user);
+     //const token = getJSONWebToken(user); 
 
-    // setCookie(req, token);
+     //setCookie(req, token); 
 
     return res.redirect("/dashboard");
 
