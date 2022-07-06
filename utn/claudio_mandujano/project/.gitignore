@@ -2,3 +2,5 @@
 /**/node_modules
 //.*env
 /**/.envexample
+/client.env
+/server.env
