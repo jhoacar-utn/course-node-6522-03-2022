@@ -3,7 +3,7 @@ const { userModel } = require("../models");
 
 const handleLogin = (req, res) => {
 
-    const { email, password } = req.body;
+    const { email, password, } = req.body
 
     if (!email || !password)
         return res.json({
@@ -31,11 +31,15 @@ const handleLogin = (req, res) => {
         })
 
     return res.json({
-        message: "user logged in succesfully",
+        message: "user registered successfully",
         body: {
+            email,
+            name: "Augusto",
+            avatar: "Albert Einstein",
+            image: "https://rickandmortyapi.com/api/character/avatar/11.jpeg",
             token: "tu token"
         }
-    })
+    });
 
 }
 
