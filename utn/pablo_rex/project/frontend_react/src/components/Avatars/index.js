@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react';
-import { handleDashboard } from '../../services/user';
+import { handleAvatar } from '../../services/user';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 
-function OneCharacter() {
+function OneAvatars() {
 
-  const [profile, setprofile] = useState([]);
+  const [avatar, setavatar] = useState([]);
 
-  const token = localStorage.getItem('token');
   useEffect(() => {
 
-    handleDashboard(token)
-      .then(arrayprofile => {
-
-        setprofile(arrayprofile);
+    handleAvatar()
+      .then(arrayavatar => {
+        // console.log(arrayavatar);
+        setavatar(arrayavatar);
 
       }).catch(error => {
         console.log(error);
@@ -29,12 +28,12 @@ function OneCharacter() {
       <Typography sx={{ textAlign: 'center' }} component="h4" variant="h4">
       </Typography>
       <Grid component="ul" sx={{ display: "grid", alignItems: "center", justifyContent: "center" }}>
-        {profile.map((element) => {
+        {avatar.map((element) => {
           return (
             <Card
               component="li"
               sx={{ maxWidth: 350 }}
-              key={element.email}>
+              key={element._id}>
               <CardMedia
                 component="img"
                 width="120"
@@ -43,23 +42,23 @@ function OneCharacter() {
               >
               </CardMedia>
               <CardContent>
-                <Typography
+                {/* <Typography
                   variant="h5"
                   component="h5"
                 >
                   Name: {element.name}
-                </Typography>
-                <Typography
+                </Typography> */}
+                {/* <Typography
                   variant="h5"
                   component="h5"
                 >
                   Email: {element.email}
-                </Typography>
+                </Typography> */}
                 <Typography
                   variant="h5"
                   component="h5"
                 >
-                  Avatar: {element.avatar}
+                  {element.avatar}
                 </Typography>
               </CardContent>
             </Card>
@@ -71,4 +70,4 @@ function OneCharacter() {
 
 }
 
-export default OneCharacter;
+export default OneAvatars;

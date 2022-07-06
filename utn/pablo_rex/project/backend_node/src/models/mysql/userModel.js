@@ -48,11 +48,18 @@ const customFindOne = async (dataToFind) => {
   return user;
 }
 
+const customFindAll = async (dataToFind) => {
+  //La opcion raw:true limpia el modelo de metodos y devuelve solo data, esto es util para trabajar con JWT
+  const user = await User.findAll({ attributes: ['avatar'] });
+  return user;
+}
+
 
 
 User.customCreate = customCreate;
 User.customUpdate = customUpdate;
 User.customFind = customFind;
 User.customFindOne = customFindOne;
+User.customFindAll = customFindAll;
 
 module.exports = User;

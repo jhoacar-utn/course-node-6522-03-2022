@@ -1,11 +1,11 @@
 const express = require("express");
-const authMiddleware = require("../../middleware/authMiddleware");
-const { handleGetDashboard } = require("../../controllers/user");
+const { handleGetDashboard, handleGetAvatars } = require("../../controllers/user");
 
 
 const router = express.Router();
 
 
-router.get("/profile/:token", handleGetDashboard);
+router.get("/avatar", handleGetAvatars);
+router.get("/profile", handleGetDashboard);
 
 module.exports = router;

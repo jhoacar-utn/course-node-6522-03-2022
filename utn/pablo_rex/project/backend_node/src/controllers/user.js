@@ -8,13 +8,13 @@ const { secretKey } = require("../config/config");
 
 const handleGetDashboard = async (req, res) => {
   try {
-    let token = req.params.token;
-    console.log("viene del front: " + token);
+    let { token } = req.query;
+
     if (!token)
       return res.json({ error: "Usuario no autenticado" });
 
     const userData = verifyJSONWebToken(token);
-    console.log(userData);
+
     //------------------------------------
     const { email } = userData;
 
@@ -39,14 +39,13 @@ const handleGetDashboard = async (req, res) => {
   }
 }
 
-const handleAvatar = async (req, res) => {
+const handleGetAvatars = async (req, res) => {
   try {
-    const user = await userModel.customFind();
+    const avatars = await userModel.customFindAll();
+
     return res.json({
       message: "Listado de Avatars en Base de Datos",
-      body: {
-        avatar: user.avatar
-      }
+      body: avatars
     });
   } catch (error) {
     res.json({ message: error.message })
@@ -55,5 +54,5 @@ const handleAvatar = async (req, res) => {
 
 module.exports = {
   handleGetDashboard,
-  handleAvatar
+  handleGetAvatars
 }

@@ -94,13 +94,13 @@ const handleGetDashboard = async (req, res) => {
   try {
 
     const { token } = req.body;
-    console.log("viene del front: " + token);
+
     if (!token)
       return res.json({ error: "Usuario no autenticado" });
 
     const userData = verifyJSONWebToken(token);
 
-    //------------------------------------
+
     const { email } = userData.email;
 
     const user = await userModel.customFindOne({ email: email });

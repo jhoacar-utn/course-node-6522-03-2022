@@ -2,14 +2,14 @@ const { verifyJSONWebToken } = require("../helpers/handleJWT");
 
 const authMiddleware = (req, res, next) => {
 
-  const token = req.token;
+  const token = req.query;
   if (!token)
     return res.json({ error: "Usuario no autenticado" });
 
   const userData = verifyJSONWebToken(token);
 
   if (userData) {
-    req = userData;
+    req.email = userData;
     return next();
   }
 

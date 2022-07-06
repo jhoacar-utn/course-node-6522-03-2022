@@ -74,6 +74,9 @@ export default function NavBar() {
           {
             !isLoggedIn && <>
               <Button color="inherit">
+                <Link className={styles['navbar-link']} to="/avatar">Avatar</Link>
+              </Button>
+              <Button color="inherit">
                 <Link className={styles['navbar-link']} to="/login">Login</Link>
               </Button>
               <Button color="inherit">

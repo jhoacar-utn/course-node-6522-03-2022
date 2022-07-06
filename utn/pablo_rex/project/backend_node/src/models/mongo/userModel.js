@@ -32,10 +32,16 @@ const customFindOne = async (dataToFind) => {
   return user;
 }
 
+const customFindAll = async () => {
+  const user = await User.find({}, { "avatar": 1, "_id": 0 });
+  return user;
+}
+
 
 User.customCreate = customCreate;
 User.customUpdate = customUpdate;
 User.customFind = customFind;
 User.customFindOne = customFindOne;
+User.customFindAll = customFindAll;
 
 module.exports = User;

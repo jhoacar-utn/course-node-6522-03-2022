@@ -1,7 +1,8 @@
+
 export default function Home() {
   return (
     <div>
-      Estoy en home
+      <div><h1>Bienvenido a la App de Rick and Morty</h1></div>
     </div>
   )
 }

@@ -13,6 +13,7 @@ import AuthMiddleware from './middlewares/Auth';
 import { ThemeContext } from './context/theme';
 import { StoreContext } from './context/store';
 import { globalReducer } from './reducers/global';
+import OneAvatars from './components/Avatars';
 
 
 export default function App() {
@@ -45,6 +46,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/avatar" element={<OneAvatars />} />
               <Route path="/dashboard" element={
                 <AuthMiddleware>
                   <Dashboard />
