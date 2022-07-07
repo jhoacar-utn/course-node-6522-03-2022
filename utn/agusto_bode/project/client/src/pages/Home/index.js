@@ -10,7 +10,9 @@ export default function Home() {
                 textAlign: "center"
             }}>
                 <h1>WELCOME</h1>
+                
                 <h3>HOME PAGE</h3>
+
                 <Button variant="contained" color="success">
                     <Link style={{ color: "white", textDecoration: "none" }} to="/login">Login</Link>
                 </Button>
