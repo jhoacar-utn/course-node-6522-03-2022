@@ -4,7 +4,36 @@ const { verifyJSONWebToken } = require("../helpers/handleJWT");
 const handleProfile = async (req, res) => {
 
     try {
-        const { token } = req.query.token;
+        /*
+        La variable token no es necesaria que la destructures si ya lo usas con req.query.token
+        es decir ya basta con:
+            const token = req.query.token;
+                        ó
+            const { token } = req.query
+
+        Por otro lado, al extraer la variable, debes validar si esta definida, para ello lo haces
+        antes de mandarla al verifyJSONWebToken;
+
+            Seria algo asi:
+
+            const { token } = req.query;
+            
+            if (!token) {
+                return res.json({ error: "Token vacio" });
+            }
+
+            const userData = verifyJSONWebToken(token);
+
+            if(!userData){
+                return res.json({ error: "Token incorrecto" });
+            }
+
+        Y garantizas que si no estaba definido pues no va a entrar a la funcion de verifyJSONWebToken
+
+        Por otro lado cuando el jsonwebtoken es verificado devuelve el objeto o null en caso que no fue validado,
+        por lo tanto lo que sigue es que antes de 
+         */
+        const { token } = req.query.token; 
 
         const userData = verifyJSONWebToken(token);
 
