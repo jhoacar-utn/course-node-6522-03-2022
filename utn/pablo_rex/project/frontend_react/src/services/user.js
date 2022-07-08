@@ -11,6 +11,20 @@ export const handleDashboard = async (token) => {
     const response = await axios.get(AUTH_URL + '/profile', { params: { token } });
     const profileData = response.data;
 
+    /*
+      Aca deberiamos simplemente luego de trabajar la peticion
+      regresar el objeto que se encuentra en el atributo de body
+
+      const response = await axios.get(AUTH_URL + '/profile', { params: { token } });
+      const profileData = response.data;
+
+      return profileData.body;
+
+      Esto lo sabemos porque en el body es donde espero recibir
+      la informacion del usuario con ese token, entonces
+      OJO que estamos devolviendo es un objeto!!!
+    */
+
     const arrayprofile = (Object.entries(Object.values(profileData))[1]);
 
     if (!arrayprofile)
