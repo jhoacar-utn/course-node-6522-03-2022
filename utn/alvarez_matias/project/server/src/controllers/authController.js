@@ -11,7 +11,7 @@ const handleAuthLogin = async (req, res, next) => {
         const { email, password } = req.body;
 
         const user = await userModel.findFirst({ email: email });
-
+        console.log(user);
         if (!user) {
             res.status(400);
             return res.json({ error: "User not registered" });
@@ -27,9 +27,9 @@ const handleAuthLogin = async (req, res, next) => {
             return res.json({ error: "User not authorized" });
         }
 
-        const token = getJSONWebToken(user);
+        //const token = getJSONWebToken(user); 
 
-        setCookie(req, token);
+        //setCookie(req, token); 
 
         return res.redirect("/dashboard");
 
@@ -37,7 +37,7 @@ const handleAuthLogin = async (req, res, next) => {
 
         console.log(error);
         res.status(500);
-        return res.json({ "server_error": error });
+        return res.json({ "error": error });
     }
 }
 

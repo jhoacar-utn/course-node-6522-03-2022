@@ -1,45 +1,55 @@
 const { userModel } = require("../models");
 
-const { isTheSameHash } = require("../helpers/handleEncrypt");
-const { getJSONWebToken } = require("../helpers/handleJWT");
-const { setCookie } = require("../helpers/handleCookie");
+const { getHashedPassword } = require("../helpers/handleEncrypt");
 
-const handleAuthLogin = async (req, res, next) => {
+const getAllUsers = (request, response, next) => {
+
+};
+
+const postUser = async (request, response, next) => {
 
     try {
 
-        const { email, password } = req.body;
+        const data = request.body;
 
-        const user = await userModel.findFirst({ email: email });
+        const plainPassword = data.password;
 
-        if (!user) {
-            res.status(400);
-            return res.json({ error: "User not registered" });
-        }
+        data.password = await getHashedPassword(plainPassword);
+        // data.avatar = "/users/default.png";
 
+        const user = await userModel.create(data);
 
-        const isAuthorized = await isTheSameHash(password, user.password);
+        response.json({ "user_added": user });
 
-
-
-        if (!isAuthorized) {
-            res.status(401);
-            return res.json({ error: "User not authorized" });
-        }
-
-        const token = getJSONWebToken(user);
-
-        setCookie(req, token);
-
-        return res.redirect("/dashboard");
 
     } catch (error) {
-
-        console.log(error);
-        res.status(500);
-        return res.json({ "server_error": error });
+        response.status(500);
+        response.json({ "error": error });
     }
 }
 
+const postAvatar = async (request, response, next) => {
 
-module.exports.handleAuthLogin = handleAuthLogin;
+    try {
+
+        const avatarPath = request.avatarFile;
+        const user = request.user;
+
+
+        await userModel.updateFirst({ email: user.email }, { avatar: avatarPath });
+
+        return response.redirect("/dashboard");
+    }
+    catch (error) {
+        response.status(500);
+        response.json({ "server_error": error });
+    }
+
+}
+
+
+module.exports = {
+    getAllUsers,
+    postUser,
+    postAvatar
+}

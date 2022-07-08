@@ -23,11 +23,13 @@ const handleDashboardWeb = async (request, response, next) => {
 
     const nameUser = user.name;
     const avatarUser = user.avatar;
+    const imageUser = user.image;
 
     return response.render('dashboard', {
         name: nameUser,
         email: emailUser,
         avatar: avatarUser,
+        image: imageUser,
     });
 }
 
