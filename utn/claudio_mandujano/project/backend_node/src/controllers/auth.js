@@ -34,10 +34,11 @@ const handleLogin = async (req, res) => {
     return res.json({
       message: "user loggedin successfully",
       body: {
-              token
+              token 
+              
       }
     });
-
+    
   } catch (error) {
 
     console.log(error);

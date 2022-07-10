@@ -2,7 +2,7 @@ const { userModel } = require("../models");
 
 const { isTheSameHash } = require("../helpers/handleEncrypt");
 const { getJSONWebToken } = require("../helpers/handleJWT");
-const { setCookie } = require("../helpers/handleCookie");
+
 
 const handleAuthLogin = async (req, res, next) => {
 

@@ -42,6 +42,8 @@ export const handleRegister = async (userData) => {
   }
 }
 
+  //aca tengo que mandar el token
+
 export const handleDashboard = async (email) => {
   try {
     const data = { email };

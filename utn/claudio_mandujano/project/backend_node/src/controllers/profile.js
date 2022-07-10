@@ -4,12 +4,12 @@ const { verifyJSONWebToken } = require("../helpers/handleJWT");
 const handleProfile = async (req, res) => {
 
     try {       
-        const { token } = req.query.token; 
+        const { token } = req.query; 
 
         const userData = verifyJSONWebToken(token);
 
         if (!token) {
-            return res.json({ error: "Token incorrecto" });
+            return res.json({ error: "incorrect token" });
         }
 
         const { email } = userData;
@@ -17,7 +17,7 @@ const handleProfile = async (req, res) => {
         const user = await userModel.customFind({ email: email });
 
         return res.json({
-            message:"Perfil del usuario con toda su información",
+            message:"User information",
             body: {
                 name: user.name,
                 email: user.email,
