@@ -2,7 +2,7 @@ const { getHashedPassword } = require("../helpers/handleEncrypt");
 const { getJSONWebToken } = require("../helpers/handleJWT");
 const { userModel } = require("../models");
 const { isTheSameHash } = require("../helpers/handleEncrypt");
-//const { setCookie } = require("../helpers/handleCookie");
+
 
 
 const handleLogin = async (req, res) => {
@@ -31,16 +31,10 @@ const handleLogin = async (req, res) => {
         }
         const token = getJSONWebToken(user);
 
-        //setCookie(req, token);
-        // return res.redirect("/dashboard");
         return res.json({
-            message: "user loggedin successfully",
+            message: "Todo Ok",
             body: {
-                email,
-                name: user.name,
-                token,
-                avatar: user.avatar,
-                image: user.image
+                token
             }
         });
 
@@ -71,7 +65,6 @@ const handleRegister = async (req, res) => {
         data.password = await getHashedPassword(plainPassword);
 
         await userModel.customCreate(data);
-        //console.log(userModel);
         return res.json({
             message: "user registered successfully",
             body: {
