@@ -11,7 +11,7 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const { isLoggedIn, setIsLoggedIn } = useContext(AuthorizationContext);
+  
   const { globalState, setGlobalState } = useContext(StoreContext);
   const { isLoggedIn } = globalState;
 

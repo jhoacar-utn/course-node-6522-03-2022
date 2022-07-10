@@ -2,8 +2,6 @@ const { getHashedPassword } = require("../helpers/handleEncrypt");
 const { getJSONWebToken } = require("../helpers/handleJWT");
 const { userModel } = require("../models");
 const { isTheSameHash } = require("../helpers/handleEncrypt");
-//const { setCookie } = require("../helpers/handleCookie");
-
 
 const handleLogin = async (req, res) => {
 
@@ -26,21 +24,17 @@ const handleLogin = async (req, res) => {
     const isAuthorized = await isTheSameHash(password, user.password);
 
     if (!isAuthorized) {
-      res.status(401);
+      res.status(400);
       return res.json({ error: "User not authorized" });
     }
     const token = getJSONWebToken(user);
+    res.status(201);
+    
 
-    //setCookie(req, token);
-    // return res.redirect("/dashboard");
     return res.json({
       message: "user loggedin successfully",
       body: {
-        email,
-        name: user.name,
-        token,
-        avatar: user.avatar,
-        image: user.image
+              token
       }
     });
 
@@ -48,7 +42,7 @@ const handleLogin = async (req, res) => {
 
     console.log(error);
     res.status(500);
-    res.json({ "error": error });
+    res.json({ "error": error, message:"Auth Error" });
   }
 
 }
@@ -71,9 +65,11 @@ const handleRegister = async (req, res) => {
     data.password = await getHashedPassword(plainPassword);
 
     await userModel.customCreate(data);
-    //console.log(userModel);
+    res.status(201);
+
+    
     return res.json({
-      message: "user registered successfully",
+      message: "User registered successfully",
       body: {
         name,
         email,
@@ -86,40 +82,13 @@ const handleRegister = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500);
-    res.json({ "error": error });
+    res.json({ "error": "Error!! user registered" });
   }
 }
 
-
-
-
-const handleGetDashboard = async (req, res) => {
-  try {
-
-    const { email } = req.body;
-
-    const user = await userModel.customFindOne({ email: email });
-
-    if (!user) {
-      res.status(400);
-      return res.json({ error: "Profile not found" });
-    }
-    return res.json(
-      [{
-        email: user.email,
-        name: user.name,
-        avatar: user.avatar,
-        image: user.image
-      }]
-    );
-
-  } catch (error) {
-    res.json({ message: error.message })
-  }
-}
 
 module.exports = {
   handleRegister,
   handleLogin,
-  handleGetDashboard,
+
 }
