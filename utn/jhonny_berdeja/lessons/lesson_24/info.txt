@@ -1,0 +1,1 @@
+En esta clase vimos la parte de despliegue con heroku conectando la base de datos de postgres
