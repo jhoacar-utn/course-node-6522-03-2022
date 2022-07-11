@@ -1,14 +1,21 @@
 const jwt = require('jsonwebtoken');
 
-const {secretKey} = require("../config/config");
+const { secretKey } = require("../config/config");
 
-const getJSONWebToken = (userData)=>{
+const getJSONWebToken = (userData) => {
 
-    return jwt.sign(userData, secretKey);
+    const payload = {
+        email: userData.email,
+        name: userData.name,
+        avatar: userData.avatar,
+        image: userData.image
+    };
+
+    return jwt.sign(payload, secretKey);
 
 }
 
-const verifyJSONWebToken = (token) =>{
+const verifyJSONWebToken = (token) => {
 
     return jwt.verify(token, secretKey);
 
