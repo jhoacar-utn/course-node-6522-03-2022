@@ -1,17 +1,53 @@
+import { useEffect, useState } from 'react';
+import { handleDashboard } from '../../services/user';
+
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 export default function Dashboard() {
 
-    const nombre = "Augusto Bode";
-    const avatar = "Albert Einstein";
-    const image = "https://rickandmortyapi.com/api/character/avatar/11.jpeg"
+  const [profile, setprofile] = useState([]);
 
-    return (
-        <div>
-            <img src={image} style={{ paddingBottom: "30px" }}></img>
+  const token = localStorage.getItem('token');
+  useEffect(() => {
 
-            <h2 style={{ paddingBottom: "30px", textAlign: "center" }}>{avatar}</h2>
+    handleDashboard(token)
+      .then(arrayprofile => {
 
-            <h2 style={{ textAlign: "center" }}>{nombre}</h2>
-        </div>
-    )
+        setprofile(arrayprofile);
+
+      }).catch(error => {
+        console.log(error);
+      })
+
+  }, []);
+
+
+  return (
+    <div>
+      <h1 style={{ textAlign: "center", paddingBottom: "20px" }}>Datos del usuario</h1>
+      <Card sx={{ maxWidth: 400, backgroundColor: 'white', color: 'black' }}>
+        <CardMedia
+          component="img"
+          height="360"
+          image={profile[1]?.image}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h6" component="div">
+            {profile[1]?.avatar}
+          </Typography>
+          <Typography gutterBottom variant="h4" component="div">
+            {profile[1]?.name}
+          </Typography>
+          <Typography gutterBottom variant="h5" component="div">
+            {profile[1]?.email}
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
+  )
 }

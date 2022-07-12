@@ -54,14 +54,14 @@ export default function Login() {
                     padding: '10px'
                 }}>
                     <FormControl >
-                        <InputLabel>Email address</InputLabel>
+                        <InputLabel>Email:</InputLabel>
                         <Input type="email" value={email} onChange={handleChangeEmail} />
-                        <FormHelperText>We'll never share your email.</FormHelperText>
+                        <FormHelperText>Ingrese su cuenta de correo electrónico.</FormHelperText>
                     </FormControl>
                     <FormControl >
-                        <InputLabel>Password</InputLabel>
+                        <InputLabel>Password:</InputLabel>
                         <Input type="password" value={password} onChange={handleChangePassword} />
-                        <FormHelperText>Please type your password.</FormHelperText>
+                        <FormHelperText>Por favor, ingrese el password de la cuenta.</FormHelperText>
                     </FormControl>
                     <Button type="submit">
                         Iniciar sesion
