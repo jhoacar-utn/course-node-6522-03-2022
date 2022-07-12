@@ -9,15 +9,15 @@ export const handleDashboard = async (token) => {
     const response = await axios.get(AUTH_URL + '/profile', { params: { token } });
     const profileData = response.data;
 
-    const arrayprofile = (Object.entries(Object.values(profileData))[1]);
+    const arrayProfile = (Object.entries(Object.values(profileData))[1]);
 
-    if (!arrayprofile)
+    if (!arrayProfile)
       return [];
 
-    return arrayprofile.map((element, index) => {
+    return arrayProfile.map((element, index) => {
       return {
         name: element.name,
-        image: element.image,
+        image: element.image, 
         avatar: element.avatar,
         email: element.email
       }
